@@ -133,7 +133,7 @@ const Accounts = () => {
             href={account().url}
             class="mt-2 first:mt-0 block"
             target="_blank"
-            rel="noopener"
+            rel="noopener me"
           >
             <div class="backdrop-blur-[2px] bg-theme bg-opacity-[2%] hover:bg-opacity-10 rounded-xl flex overflow-hidden">
               <div
