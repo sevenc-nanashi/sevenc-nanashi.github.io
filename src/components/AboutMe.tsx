@@ -51,7 +51,7 @@ const aboutMeBadges: {
 const AboutMe = () => {
   return (
     <>
-      <p>猫耳とボカロとRubyが好きなプログラマー。高校1年生。 </p>
+      <p>猫耳とボカロとRubyが好きなプログラマーもどき。高校1年生。 </p>
 
       <div class="flex flex-wrap mt-4">
         <Index each={aboutMeBadges}>
