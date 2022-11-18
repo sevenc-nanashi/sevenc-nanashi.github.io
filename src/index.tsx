@@ -9,7 +9,12 @@ import App, { translations } from "./App"
 const Index = () => {
   const [_, { locale }] = useI18n()
   onMount(() => {
-    locale(navigator.language)
+    const lang = navigator.language.split("-")[0]
+    if (lang in translations) {
+      locale(lang)
+    } else {
+      locale("en")
+    }
   })
   return <App />
 }
