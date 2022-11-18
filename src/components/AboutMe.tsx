@@ -1,3 +1,4 @@
+import { useI18n } from "@solid-primitives/i18n"
 import { Index, Show } from "solid-js"
 
 const aboutMeBadges: {
@@ -48,10 +49,21 @@ const aboutMeBadges: {
   },
 ]
 
+export const translations = {
+  ja: {
+    aboutMe: "猫耳とボカロとRubyが好きなプログラマーもどき。高校1年生。",
+  },
+  en: {
+    aboutMe:
+      "A programmer (maybe?) who likes Nekomimi, Vocaloid, and Ruby. 1st year high school student.",
+  },
+}
+
 const AboutMe = () => {
+  const [t] = useI18n()
   return (
     <>
-      <p>猫耳とボカロとRubyが好きなプログラマーもどき。高校1年生。 </p>
+      <p>{t("aboutMe")}</p>
 
       <div class="flex flex-wrap mt-4">
         <Index each={aboutMeBadges}>

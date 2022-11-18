@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@solid-primitives/i18n": "^1.1.2",
+    "deepmerge": "^4.2.2",
     "particles.js": "^2.0.0",
     "sass": "^1.56.1",
     "solid-js": "^1.5.8"

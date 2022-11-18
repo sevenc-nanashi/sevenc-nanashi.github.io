@@ -1,50 +1,55 @@
+import { useI18n } from "@solid-primitives/i18n"
 import { Index, Show, For, createResource, Resource } from "solid-js"
 import { getFromCookie, storeToCookie } from "~/utils"
 
 const works: {
+  id: string
   name: string
   url: string
   label: string
-  description: string
   color?: string
   footerUrl?: string
   footerText?: string
   github?: string
+  language: string
 }[] = [
   {
+    id: "sevenbot",
     name: "SevenBot",
     url: "https://sevenbot.jp",
-    description: "Discordの多機能Bot。",
     label: "|SevenBot-dev/|SevenBot",
     footerUrl: "https://github.com/SevenBot-dev/SevenBot",
     footerText: "SevenBot|#1769|",
     github: "sevenbot-dev/sevenbot",
+    language: "Python (discord.py)",
   },
   {
+    id: "discorb",
     name: "discorb",
     url: "https://discorb-lib.github.io",
-    description: "Ruby製のDiscord APIラッパー。",
     label: "|discorb-lib/|discorb",
     footerUrl: "https://github.com/discorb-lib/discorb",
     footerText: "|gem install |discorb",
     github: "discorb-lib/discorb",
+    language: "Ruby (Async)",
   },
   {
+    id: "kiitecafeDesktop",
     name: "Kiite Cafe Desktop",
     url: "https://github.com/sevenc-nanashi/kiitecafe-desktop/releases/latest",
-    description: "Kiite Cafeのデスクトップ版。",
     label: "|sevenc-nanashi/|kiitecafe-desktop",
     footerUrl: "https://github.com/sevenc-nanashi/kiitecafe-desktop",
     github: "sevenc-nanashi/kiitecafe-desktop",
+    language: "Vue (TypeScript + Electron + Vite)",
   },
   {
+    id: "sonolusScpConverter",
     name: "Sonolus SCP Converter",
     url: "https://sevenc7c.com/scp-converter",
-    description:
-      "Sonolus v0.5.13で作成されたSCPファイルをv0.6.0で読み込めるように変換するツール。",
     label: "|sevenc-nanashi/|scp-converter",
     footerUrl: "https://github.com/sevenc-nanashi/scp-converter",
     github: "sevenc-nanashi/scp-converter",
+    language: "Vue (TypeScript + Vue + Webpack)",
   },
 ]
 const fetchRepoData = async (repo: string) => {
@@ -65,6 +70,22 @@ const fetchRepoData = async (repo: string) => {
   storeToCookie(repo, JSON.stringify(result))
   return result
 }
+export const translations = {
+  ja: {
+    sevenbotDescription: "Discordの多機能Bot。",
+    discorbDescription: "DiscordのAPIラッパー。",
+    kiitecafeDesktopDescription: "Kiite Cafeのデスクトップ版。",
+    sonolusScpConverterDescription:
+      "SonolusのSCPファイルをv0.5.13用からv0.6.0用に変換するツール。",
+  },
+  en: {
+    sevenbotDescription: "A multi-functional Discord bot.",
+    discorbDescription: "A Discord API wrapper.",
+    kiitecafeDesktopDescription: "A desktop version of Kiite Cafe.",
+    sonolusScpConverterDescription:
+      "A tool to convert SCP files from Sonolus v0.5.13 to v0.6.0.",
+  },
+}
 const Works = () => {
   const githubStats: Record<
     string,
@@ -75,19 +96,20 @@ const Works = () => {
       .filter((g) => g)
       .map((r) => [r, createResource(r, fetchRepoData)[0]])
   )
+  const [t] = useI18n()
   return (
     <div class="flex flex-wrap place-content-between">
       <Index each={works}>
         {(work) => (
-          <div class="backdrop-blur-[2px] bg-theme bg-opacity-[2%] rounded-xl flex flex-col overflow-hidden w-full lg:w-[calc(50%_-_8px)] box-border mb-2">
+          <div class="backdrop-blur-[2px] bg-theme bg-opacity-[2%] rounded-xl flex flex-col overflow-hidden w-full lg:w-[calc(50%_-_8px)] box-border mb-2 relative pb-8">
             <a href={work().url} target="_blank" rel="noopener">
               <div
-                class="md:h-10 bg-opacity-20 p-2 px-4 cursor-pointer underline font-semibold"
+                class="md:h-14 bg-opacity-20 p-2 px-4 cursor-pointer font-semibold"
                 classList={{
                   [work().color || "bg-theme"]: true,
                 }}
               >
-                {work().name}
+                <span class="underline">{work().name}</span>
                 <Show when={work().github}>
                   <Show
                     when={githubStats[work().github!].loading}
@@ -101,57 +123,60 @@ const Works = () => {
                     ...
                   </Show>
                 </Show>
+                <Show when={work().language}>
+                  <div class="text-xs">{work().language}</div>
+                </Show>
               </div>
             </a>
-            <div class="p-2 flex flex-col">
-              <p class="md:h-12 mb-2 px-2 md:px-4 text-justify flex-grow">
-                {work().description}
+            <div class="p-2 flex flex-col relative">
+              <p class="md:min-h-12 mb-2 px-2 md:px-4 text-justify flex-grow">
+                {t(work().id + "Description")}
               </p>
-              <p class="mt-auto">
-                <a
-                  href={work().footerUrl || work().url}
-                  class="text-theme text-xs md:text-sm mt-auto px-2 md:px-4"
-                  target="_blank"
-                  rel="noopener"
-                >
-                  <For each={work().label.split("|")}>
+            </div>
+
+            <p class="bottom-2 px-2 absolute">
+              <a
+                href={work().footerUrl || work().url}
+                class="text-theme text-xs md:text-sm mt-auto px-2 md:px-4"
+                target="_blank"
+                rel="noopener"
+              >
+                <For each={work().label.split("|")}>
+                  {(label, i) =>
+                    label && (
+                      <span
+                        classList={{
+                          "text-theme underline font-bold": i() % 2 === 0,
+                          "text-slate-500 dark:text-slate-400": i() % 2 === 1,
+                        }}
+                      >
+                        {label}
+                        {"\u200b"}
+                      </span>
+                    )
+                  }
+                </For>
+                <Show when={work().footerText}>
+                  <span class="text-slate-500 dark:text-slate-400">
+                    {" | "}
+                  </span>
+                  <For each={work().footerText!.split("|")}>
                     {(label, i) =>
                       label && (
                         <span
                           classList={{
-                            "text-theme underline font-bold": i() % 2 === 0,
+                            "text-theme": i() % 2 === 0,
                             "text-slate-500 dark:text-slate-400": i() % 2 === 1,
                           }}
                         >
                           {label}
-                          {"\u200b"}
                         </span>
                       )
                     }
                   </For>
-                  <Show when={work().footerText}>
-                    <span class="text-slate-500 dark:text-slate-400">
-                      {" | "}
-                    </span>
-                    <For each={work().footerText!.split("|")}>
-                      {(label, i) =>
-                        label && (
-                          <span
-                            classList={{
-                              "text-theme": i() % 2 === 0,
-                              "text-slate-500 dark:text-slate-400":
-                                i() % 2 === 1,
-                            }}
-                          >
-                            {label}
-                          </span>
-                        )
-                      }
-                    </For>
-                  </Show>
-                </a>
-              </p>
-            </div>
+                </Show>
+              </a>
+            </p>
           </div>
         )}
       </Index>
