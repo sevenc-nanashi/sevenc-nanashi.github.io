@@ -104,7 +104,7 @@ const Works = () => {
           <div class="backdrop-blur-[2px] bg-theme bg-opacity-[2%] rounded-xl flex flex-col overflow-hidden w-full lg:w-[calc(50%_-_8px)] box-border mb-2 relative pb-8">
             <a href={work().url} target="_blank" rel="noopener">
               <div
-                class="md:h-14 bg-opacity-20 p-2 px-4 cursor-pointer font-semibold"
+                class="md:h-14 bg-opacity-20 p-2 px-4 cursor-pointer font-semibold overflow-visible"
                 classList={{
                   [work().color || "bg-theme"]: true,
                 }}
