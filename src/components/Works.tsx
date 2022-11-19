@@ -51,6 +51,24 @@ const works: {
     github: "sevenc-nanashi/scp-converter",
     language: "Vue (TypeScript + Vue + Webpack)",
   },
+  {
+    id: "discordColorSimulator",
+    name: "Discord Color Simulator",
+    url: "https://sevenc7c.com/discord-color-simulator",
+    label: "|sevenc-nanashi/|discord-color-simulator",
+    footerUrl: "https://github.com/sevenc-nanashi/discord-color-simulator",
+    github: "sevenc-nanashi/discord-color-simulator",
+    language: "SolidJS (TypeScript + Vite + Tailwind CSS)",
+  },
+  {
+    id: "sevenc7cCom",
+    name: "sevenc7c.com",
+    url: "https://sevenc7c.com/",
+    label: "|sevenc-nanashi/|sevenc-nanashi.github.io",
+    footerUrl: "https://github.com/sevenc-nanashi/sevenc-nanashi.github.io",
+    github: "sevenc-nanashi/sevenc-nanashi.github.io",
+    language: "SolidJS (TypeScript + Vite + Tailwind CSS)",
+  },
 ]
 const fetchRepoData = async (repo: string) => {
   const [username, repoName] = repo.split("/")
@@ -77,6 +95,9 @@ export const translations = {
     kiitecafeDesktopDescription: "Kiite Cafeのデスクトップ版。",
     sonolusScpConverterDescription:
       "SonolusのSCPファイルをv0.5.13用からv0.6.0用に変換するツール。",
+    discordColorSimulatorDescription:
+      "Discordの3つのテーマで見え方をシミュレーションするアプリ。",
+    sevenc7cComDescription: "自分のプロフィール。（このサイト）",
   },
   en: {
     sevenbotDescription: "A multi-functional Discord bot.",
@@ -84,6 +105,9 @@ export const translations = {
     kiitecafeDesktopDescription: "A desktop version of Kiite Cafe.",
     sonolusScpConverterDescription:
       "A tool to convert SCP files from Sonolus v0.5.13 to v0.6.0.",
+    discordColorSimulatorDescription:
+      "An app to simulate how it looks in 3 Discord themes.",
+    sevenc7cComDescription: "My profile. (This site)",
   },
 }
 const Works = () => {
