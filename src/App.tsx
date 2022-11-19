@@ -87,7 +87,7 @@ function App() {
         </div>
         <img class="ml-auto h-full" src={icon} />
       </div>
-      <div class="flex m-8 flex-wrap flex-grow relative z-10" id="content">
+      <div class="flex m-8 flex-wrap flex-grow relative" id="content">
         <Section title="About me" class="w-full">
           <AboutMe />
         </Section>
