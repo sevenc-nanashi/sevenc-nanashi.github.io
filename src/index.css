@@ -6,3 +6,7 @@
 html {
   @apply font-sans text-slate-800 dark:text-slate-100 bg-white dark:bg-slate-900;
 }
+
+.backdrop-blur-\[2px\] {
+  transform: translateZ(0);
+}
