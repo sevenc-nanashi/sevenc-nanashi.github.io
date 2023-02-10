@@ -14,14 +14,14 @@ const works: {
   language: string
 }[] = [
   {
-    id: "sevenbot",
-    name: "SevenBot",
-    url: "https://sevenbot.jp",
-    label: "|SevenBot-dev/|SevenBot",
-    footerUrl: "https://github.com/SevenBot-dev/SevenBot",
-    footerText: "SevenBot|#1769|",
-    github: "sevenbot-dev/sevenbot",
-    language: "Python (discord.py)",
+    id: "voicevox",
+    name: "Voicevox (Multi engine)",
+    url: "https://github.com/voicevox/voicevox_project/issues/2",
+    label: "|voicevox/|voicevox_project#2",
+    footerUrl: "https://github.com/voicevox/voicevox_project/issues/2",
+    footerText: "voicevox/voicevox_project#2",
+    github: "voicevox/voicevox",
+    language: "(as a Contributor)",
   },
   {
     id: "discorb",
@@ -32,6 +32,16 @@ const works: {
     footerText: "|gem install |discorb",
     github: "discorb-lib/discorb",
     language: "Ruby (Async)",
+  },
+  {
+    id: "sevenbot",
+    name: "SevenBot",
+    url: "https://sevenbot.jp",
+    label: "|SevenBot-dev/|SevenBot",
+    footerUrl: "https://github.com/SevenBot-dev/SevenBot",
+    footerText: "SevenBot|#1769|",
+    github: "sevenbot-dev/sevenbot",
+    language: "Python (discord.py)",
   },
   {
     id: "kiitecafeDesktop",
@@ -90,6 +100,7 @@ const fetchRepoData = async (repo: string) => {
 }
 export const translations = {
   ja: {
+    voicevoxDescription: "Voicevoxのマルチエンジン機能の開発。",
     sevenbotDescription: "Discordの多機能Bot。",
     discorbDescription: "DiscordのAPIラッパー。",
     kiitecafeDesktopDescription: "Kiite Cafeのデスクトップ版。",
@@ -100,6 +111,8 @@ export const translations = {
     sevenc7cComDescription: "自分のプロフィール。（このサイト）",
   },
   en: {
+    voicevoxDescription:
+      "Development of the multi-engine function of Voicevox.",
     sevenbotDescription: "A multi-functional Discord bot.",
     discorbDescription: "A Discord API wrapper.",
     kiitecafeDesktopDescription: "A desktop version of Kiite Cafe.",
