@@ -9,18 +9,18 @@ const accounts: {
   color?: string
 }[] = [
   {
-    id: "twitter",
-    name: "Twitter",
-    url: "https://twitter.com/sevenc_nanashi",
-    label: "@sevenc_nanashi",
-    color: "bg-blue-300",
-  },
-  {
     id: "misskey",
     name: "Misskey",
     url: "https://misskey.io/@sevenc7c",
     label: "@sevenc7c|@misskey.io",
     color: "bg-green-300",
+  },
+  {
+    id: "twitter",
+    name: "Twitter",
+    url: "https://twitter.com/sevenc_nanashi",
+    label: "@sevenc_nanashi",
+    color: "bg-blue-300",
   },
   {
     id: "github",
@@ -98,10 +98,6 @@ const fetchQiitaData = async () => {
 }
 
 const Accounts = () => {
-  const [twitterFollowers] = createResource(
-    "twitter/follow/sevenc_nanashi",
-    fetchShieldsData
-  )
   const [qiitaFollowers] = createResource(fetchQiitaData)
   const [youtubeSubscribers] = createResource(
     "youtube/channel/subscribers/UCv9Wgrqn0ovYhUggSSm5Qtg",
@@ -112,8 +108,6 @@ const Accounts = () => {
     fetchShieldsData
   )
   const profileInfo: Record<string, () => false | string> = {
-    twitter: () =>
-      twitterFollowers.loading ? false : `${twitterFollowers()} Followers`,
     qiita: () =>
       qiitaFollowers.loading
         ? false
