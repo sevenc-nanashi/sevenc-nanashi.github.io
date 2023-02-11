@@ -19,7 +19,6 @@ const works: {
     url: "https://github.com/voicevox/voicevox_project/issues/2",
     label: "|voicevox/|voicevox_project#2",
     footerUrl: "https://github.com/voicevox/voicevox_project/issues/2",
-    footerText: "voicevox/voicevox_project#2",
     github: "voicevox/voicevox",
     language: "(as a Contributor)",
   },
