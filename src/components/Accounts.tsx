@@ -12,8 +12,7 @@ const accounts: {
     id: "misskey",
     name: "Misskey.systems",
     url: "https://misskey.systems/@sevenc_nanashi",
-    label: "
-    @sevenc_nanashi|@misskey.systems",
+    label: "@sevenc_nanashi|@misskey.systems",
     color: "bg-green-300",
   },
   {
