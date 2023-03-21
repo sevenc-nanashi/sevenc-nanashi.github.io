@@ -10,9 +10,10 @@ const accounts: {
 }[] = [
   {
     id: "misskey",
-    name: "Misskey",
-    url: "https://misskey.io/@sevenc7c",
-    label: "@sevenc7c|@misskey.io",
+    name: "Misskey.systems",
+    url: "https://misskey.systems/@sevenc_nanashi",
+    label: "
+    @sevenc_nanashi|@misskey.systems",
     color: "bg-green-300",
   },
   {
