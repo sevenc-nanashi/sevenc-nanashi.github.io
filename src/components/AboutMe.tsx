@@ -51,11 +51,11 @@ const aboutMeBadges: {
 
 export const translations = {
   ja: {
-    aboutMe: "好きなものを、好きなもので、好きなように作る。猫耳とボカロとRubyが好きなプログラマーもどき。高校1年生。",
+    aboutMe: "好きなものを、好きなもので、好きなように作る。猫耳とボカロとRubyが好きなプログラマーもどき。高校2年生。",
   },
   en: {
     aboutMe:
-      "Make things I like, with things I like, as I like to do. A programmer (maybe?) who likes Nekomimi, Vocaloid, and Ruby. 1st year high school student.",
+      "Make things I like, with things I like, as I like to do. A programmer (maybe?) who likes Nekomimi, Vocaloid, and Ruby. 2nd year high school student.",
   },
 }
 

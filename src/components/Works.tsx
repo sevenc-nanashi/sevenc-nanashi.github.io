@@ -43,6 +43,15 @@ const works: {
     language: "Python (discord.py)",
   },
   {
+    id: "dotfiles",
+    name: "dotfiles",
+    url: "https://github.com/sevenc-nanashi/dotfiles",
+    label: "|sevenc-nanashi/|dotfiles",
+    footerUrl: "https://github.com/sevenc-nanashi/dotfiles",
+    github: "sevenc-nanashi/dotfiles",
+    language: "Vim, PowerShell, etc...",
+  },
+  {
     id: "kiitecafeDesktop",
     name: "Kiite Cafe Desktop",
     url: "https://github.com/sevenc-nanashi/kiitecafe-desktop/releases/latest",
@@ -101,6 +110,7 @@ export const translations = {
   ja: {
     voicevoxDescription: "Voicevoxのマルチエンジン機能の開発。",
     sevenbotDescription: "Discordの多機能Bot。",
+    dotfilesDescription: "コンフィグファイル達。",
     discorbDescription: "DiscordのAPIラッパー。",
     kiitecafeDesktopDescription: "Kiite Cafeのデスクトップ版。",
     sonolusScpConverterDescription:
@@ -113,6 +123,7 @@ export const translations = {
     voicevoxDescription:
       "Development of the multi-engine function of Voicevox.",
     sevenbotDescription: "A multi-functional Discord bot.",
+    dotfilesDescription: "My configurations.",
     discorbDescription: "A Discord API wrapper.",
     kiitecafeDesktopDescription: "A desktop version of Kiite Cafe.",
     sonolusScpConverterDescription:
