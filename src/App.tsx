@@ -2,14 +2,12 @@ import { Component, createSignal, JSX, onCleanup, onMount } from "solid-js"
 import deepMerge from "deepmerge"
 import "./App.css"
 
-import icon from "./assets/icon.png"
+import icon from "./assets/icon.webp"
 import AboutMe, {
   translations as aboutMeTranslations,
 } from "./components/AboutMe"
 import Accounts from "./components/Accounts"
-import Works, {
-  translations as worksTranslations,
-} from "./components/Works"
+import Works, { translations as worksTranslations } from "./components/Works"
 
 declare function particlesJS(id: string, options: unknown): void
 
@@ -82,10 +80,15 @@ function App() {
   return (
     <div class="flex flex-col left-0 top-0 right-0 h-content min-h-screen absolute overflow-hidden">
       <div class="bg-theme dark:bg-theme-dark text-white h-32 flex items-center z-10">
-        <div class="text-5xl md:text-6xl font-extrabold ml-8 md:ml-16">
-          名無し｡<br class="md:hidden"/><span class="text-3xl pl-8 md:4xl md:pl-0 opacity-50"> / Nanashi.</span>
+        <img class="h-full md:pl-4" src={icon} />
+        <div class="text-5xl md:text-6xl font-extrabold">
+          名無し｡
+          <br class="md:hidden" />
+          <span class="text-3xl pl-8 md:4xl md:pl-0 opacity-50">
+            {" "}
+            / Nanashi.
+          </span>
         </div>
-        <img class="ml-auto h-full" src={icon} />
       </div>
       <div class="flex m-8 flex-wrap flex-grow relative" id="content">
         <Section title="About me" class="w-full">
@@ -108,4 +111,7 @@ function App() {
 }
 
 export default App
-export const translations = deepMerge.all([aboutMeTranslations, worksTranslations])
+export const translations = deepMerge.all([
+  aboutMeTranslations,
+  worksTranslations,
+])
