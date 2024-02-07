@@ -15,10 +15,10 @@ const works: {
 }[] = [
   {
     id: "voicevox",
-    name: "Voicevox (Multi engine)",
-    url: "https://github.com/voicevox/voicevox_project/issues/2",
-    label: "|voicevox/|voicevox_project#2",
-    footerUrl: "https://github.com/voicevox/voicevox_project/issues/2",
+    name: "Voicevox",
+    url: "https://github.com/voicevox/voicevox",
+    label: "|voicevox/|voicevox",
+    footerUrl: "https://github.com/voicevox/voicevox",
     github: "voicevox/voicevox",
     language: "(as a Contributor)",
   },
@@ -108,7 +108,8 @@ const fetchRepoData = async (repo: string) => {
 }
 export const translations = {
   ja: {
-    voicevoxDescription: "Voicevoxのマルチエンジン機能の開発。",
+    voicevoxDescription:
+      "音声読み上げソフト。マルチエンジンや複数選択などの機能を開発。",
     sevenbotDescription: "Discordの多機能Bot。",
     dotfilesDescription: "コンフィグファイル達。",
     discorbDescription: "DiscordのAPIラッパー。",
@@ -121,7 +122,7 @@ export const translations = {
   },
   en: {
     voicevoxDescription:
-      "Development of the multi-engine function of Voicevox.",
+      "A TTS software. Developed features such as multi-engine and multiple selection.",
     sevenbotDescription: "A multi-functional Discord bot.",
     dotfilesDescription: "My configurations.",
     discorbDescription: "A Discord API wrapper.",

@@ -1,18 +1,18 @@
-import { createResource, For, Index, Show } from "solid-js"
-import { getFromCookie, storeToCookie } from "~/utils"
+import { createResource, For, Index, Show } from "solid-js";
+import { getFromCookie, storeToCookie } from "~/utils";
 
 const accounts: {
-  id: string
-  name: string
-  url: string
-  label: string
-  color?: string
+  id: string;
+  name: string;
+  url: string;
+  label: string;
+  color?: string;
 }[] = [
   {
     id: "misskey",
     name: "Misskey",
-    url: "https://misskey.systems/@sevenc_nanashi",
-    label: "@sevenc_nanashi|@misskey.systems",
+    url: "https://voskey.icalo.net/@sevenc_nanashi",
+    label: "@sevenc_nanashi|@voskey.icalo.net",
     color: "bg-green-300",
   },
   {
@@ -64,49 +64,49 @@ const accounts: {
     label: "/mnonamer",
     color: "bg-blue-300",
   },
-]
+];
 const fetchShieldsData = async (url: string) => {
   if (getFromCookie(url)) {
-    return JSON.parse(getFromCookie(url)!)
+    return JSON.parse(getFromCookie(url)!);
   }
   const result = await fetch(
     `${
       url.startsWith("https://") ? url : "https://img.shields.io/" + url
-    }?style=flat-square&label=`
+    }?style=flat-square&label=`,
   )
     .then((r) => r.text())
     .then((t) => {
-      const parser = new DOMParser()
-      const xml = parser.parseFromString(t, "application/xml")
-      return xml.querySelector("text")!.innerHTML
-    })
-  storeToCookie(url, JSON.stringify(result))
-  return result
-}
+      const parser = new DOMParser();
+      const xml = parser.parseFromString(t, "application/xml");
+      return xml.querySelector("text")!.innerHTML;
+    });
+  storeToCookie(url, JSON.stringify(result));
+  return result;
+};
 
 const fetchQiitaData = async () => {
   if (getFromCookie("qiita")) {
-    return JSON.parse(getFromCookie("qiita")!)
+    return JSON.parse(getFromCookie("qiita")!);
   }
-  console.log("fetching qiita data")
-  console.log(getFromCookie("qiita"))
+  console.log("fetching qiita data");
+  console.log(getFromCookie("qiita"));
   const result = await fetch(
-    "https://qiita.com/api/v2/users/sevenc-nanashi"
-  ).then((r) => r.json())
-  storeToCookie("qiita", JSON.stringify(result))
-  return result
-}
+    "https://qiita.com/api/v2/users/sevenc-nanashi",
+  ).then((r) => r.json());
+  storeToCookie("qiita", JSON.stringify(result));
+  return result;
+};
 
 const Accounts = () => {
-  const [qiitaFollowers] = createResource(fetchQiitaData)
+  const [qiitaFollowers] = createResource(fetchQiitaData);
   const [youtubeSubscribers] = createResource(
     "youtube/channel/subscribers/UCv9Wgrqn0ovYhUggSSm5Qtg",
-    fetchShieldsData
-  )
+    fetchShieldsData,
+  );
   const [githubFollowers] = createResource(
     "github/followers/sevenc-nanashi",
-    fetchShieldsData
-  )
+    fetchShieldsData,
+  );
   const profileInfo: Record<string, () => false | string> = {
     qiita: () =>
       qiitaFollowers.loading
@@ -118,7 +118,7 @@ const Accounts = () => {
         : `${youtubeSubscribers()} Subscribers`,
     github: () =>
       githubFollowers.loading ? false : `${githubFollowers()} Followers`,
-  }
+  };
   return (
     <div class="flex-col">
       <Index each={accounts}>
@@ -151,8 +151,7 @@ const Accounts = () => {
                         >
                           {label}
                         </span>
-                      )
-                    }
+                      )}
                   </For>
                 </div>
                 <Show when={account().id in profileInfo}>
@@ -166,7 +165,7 @@ const Accounts = () => {
         )}
       </Index>
     </div>
-  )
-}
+  );
+};
 
-export default Accounts
+export default Accounts;
