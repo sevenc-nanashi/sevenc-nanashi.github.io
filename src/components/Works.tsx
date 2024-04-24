@@ -54,10 +54,10 @@ const works = [
     id: "kiiteitte",
     name: "Kiiteitte Web",
     url: "https://kw.sevenc7c.com",
-    label: "|sevenc-nanashi/|kiiteitte",
-    footerUrl: "https://github.com/sevenc-nanashi/kiiteitte",
+    label: "|sevenc-nanashi/|kiiteitte-web",
+    footerUrl: "https://github.com/sevenc-nanashi/kiiteitte-web",
     footerText: "",
-    github: "sevenc-nanashi/kiiteitte",
+    github: "sevenc-nanashi/kiiteitte-web",
     language: "Hono + Vue (TypeScript + Vite)",
   },
   {
