@@ -33,7 +33,7 @@ const accounts: {
     id: "discord",
     name: "Discord",
     url: "https://discord.com/users/686547120534454315",
-    label: "Nanashi.|#7740",
+    label: "@sevenc_nanashi",
     color: "bg-purple-300",
   },
   {
