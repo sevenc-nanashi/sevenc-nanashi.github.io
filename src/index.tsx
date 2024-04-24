@@ -1,32 +1,22 @@
 /* @refresh reload */
 import "./index.css"
-import { onMount } from "solid-js"
+import { createSignal, onMount } from "solid-js"
 import { render } from "solid-js/web"
-import { I18nContext, createI18nContext, useI18n } from "@solid-primitives/i18n"
 
-import App, { translations } from "./App"
+import App from "./App"
+import { Locale } from "./locale"
 
 const Index = () => {
-  const [_, { locale }] = useI18n()
+  const [locale, setLocale] = createSignal<"ja" | "en">("en")
   onMount(() => {
     const lang = navigator.language.split("-")[0]
-    if (lang in translations) {
-      locale(lang)
-    } else {
-      locale("en")
-    }
+    setLocale(lang === "ja" ? "ja" : "en")
   })
-  return <App />
+  return (
+    <Locale.Provider value={locale}>
+      <App />
+    </Locale.Provider>
+  )
 }
 
-const i18n = createI18nContext(
-  translations as unknown as Record<string, Record<string, string>>
-)
-render(
-  () => (
-    <I18nContext.Provider value={i18n}>
-      <Index />
-    </I18nContext.Provider>
-  ),
-  document.getElementById("root") as HTMLElement
-)
+render(() => <Index />, document.getElementById("root") as HTMLElement)
