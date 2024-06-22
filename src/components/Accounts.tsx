@@ -64,6 +64,13 @@ const accounts: {
     label: "/mnonamer",
     color: "bg-blue-300",
   },
+  {
+    id: "vocadb",
+    name: "VocaDB",
+    url: "https://vocadb.net/Profile/sevenc_nanashi",
+    label: "/sevenc_nanashi",
+    color: "bg-blue-400",
+  },
 ];
 const fetchShieldsData = async (url: string) => {
   if (getFromCookie(url)) {
