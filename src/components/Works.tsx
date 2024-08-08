@@ -162,7 +162,7 @@ const fetchRepoData = async (repo: string) => {
 export const translations = {
   ja: {
     voicevoxDescription:
-      "音声読み上げソフト。マルチエンジンや複数選択などの機能を開発。",
+      "音声読み上げソフト。マルチエンジン、マルチトラック、複数選択などの機能を開発。",
     expla1nSelfDescription: "自作曲。1作目。",
     sevenbotDescription: "Discordの多機能Bot。",
     dotfilesDescription: "コンフィグファイル達。",
@@ -180,7 +180,7 @@ export const translations = {
   },
   en: {
     voicevoxDescription:
-      "A TTS software. Developed features such as multi-engine and multiple selection.",
+      "A TTS software. Developed features such as: multi-engine, multi-track, and multiple selection.",
     expla1nSelfDescription: "My first original song.",
     sevenbotDescription: "A multi-functional Discord bot.",
     dotfilesDescription: "My configurations.",
