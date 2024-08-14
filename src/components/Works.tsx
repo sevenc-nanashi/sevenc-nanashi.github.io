@@ -21,6 +21,16 @@ const works = [
     language: "(as a Contributor)",
   },
   {
+    id: "2Lyrics",
+    name: "2>lyrics.txt",
+    url: "：https://www.nicovideo.jp/watch/sm43945652",
+    label: "|sevenc-nanashi/|2_lyrics",
+    footerUrl: "https://github.com/sevenc-nanashi/2_lyrics",
+    footerText: "",
+    github: "sevenc-nanashi/2_lyrics",
+    language: "TypeScript (p5.js), Original Song",
+  },
+  {
     id: "expla1nSelf",
     name: "expla1n(self)",
     url: "https://www.nicovideo.jp/watch/sm43690833",
@@ -28,7 +38,7 @@ const works = [
     footerUrl: "https://github.com/sevenc-nanashi/expla1n_self",
     footerText: "",
     github: "sevenc-nanashi/expla1n_self",
-    language: "Original Song",
+    language: "TypeScript (p5.js), Original Song",
   },
   // {
   //   id: "discorb",
@@ -163,13 +173,16 @@ export const translations = {
   ja: {
     voicevoxDescription:
       "音声読み上げソフト。マルチエンジン、マルチトラック、複数選択などの機能を開発。",
-    expla1nSelfDescription: "自作曲。1作目。",
+    expla1nSelfDescription: "自作曲。1作目。映像をp5.jsで制作。",
+    "2LyricsDescription": "自作曲。2作目。映像をp5.jsで制作。",
     sevenbotDescription: "Discordの多機能Bot。",
     dotfilesDescription: "コンフィグファイル達。",
     discorbDescription: "DiscordのAPIラッパー。",
     cantariDescription: "UTAU音源をVoicevox上で話させるVoicevoxエンジン。",
-    aiVoiceVoxDescription: "A.I.Voice 1をVoicevox上で話させるVoicevoxエンジン。",
-    coeiroinkV2BridgeDescription: "Coeiroink v2をVoicevox上で話させるVoicevoxエンジン。",
+    aiVoiceVoxDescription:
+      "A.I.Voice 1をVoicevox上で話させるVoicevoxエンジン。",
+    coeiroinkV2BridgeDescription:
+      "Coeiroink v2をVoicevox上で話させるVoicevoxエンジン。",
     kiitecafeDesktopDescription: "Kiite Cafeのデスクトップ版。",
     kiiteitteDescription: "Kiite Cafeの選曲履歴を表示するWebアプリ。",
     sonolusScpConverterDescription:
@@ -181,13 +194,17 @@ export const translations = {
   en: {
     voicevoxDescription:
       "A TTS software. Developed features such as: multi-engine, multi-track, and multiple selection.",
-    expla1nSelfDescription: "My first original song.",
+    expla1nSelfDescription: "My first original song. The video was made with p5.js.",
+    "2LyricsDescription": "My second original song. The video was made with p5.js.",
     sevenbotDescription: "A multi-functional Discord bot.",
     dotfilesDescription: "My configurations.",
     discorbDescription: "A Discord API wrapper.",
-    cantariDescription: "An engine for Voicevox which lets UTAUs speak on Voicevox.",
-    aiVoiceVoxDescription: "An engine for Voicevox which lets A.I.Voice 1 speak on Voicevox.",
-    coeiroinkV2BridgeDescription: "An engine for Voicevox which lets Coeiroink v2 speak on Voicevox.",
+    cantariDescription:
+      "An engine for Voicevox which lets UTAUs speak on Voicevox.",
+    aiVoiceVoxDescription:
+      "An engine for Voicevox which lets A.I.Voice 1 speak on Voicevox.",
+    coeiroinkV2BridgeDescription:
+      "An engine for Voicevox which lets Coeiroink v2 speak on Voicevox.",
     kiitecafeDesktopDescription: "A desktop version of Kiite Cafe.",
     kiiteitteDescription: "A web app to show the song history of Kiite Cafe.",
     sonolusScpConverterDescription:
