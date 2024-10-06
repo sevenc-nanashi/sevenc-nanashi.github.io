@@ -40,6 +40,16 @@ const works = [
     github: "sevenc-nanashi/expla1n_self",
     language: "TypeScript (p5.js), Original Song",
   },
+  {
+    id: "kikoune",
+    name: "Kikoune",
+    url: "https://github.com/sevenc-nanashi/kikoune",
+    label: "|sevenc-nanashi/|kikoune",
+    footerUrl: "https://kw.sevenc7c.com",
+    footerText: "",
+    github: "sevenc-nanashi/kikoune",
+    language: "TypeScript (Hono, Vue)",
+  },
   // {
   //   id: "discorb",
   //   name: "discorb",
@@ -175,6 +185,7 @@ export const translations = {
       "音声読み上げソフト。マルチエンジン、マルチトラック、複数選択などの機能を開発。",
     expla1nSelfDescription: "自作曲。1作目。映像をp5.jsで制作。",
     "2LyricsDescription": "自作曲。2作目。映像をp5.jsで制作。",
+    kikouneDescription: "Kiite Cafe風にニコニコ動画を同時再生するDiscordアクティビティ。",
     sevenbotDescription: "Discordの多機能Bot。",
     dotfilesDescription: "コンフィグファイル達。",
     discorbDescription: "DiscordのAPIラッパー。",
@@ -197,6 +208,7 @@ export const translations = {
     expla1nSelfDescription: "My first original song. The video was made with p5.js.",
     "2LyricsDescription": "My second original song. The video was made with p5.js.",
     sevenbotDescription: "A multi-functional Discord bot.",
+    kikouneDescription: "A discord activity which plays NND like Kiite Cafe.",
     dotfilesDescription: "My configurations.",
     discorbDescription: "A Discord API wrapper.",
     cantariDescription:
