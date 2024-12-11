@@ -23,7 +23,7 @@ const works = [
   {
     id: "2Lyrics",
     name: "2>lyrics.txt",
-    url: "：https://www.nicovideo.jp/watch/sm43945652",
+    url: "https://www.nicovideo.jp/watch/sm43945652",
     label: "|sevenc-nanashi/|2_lyrics",
     footerUrl: "https://github.com/sevenc-nanashi/2_lyrics",
     footerText: "",
