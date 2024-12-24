@@ -52,7 +52,7 @@ const aboutMeBadges: {
   {
     name: "Age",
     color: "bg-slate-300",
-    content: "17",
+    content: "18",
   },
   {
     name: "Location",
