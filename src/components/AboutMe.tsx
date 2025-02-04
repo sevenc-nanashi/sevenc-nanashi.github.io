@@ -68,7 +68,7 @@ export const translations = {
   },
   en: {
     aboutMe:
-      "Make things I like, with things I like, as I like to do. I like to make things which makes other things. 3nd year high school student.",
+      "Make things I like, with things I like, as I like to do. I like to make things which makes other things. 3rd year high school student.",
   },
 }
 
