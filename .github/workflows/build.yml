@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Setup Pages
         uses: actions/configure-pages@v2
       - name: Setup pnpm
@@ -28,9 +28,9 @@ jobs:
         with:
           version: "7.12.0"
       - name: Setup Node.js 16
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: 16
+          node-version: 22
           cache: "pnpm"
       - name: Install dependencies
         run: |
@@ -39,7 +39,7 @@ jobs:
         run: |
           pnpm build
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-pages-artifact@v3
         with:
           path: dist/
 
