@@ -54,21 +54,16 @@ const aboutMeBadges: {
     color: "bg-slate-300",
     content: "18",
   },
-  {
-    name: "Location",
-    color: "bg-slate-300",
-    content: "Shizuoka, Japan",
-  },
 ]
 
 export const translations = {
   ja: {
     aboutMe:
-      "好きなものを、好きなもので、好きなように作る。「ものを創るもの」を造るのが好き。高校3年生。",
+      "好きなものを、好きなもので、好きなように作る。「ものを創るもの」を造るのが好き。",
   },
   en: {
     aboutMe:
-      "Make things I like, with things I like, as I like to do. I like to make things which makes other things. 3rd year high school student.",
+      "Make things I like, with things I like, as I like to do. I like to make things which makes other things.",
   },
 }
 
