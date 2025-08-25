@@ -21,6 +21,16 @@ const works = [
     language: "(as a Contributor)",
   },
   {
+    id: "unidentifiedSignpo5ts",
+    name: "(unidentified)signpo5ts",
+    url: "https://www.nicovideo.jp/watch/sm45306946",
+    label: "|sevenc-nanashi/|unidentified_singpo5ts",
+    footerUrl: "https://github.com/sevenc-nanashi/unidentified_signpo5ts",
+    footerText: "",
+    github: "sevenc-nanashi/unidentified_signpo5ts",
+    language: "TypeScript (p5.js), Original Song",
+  },
+  {
     id: "libraryW4nderers",
     name: "library->w4nderers",
     url: "https://www.nicovideo.jp/watch/sm44670499",
