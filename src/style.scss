@@ -1,0 +1,17 @@
+@function mix-alpha($base, $alpha) {
+  @return color-mix(in srgb, transparent, $base $alpha);
+}
+
+#app {
+  height: 100vh;
+  --theme-text: theme("colors.slate.900");
+}
+
+a {
+  text-decoration: underline;
+  color: theme("colors.theme");
+
+  &:hover {
+    color: theme("colors.theme.800");
+  }
+}
