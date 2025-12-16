@@ -30,8 +30,23 @@ export default defineConfig({
     },
     font: {
       sans: "'Zen Kaku Gothic New', sans-serif",
+      mono: "'Firple', 'Remote-Firple', monospace",
     },
   },
 
-  rules: [],
+  rules: [
+    [
+      /^align-content-(start|center|end|between|around|evenly)$/,
+      ([, v]) => ({
+        "align-content": {
+          start: "flex-start",
+          center: "center",
+          end: "flex-end",
+          between: "space-between",
+          around: "space-around",
+          evenly: "space-evenly",
+        }[v],
+      }),
+    ],
+  ],
 });
