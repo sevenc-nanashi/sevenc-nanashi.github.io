@@ -13,7 +13,7 @@ import PageSwitcher from "./components/PageSwitcher.vue";
         </Transition>
       </template>
     </RouterView>
-    <footer un-mx="auto" un-sticky un-bottom="4" un-w="fit">
+    <footer un-mx="auto" un-sticky un-bottom="4" un-w="fit" un-z="10">
       <GlassCard color="theme" un-p="4" un-text="xl" un-flex un-items="center">
         <div un-bg="white" un-w="8" un-mr="2" un-text-center un-aspect-square>
           I

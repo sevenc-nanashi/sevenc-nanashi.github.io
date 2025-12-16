@@ -13,7 +13,7 @@ const icons: Record<WorkCategory, string> = {
 };
 </script>
 <template>
-  <section class="works-section">
+  <section class="works-section" un-flex-grow>
     <ul un-min-w="64">
       <li v-for="work in works" :key="work.id">
         <button>
