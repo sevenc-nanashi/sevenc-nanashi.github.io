@@ -53,14 +53,14 @@ const links: LinkData[] = [
     text: "@sevenc-nanashi",
   },
   {
-    url: "https://twitter.com/sevenc_nanashi",
-    label: "Twitter",
-    text: "@sevenc_nanashi",
-  },
-  {
     url: "https://voskey.icalo.net/@sevenc_nanashi",
     label: "Misskey",
     text: "@sevenc_nanashi@voskey.icalo.net",
+  },
+  {
+    url: "https://twitter.com/sevenc_nanashi",
+    label: "Twitter",
+    text: "@sevenc_nanashi",
   },
   {
     url: "https://www.nicovideo.jp/user/90184991",

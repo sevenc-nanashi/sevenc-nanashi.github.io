@@ -7,7 +7,11 @@ const props = defineProps<{
 </script>
 <template>
   <div class="work-display">
-    <div un-aspect="16/9">
+    <div
+      un-aspect="16/9"
+      v-if="display.source === 'niconico'"
+      un-bg="slate-100"
+    >
       <iframe
         v-if="display.source === 'niconico'"
         :src="`https://embed.nicovideo.jp/watch/${display.id}`"

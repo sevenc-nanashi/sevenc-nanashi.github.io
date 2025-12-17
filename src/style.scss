@@ -32,3 +32,15 @@ a {
     color: theme("colors.theme.800");
   }
 }
+
+.pop-enter-active,
+.pop-leave-active {
+  transition:
+    opacity 0.2s,
+    transform 0.2s;
+}
+.pop-enter-from,
+.pop-leave-to {
+  opacity: 0;
+  transform: translateY(10px);
+}

@@ -25,7 +25,12 @@ const sections: Section[] = [
       :key="key"
       :to="section.path"
       un-text="lg"
-      :class="{ selected: route.path === section.path }"
+      :class="{
+        selected:
+          section.path === '/'
+            ? route.path === section.path
+            : route.path.startsWith(section.path),
+      }"
     >
       {{ section.name }}
     </RouterLink>

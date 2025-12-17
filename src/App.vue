@@ -8,7 +8,7 @@ import PageSwitcher from "./components/PageSwitcher.vue";
   <div un-p="4" un-min-h="screen" class="main" un-flex="~ col">
     <RouterView>
       <template #default="{ Component: ViewComponent }">
-        <Transition name="fade" mode="out-in">
+        <Transition name="pop" mode="out-in">
           <Component :is="ViewComponent" />
         </Transition>
       </template>
@@ -29,15 +29,4 @@ import PageSwitcher from "./components/PageSwitcher.vue";
 </template>
 
 <style scoped>
-.fade-enter-active,
-.fade-leave-active {
-  transition:
-    opacity 0.2s,
-    transform 0.2s;
-}
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-  transform: translateY(10px);
-}
 </style>

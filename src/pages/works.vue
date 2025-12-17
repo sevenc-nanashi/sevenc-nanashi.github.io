@@ -2,8 +2,11 @@
 import { works, type Work, type WorkCategory } from "../works";
 import GlassCard from "../components/GlassCard.vue";
 import WorksDisplay from "../components/WorksDisplay.vue";
+import { computed, ref } from "vue";
+import WorksLink from "../components/WorksLink.vue";
+import { RouterLink, RouterView, useRoute } from "vue-router";
 
-const work = works[0];
+const route = useRoute();
 
 const icons: Record<WorkCategory, string> = {
   music: "i-fluent:music-note-2-24-regular",
@@ -14,51 +17,47 @@ const icons: Record<WorkCategory, string> = {
 </script>
 <template>
   <section class="works-section" un-flex-grow>
-    <ul un-min-w="64">
-      <li v-for="work in works" :key="work.id">
-        <button>
-          <GlassCard
-            class="work-card"
-            color="themeSecondary"
-            un-p="x-4 y-2"
-            un-flex
-            un-items="center"
-          >
-            <h3 un-text="lg">{{ work.title }}</h3>
-            <div un-flex="grow" />
-            <div un-text="xl" :class="icons[work.category]" />
-          </GlassCard>
-        </button>
-      </li>
-    </ul>
-    <article>
-      <h2 un-text="2xl">{{ work.title }}</h2>
-      <p>{{ work.description }}</p>
-    </article>
-    <WorksDisplay :display="work.display" />
+    <nav un-w="64" un-flex="~ col" un-gap="4">
+      <RouterLink
+        v-for="(work, index) in works"
+        :key="work.id"
+        :to="`/works/${work.id}`"
+        un-w="full"
+        un-cursor="pointer"
+        un-color="inherit"
+        un-decoration="none"
+      >
+        <GlassCard
+          clickable
+          class="work-card"
+          :color="route.params.work === work.id ? 'theme' : 'themeSecondary'"
+          un-p="x-4 y-2"
+          un-w="full"
+          un-flex
+          un-items="center"
+        >
+          <div un-text="xl" :class="icons[work.category]" />
+          <div un-flex-grow />
+          <h3 un-text="lg">{{ work.title }}</h3>
+        </GlassCard>
+      </RouterLink>
+    </nav>
+    <RouterView>
+      <template #default="{ Component }">
+        <Transition name="pop" mode="out-in">
+          <Component :is="Component" :key="route.fullPath" />
+        </Transition>
+      </template>
+    </RouterView>
   </section>
 </template>
 
 <style scoped>
 .works-section {
   display: grid;
-  grid-template:
-    "selector description" 1fr
-    "selector display" auto / auto 1fr;
+  grid-template-columns: auto 1fr;
   gap: calc(var(--spacing) * 4);
 
-  align-items: center;
-
-  & > *:nth-child(1) {
-    grid-area: selector;
-  }
-  & > *:nth-child(2) {
-    grid-area: description;
-  }
-  & > *:nth-child(3) {
-    grid-area: display;
-    width: 100%;
-    height: 100%;
-  }
+  align-items: start;
 }
 </style>
