@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import GlassCard from "../components/GlassCard.vue";
+
 type LinkData =
   | {
       label: string;
@@ -106,23 +108,23 @@ const links: LinkData[] = [
 </script>
 <template>
   <section un-flex-grow un-flex="~" un-justify="center" un-items="center">
-    <div
-      un-flex="~"
-      un-justify="center"
-      un-items="start"
-      un-gap="6"
-    >
+    <GlassCard class="profile-window" color="theme" un-p="2" un-gap="6">
+      <div un-grid-area="header" un-font="mono" un-border="b theme" un-p="x-4 y-2">
+        $ curl "https://sevenc7c.com"
+      </div>
       <div
+        un-grid-area="icon"
         un-size="100"
         un-aspect-ratio="square"
         un-bg="gray-200"
         un-flex
         un-items-center
         un-justify-center
+        un-m="l-4 b-4"
       >
         <div>Icon Placeholder</div>
       </div>
-      <div un-font="mono" un-text="lg">
+      <div un-grid-area="info" un-font="mono" un-text="lg" un-m="r-4 b-4">
         <h1>
           <span un-font="bold" un-text="theme">Nanashi.</span> &lt;<span
             un-text="theme"
@@ -132,7 +134,7 @@ const links: LinkData[] = [
         </h1>
         <div un-h="[1em]" un-align-content="center"><hr /></div>
         <template v-for="(link, index) in links" :key="index">
-          <div un-grid="~ cols-[auto_1fr]" un-gap="2">
+          <div un-gap="2">
             <span
               ><span un-font="bold" un-text="theme"> {{ link.label }} </span>:
             </span>
@@ -147,8 +149,15 @@ const links: LinkData[] = [
           </div>
         </template>
       </div>
-    </div>
+    </GlassCard>
   </section>
 </template>
 
-<style scoped></style>
+<style scoped>
+.profile-window {
+  display: grid;
+  grid-template-areas:
+    "header header"
+    "icon info";
+}
+</style>

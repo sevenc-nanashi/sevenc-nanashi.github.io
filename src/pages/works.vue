@@ -1,10 +1,9 @@
 <script setup lang="ts" generic="T extends string">
 import { works, type Work, type WorkCategory } from "../works";
 import GlassCard from "../components/GlassCard.vue";
-import WorksDisplay from "../components/WorksDisplay.vue";
 import { computed, ref } from "vue";
-import WorksLink from "../components/WorksLink.vue";
-import { RouterLink, RouterView, useRoute } from "vue-router";
+import { RouterLink, useRoute } from "vue-router";
+import WorkDisplay from "../components/WorkDisplay.vue";
 
 const route = useRoute();
 
@@ -16,12 +15,19 @@ const icons: Record<WorkCategory, string> = {
 };
 </script>
 <template>
-  <section class="works-section" un-flex-grow>
-    <nav un-w="64" un-flex="~ col" un-gap="4">
+  <section
+    class="works-section"
+    un-flex-grow
+    un-w="full"
+    un-max-w="screen-2xl"
+    un-mx="auto"
+    un-p="4"
+  >
+    <aside un-w="64" un-flex="~ col" un-gap="4" un-sticky un-top="2">
       <RouterLink
         v-for="(work, index) in works"
         :key="work.id"
-        :to="`/works/${work.id}`"
+        :to="`/works#${work.id}`"
         un-w="full"
         un-cursor="pointer"
         un-color="inherit"
@@ -29,8 +35,8 @@ const icons: Record<WorkCategory, string> = {
       >
         <GlassCard
           clickable
+          color="themeSecondary"
           class="work-card"
-          :color="route.params.work === work.id ? 'theme' : 'themeSecondary'"
           un-p="x-4 y-2"
           un-w="full"
           un-flex
@@ -41,14 +47,16 @@ const icons: Record<WorkCategory, string> = {
           <h3 un-text="lg">{{ work.title }}</h3>
         </GlassCard>
       </RouterLink>
-    </nav>
-    <RouterView>
-      <template #default="{ Component }">
-        <Transition name="pop" mode="out-in">
-          <Component :is="Component" :key="route.fullPath" />
-        </Transition>
-      </template>
-    </RouterView>
+    </aside>
+    <div>
+      <WorkDisplay
+        v-for="(work, index) in works"
+        :key="work.id"
+        :work="work"
+        :id="work.id"
+        un-mb="8"
+      />
+    </div>
   </section>
 </template>
 

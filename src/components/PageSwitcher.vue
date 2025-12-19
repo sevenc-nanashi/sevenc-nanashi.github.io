@@ -19,7 +19,7 @@ const sections: Section[] = [
 ];
 </script>
 <template>
-  <nav id="page-switcher" un-flex un-items="center">
+  <nav id="page-switcher" un-flex un-items="center" un-gap="4">
     <RouterLink
       v-for="(section, key) in sections"
       :key="key"
@@ -46,16 +46,6 @@ const sections: Section[] = [
   color: theme("colors.text");
   &.selected {
     color: theme("colors.theme.500");
-  }
-
-  &:not(:last-child) {
-    margin-right: 1rem;
-    &::after {
-      content: "|";
-      margin-left: 1rem;
-      color: theme("colors.slate.500");
-      opacity: 0.5;
-    }
   }
 }
 </style>

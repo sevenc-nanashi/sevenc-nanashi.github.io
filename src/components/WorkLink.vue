@@ -25,11 +25,19 @@ const linkTypes: Record<
     label: "ソースコード",
     icon: "i-fluent:code-24-regular",
   },
+  niconico: {
+    label: "ニコニコ動画",
+    icon: "i-simple-icons:niconico",
+  },
+  youtube: {
+    label: "YouTube",
+    icon: "i-simple-icons:youtube",
+  },
 };
 </script>
 
 <template>
-  <GlassCard class="work-link">
+  <GlassCard color="theme" class="work-link">
     <a
       :href="props.link.url"
       target="_blank"

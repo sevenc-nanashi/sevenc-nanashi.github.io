@@ -11,6 +11,7 @@
       },
       "devDependencies": {
         "@iconify-json/fluent": "^1.2.36",
+        "@iconify-json/simple-icons": "^1.2.63",
         "@vitejs/plugin-vue": "^6.0.3",
         "@vue/tsconfig": "^0.8.1",
         "sass": "^1.96.0",
@@ -96,6 +97,8 @@
     "@fontsource/zen-kaku-gothic-new": ["@fontsource/zen-kaku-gothic-new@5.2.7", "", {}, "sha512-tfGiyBqeeBjUURHm+RIuBJCxIKhZFp46/+LEc+zCxR4sLslKwlVpWda0ZOnX/mTvOHpfr4DYjiV/pVosRXHWaw=="],
 
     "@iconify-json/fluent": ["@iconify-json/fluent@1.2.36", "", { "dependencies": { "@iconify/types": "*" } }, "sha512-DhxwOu5Qiq09o2ehHeUK0I9lC01OeWFlxXP7pIslM0vbi8VuplrrJ7kMg21GJy87iOCevzxf6gTU7TLPGgSknw=="],
+
+    "@iconify-json/simple-icons": ["@iconify-json/simple-icons@1.2.63", "", { "dependencies": { "@iconify/types": "*" } }, "sha512-xZl2UWCwE58VlqZ+pDPmaUhE2tq8MVSTJRr4/9nzzHlDdjJ0Ud1VxNXPrwTSgESKY29iCQw3S0r2nJTSNNngHw=="],
 
     "@iconify/types": ["@iconify/types@2.0.0", "", {}, "sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg=="],
 

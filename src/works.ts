@@ -8,7 +8,7 @@ export type Work = {
   links: Link[];
 };
 export type Link = {
-  type: "visit" | "source" | "linkcore";
+  type: "visit" | "source" | "linkcore" | "youtube" | "niconico";
   url: string;
 };
 
@@ -67,8 +67,12 @@ export const works: Work[] = [
     },
     links: [
       {
-        type: "visit",
+        type: "niconico",
         url: "https://www.nicovideo.jp/watch/sm45681995",
+      },
+      {
+        type: "youtube",
+        url: "https://youtu.be/0Adv7O2Qa4Y",
       },
       {
         type: "linkcore",
@@ -87,8 +91,12 @@ export const works: Work[] = [
     },
     links: [
       {
-        type: "visit",
+        type: "niconico",
         url: "https://www.nicovideo.jp/watch/sm45306946",
+      },
+      {
+        type: "youtube",
+        url: "https://youtu.be/0Adv7O2Qa4Y",
       },
       {
         type: "linkcore",
@@ -111,8 +119,12 @@ export const works: Work[] = [
     },
     links: [
       {
-        type: "visit",
+        type: "niconico",
         url: "https://www.nicovideo.jp/watch/sm44670499",
+      },
+      {
+        type: "youtube",
+        url: "https://youtu.be/Z8ris_-1rVU",
       },
       {
         type: "linkcore",

@@ -35,13 +35,6 @@ declare module 'vue-router/auto-routes' {
       '/works',
       Record<never, never>,
       Record<never, never>,
-      | '/works/[work]'
-    >,
-    '/works/[work]': RouteRecordInfo<
-      '/works/[work]',
-      '/works/:work',
-      { work: ParamValue<true> },
-      { work: ParamValue<false> },
       | never
     >,
   }
@@ -66,13 +59,6 @@ declare module 'vue-router/auto-routes' {
     'src/pages/works.vue': {
       routes:
         | '/works'
-        | '/works/[work]'
-      views:
-        | 'default'
-    }
-    'src/pages/works/[work].vue': {
-      routes:
-        | '/works/[work]'
       views:
         | never
     }

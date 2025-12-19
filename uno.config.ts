@@ -4,7 +4,22 @@ import { presetAttributify, presetIcons, transformerDirectives } from "unocss";
 export default defineConfig({
   presets: [
     presetWind4(),
-    presetIcons({}),
+    presetIcons({
+      customizations: {
+        iconCustomizer(collection, icon, props) {
+          // customize all icons in this collection
+          if (collection === "simple-icons") {
+            const [x, y, size, size2] = props.viewBox.split(" ");
+            const scale = 1.3;
+            const newSizeX = parseFloat(size) * scale;
+            const newSizeY = parseFloat(size2) * scale;
+            const offsetX = (newSizeX - parseFloat(size)) / 2;
+            const offsetY = (newSizeY - parseFloat(size2)) / 2;
+            props.viewBox = `${parseFloat(x) - offsetX} ${parseFloat(y) - offsetY} ${newSizeX} ${newSizeY}`;
+          }
+        },
+      },
+    }),
     presetAttributify({
       prefixedOnly: true,
     }),
@@ -46,6 +61,12 @@ export default defineConfig({
           around: "space-around",
           evenly: "space-evenly",
         }[v],
+      }),
+    ],
+    [
+      /^grid-area-(.+)$/,
+      ([, v]) => ({
+        "grid-area": v,
       }),
     ],
   ],
