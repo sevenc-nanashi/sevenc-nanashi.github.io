@@ -1,5 +1,6 @@
 import voicevoxPreview from "./assets/works/voicevox.webp";
 import kiiteitteWebPreview from "./assets/works/kiiteitte-web.webp";
+import kiiteCafeDesktopPreview from "./assets/works/kiitecafe-desktop.webp";
 
 export type WorkCategory = "music" | "app" | "art" | "other";
 export type Work = {
@@ -175,6 +176,10 @@ export const works: Work[] = [
         url: "https://github.com/sevenc-nanashi/kiitecafe-desktop",
       },
     ],
+    display: {
+      source: "image",
+      url: kiiteCafeDesktopPreview,
+    },
   },
   {
     category: "music",
