@@ -5,7 +5,9 @@ import { ref } from "vue";
 import profileIcon from "../assets/icon.webp";
 import { getLinks } from "../profile";
 
-const links = getLinks();
+const links = getLinks({
+  includeZwsp: true,
+});
 const isSixelMode = ref(true);
 </script>
 <template>
@@ -36,16 +38,11 @@ const isSixelMode = ref(true);
         un-aspect-ratio="square"
         un-m="md:l-4 md:b-4 lt-md:x-auto"
         un-font="mono"
-        un-size="[21em]"
+        un-size="[max(21em, calc(100vw_-_2rem))]"
       >
         <Transition name="pop" mode="out-in">
-          <img
-            :src="profileIcon"
-            v-if="isSixelMode"
-            un-h="[21em]"
-            un-w="[21em]"
-          />
-          <AsciiProfileIcon v-else />
+          <img :src="profileIcon" v-if="isSixelMode" un-size="full" />
+          <AsciiProfileIcon v-else un-text="lt-md:xs" />
         </Transition>
       </div>
       <div un-grid-area="info" un-font="mono" un-text="lg" un-m="md:r-4 md:b-4">

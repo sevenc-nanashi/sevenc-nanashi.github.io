@@ -86,7 +86,7 @@ onBeforeUnmount(() => {
   >
     <aside
       id="works-sidebar"
-      un-w="64"
+      un-min-w="64"
       un-m="md:t--8"
       un-p="2"
       un-flex="~ col"
@@ -115,7 +115,8 @@ onBeforeUnmount(() => {
           un-flex
           un-items="center"
         >
-          <div un-text="xl" :class="icons[work.category]" />
+          <div un-text="xl" un-aspect="square" :class="icons[work.category]" />
+          <div un-w="4" />
           <div un-flex-grow />
           <h3 un-text="lg">{{ work.title }}</h3>
         </GlassCard>

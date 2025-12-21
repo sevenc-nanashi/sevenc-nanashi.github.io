@@ -9,8 +9,15 @@ type LinkData =
       text: string;
     };
 
+const zwsp = "\u200b";
+
 // NOTE: Cloudflare Workersだとnew Dateがおかしくなるので遅延評価にする
-export function getLinks(): LinkData[] {
+export function getLinks({
+  includeZwsp,
+}: {
+  includeZwsp?: boolean;
+} = {}): LinkData[] {
+  const maybeZwsp = includeZwsp ? zwsp : "";
   const birthDate = new Date("2006-12-25");
   const today = new Date();
   let age = today.getFullYear() - birthDate.getFullYear();
@@ -39,7 +46,7 @@ export function getLinks(): LinkData[] {
     {
       url: "mailto:sevenc7c@sevenc7c.com",
       label: "Email",
-      text: "sevenc7c@sevenc7c.com",
+      text: `sevenc7c${maybeZwsp}@sevenc7c.com`,
     },
     {
       url: "https://github.com/sevenc-nanashi",
@@ -54,7 +61,7 @@ export function getLinks(): LinkData[] {
     {
       url: "https://voskey.icalo.net/@sevenc_nanashi",
       label: "Misskey",
-      text: "@sevenc_nanashi@voskey.icalo.net",
+      text: `@sevenc_nanashi${maybeZwsp}@voskey.icalo.net`,
     },
     {
       url: "https://twitter.com/sevenc_nanashi",
@@ -64,7 +71,7 @@ export function getLinks(): LinkData[] {
     {
       url: "https://www.nicovideo.jp/user/90184991",
       label: "Niconico",
-      text: "/user/90184991",
+      text: `/user${zwsp}/90184991`,
     },
     {
       url: "https://youtube.com/@sevenc-nanashi",
@@ -79,17 +86,17 @@ export function getLinks(): LinkData[] {
     {
       url: "https://vocadb.net/Profile/sevenc_nanashi",
       label: "VocaDB",
-      text: "/Profile/sevenc_nanashi",
+      text: `/Profile${maybeZwsp}/sevenc_nanashi`,
     },
     {
       url: "https://www.tunecore.co.jp/artists/sevenc-nanashi",
       label: "TuneCore",
-      text: "/artists/sevenc-nanashi",
+      text: `/artists${maybeZwsp}/sevenc-nanashi`,
     },
     {
       url: "https://atcoder.jp/users/MNoNamer",
       label: "AtCoder",
-      text: "/users/MNoNamer",
+      text: `/users${maybeZwsp}/MNoNamer`,
     },
     {
       url: "https://zenn.dev/mnonamer",
