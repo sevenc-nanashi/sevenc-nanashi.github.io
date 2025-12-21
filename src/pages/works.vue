@@ -80,24 +80,24 @@ onBeforeUnmount(() => {
     :class="{ 'is-open': isSidebarOpen }"
     un-flex-grow
     un-w="full"
-    un-max-w="4xl"
+    un-max-w="6xl"
     un-mx="auto"
     un-p="4 b-0"
   >
     <aside
       id="works-sidebar"
       un-min-w="64"
-      un-m="md:t--8"
+      un-m="lg:t--8"
       un-p="2"
       un-flex="~ col"
       un-gap="4"
       un-sticky
       un-top="8"
-      un-h="md:[calc(100vh_-_8rem)]"
+      un-h="lg:[calc(100vh_-_8rem)]"
       un-overflow-y="auto"
     >
       <RouterLink
-        v-for="(work, index) in works"
+        v-for="work in works"
         :key="work.id"
         :to="`/works#${work.id}`"
         @click="isSidebarOpen = false"
@@ -118,7 +118,11 @@ onBeforeUnmount(() => {
           <div un-text="xl" un-aspect="square" :class="icons[work.category]" />
           <div un-w="4" />
           <div un-flex-grow />
-          <h3 un-text="lg">{{ work.title }}</h3>
+          <h3 un-text="lg right">
+            <template v-for="line in work.title.split('\n')" :key="line">
+              {{ line }}<br />
+            </template>
+          </h3>
         </GlassCard>
       </RouterLink>
     </aside>
@@ -139,7 +143,7 @@ onBeforeUnmount(() => {
         type="button"
         un-absolute
         un-bottom="0"
-        un-hidden="md:~"
+        un-hidden="lg:~"
         :aria-expanded="isSidebarOpen"
         aria-controls="works-sidebar"
         @click="isSidebarOpen = !isSidebarOpen"
@@ -189,7 +193,7 @@ onBeforeUnmount(() => {
   display: none;
 }
 
-@screen lt-md {
+@screen lt-lg {
   .works-section {
     grid-template-columns: 1fr;
     position: relative;

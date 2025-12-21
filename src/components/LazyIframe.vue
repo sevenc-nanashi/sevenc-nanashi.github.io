@@ -1,7 +1,12 @@
 <script setup lang="ts">
-import { onBeforeUnmount, onMounted, ref, useAttrs } from "vue";
+import { onBeforeUnmount, ref, onMounted, useAttrs } from "vue";
 
 defineOptions({ inheritAttrs: false });
+
+const iframeRef = defineModel<HTMLIFrameElement | null>({
+  type: HTMLIFrameElement,
+  default: null,
+});
 
 const props = withDefaults(
   defineProps<{
@@ -59,7 +64,13 @@ onBeforeUnmount(() => {
 
 <template>
   <div ref="target" class="lazy-iframe">
-    <iframe v-if="isVisible" :src="props.src" :title="props.title" v-bind="attrs" />
+    <iframe
+      v-if="isVisible"
+      ref="iframeRef"
+      :src="props.src"
+      :title="props.title"
+      v-bind="attrs"
+    />
   </div>
 </template>
 

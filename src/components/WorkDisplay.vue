@@ -4,10 +4,109 @@ import { type Work } from "../works";
 import GlassCard from "./GlassCard.vue";
 import LazyIframe from "./LazyIframe.vue";
 import WorkLink from "./WorkLink.vue";
+import { onMounted, onUnmounted, ref, useId } from "vue";
 
 const props = defineProps<{
   work: Work;
 }>();
+
+const iframe = ref<HTMLIFrameElement | null>(null);
+const messageAbort = new AbortController();
+const id = useId();
+
+type NiconicoEvents = {
+  loadComplete: {
+    videoInfo: {
+      commentCount: number;
+      description: string;
+      lengthInSeconds: number;
+      mylistCount: number;
+      postedAt: Date;
+      thumbnailUrl: string;
+      title: string;
+      videoId: string;
+      viewCount: number;
+      watchId: number;
+    };
+  };
+  playerMetadataChange: {
+    currentTime: number;
+    duration: number;
+    isVideoMetaDataLoaded: boolean;
+    maximumBuffered: number;
+    muted: boolean;
+    showComment: boolean;
+    volume: number;
+  };
+  playerStatusChange: {
+    playerStatus: number;
+  };
+  statusChange: {
+    playerStatus: number;
+    seekStatus: number;
+  };
+};
+type NiconicoMessage = {
+  [K in keyof NiconicoEvents]: {
+    playerId: string;
+    sourceConnectorType: number;
+    eventName: K;
+    data: NiconicoEvents[K];
+  };
+}[keyof NiconicoEvents];
+
+let firstLoad = true;
+onMounted(() => {
+  if (
+    props.work.display?.source === "niconico" &&
+    "start" in props.work.display
+  ) {
+    // 開始地点指定のpolyfill
+    window.addEventListener(
+      "message",
+      (event) => {
+        if (!iframe.value || props.work.display?.source !== "niconico") {
+          return;
+        }
+        if (!firstLoad) {
+          return;
+        }
+        const message: NiconicoMessage = event.data;
+        if (message.playerId !== id) {
+          return;
+        }
+        if (
+          message.eventName === "playerMetadataChange" &&
+          message.data.maximumBuffered > 0
+        ) {
+          firstLoad = false;
+          const contentWindow = iframe.value.contentWindow;
+          if (!contentWindow) {
+            throw new Error("Iframe has no contentWindow");
+          }
+          const start = (
+            "start" in props.work.display ? props.work.display.start : 0
+          ) as number;
+          contentWindow.postMessage(
+            {
+              sourceConnectorType: 1,
+              playerId: id,
+              eventName: "seek",
+              data: {
+                time: start * 1000,
+              },
+            },
+            "https://embed.nicovideo.jp",
+          );
+        }
+      },
+      { signal: messageAbort.signal },
+    );
+  }
+});
+onUnmounted(() => {
+  messageAbort.abort();
+});
 </script>
 <template>
   <GlassCard color="themeSecondary">
@@ -88,7 +187,11 @@ const props = defineProps<{
         </div>
         <LazyIframe
           v-if="props.work.display.source === 'youtube'"
-          :src="`https://www.youtube.com/embed/${props.work.display.id}`"
+          :src="
+            'start' in props.work.display
+              ? `https://www.youtube.com/embed/${props.work.display.id}?start=${props.work.display.start}`
+              : `https://www.youtube.com/embed/${props.work.display.id}`
+          "
           width="100%"
           height="100%"
           frameborder="0"
@@ -98,7 +201,13 @@ const props = defineProps<{
         />
         <LazyIframe
           v-if="props.work.display.source === 'niconico'"
-          :src="`https://embed.nicovideo.jp/watch/${props.work.display.id}`"
+          v-model="iframe"
+          name="test"
+          :src="
+            'start' in props.work.display
+              ? `https://embed.nicovideo.jp/watch/${props.work.display.id}?jsapi=1&playerId=${id}`
+              : `https://embed.nicovideo.jp/watch/${props.work.display.id}`
+          "
           width="100%"
           height="100%"
           frameborder="0"

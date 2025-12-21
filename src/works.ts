@@ -1,6 +1,8 @@
 import voicevoxPreview from "./assets/works/voicevox.webp";
 import kiiteitteWebPreview from "./assets/works/kiiteitte-web.webp";
 import kiiteCafeDesktopPreview from "./assets/works/kiitecafe-desktop.webp";
+import kikounePreview from "./assets/works/kikoune.webp";
+import playableArtKumohitodePreview from "./assets/works/playable-art-kumohitode.webp";
 
 export type WorkCategory = "music" | "app" | "art" | "other";
 export type Work = {
@@ -20,10 +22,12 @@ export type Display =
   | {
       source: "niconico";
       id: string;
+      start?: number;
     }
   | {
       source: "youtube";
       id: string;
+      start?: number;
     }
   | {
       source: "image";
@@ -88,6 +92,10 @@ export const works: Work[] = [
         url: "https://github.com/sevenc-nanashi/kikoune",
       },
     ],
+    display: {
+      source: "image",
+      url: kikounePreview,
+    },
   },
   {
     category: "app",
@@ -182,6 +190,27 @@ export const works: Work[] = [
     },
   },
   {
+    category: "art",
+    id: "playableArtKumohitode",
+    title: `鳴らせる一枚絵\n「クモヒトデの埋まる砂の上で」`,
+    description:
+      "「クモヒトデの埋まる砂の上で」をテーマにしたインタラクティブな一枚絵。",
+    display: {
+      source: "image",
+      url: playableArtKumohitodePreview,
+    },
+    links: [
+      {
+        type: "visit",
+        url: "http://sevenc7c.com/playable-art-kumohitode/",
+      },
+      {
+        type: "source",
+        url: "https://github.com/sevenc-nanashi/playable-art-kumohitode",
+      },
+    ],
+  },
+  {
     category: "music",
     id: "exSample",
     title: "eX:SAMPLE",
@@ -213,6 +242,7 @@ export const works: Work[] = [
     display: {
       source: "niconico",
       id: "sm45306946",
+      start: 33,
     },
     links: [
       {
@@ -242,6 +272,7 @@ export const works: Work[] = [
     display: {
       source: "niconico",
       id: "sm44670499",
+      start: 82,
     },
     links: [
       {
@@ -271,6 +302,7 @@ export const works: Work[] = [
     display: {
       source: "niconico",
       id: "sm44635263",
+      start: 50,
     },
     links: [
       {
@@ -295,6 +327,7 @@ export const works: Work[] = [
     display: {
       source: "youtube",
       id: "UqxoCw3caLs",
+      start: 21,
     },
     links: [
       {
