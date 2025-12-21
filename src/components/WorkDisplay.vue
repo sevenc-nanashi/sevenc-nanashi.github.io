@@ -41,7 +41,6 @@ const props = defineProps<{
           un-aspect="16/9"
           un-w="full"
           un-bg="slate-100"
-          un-animate="pulse"
           un-opacity="20%"
           un-grid
           un-justify="center"
@@ -51,6 +50,30 @@ const props = defineProps<{
           Loading...
         </div>
 
+        <div
+          v-if="props.work.display.source === 'image'"
+          un-absolute
+          un-aspect="16/9"
+          un-w="full"
+          un-object="cover"
+          un-overflow="hidden"
+        >
+          <img
+            :src="props.work.display.url"
+            un-absolute
+            un-aspect="16/9"
+            un-w="full"
+            un-blur="md"
+            un-object="cover"
+          />
+          <img
+            :src="props.work.display.url"
+            un-absolute
+            un-aspect="16/9"
+            un-w="full"
+            un-object="contain"
+          />
+        </div>
         <LazyIframe
           v-if="props.work.display.source === 'niconico'"
           :src="`https://embed.nicovideo.jp/watch/${props.work.display.id}`"

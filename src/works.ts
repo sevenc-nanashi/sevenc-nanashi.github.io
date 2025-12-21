@@ -1,3 +1,4 @@
+import voicevoxPreview from "./assets/works/voicevox.webp";
 export type WorkCategory = "music" | "app" | "art" | "other";
 export type Work = {
   id: string;
@@ -38,6 +39,10 @@ export const works: Work[] = [
         url: "https://github.com/VOICEVOX/voicevox",
       },
     ],
+    display: {
+      source: "image",
+      url: voicevoxPreview,
+    },
   },
   {
     category: "app",
