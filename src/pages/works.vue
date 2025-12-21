@@ -15,6 +15,7 @@ const icons: Record<WorkCategory, string> = {
 };
 
 const currentWorkId = ref("");
+const isSidebarOpen = ref(false);
 const workSections = ref<HTMLElement[]>([]);
 const intersectionRatios = new Map<string, number>();
 let observer: IntersectionObserver | null = null;
@@ -76,17 +77,30 @@ onBeforeUnmount(() => {
 <template>
   <section
     class="works-section"
+    :class="{ 'is-open': isSidebarOpen }"
     un-flex-grow
     un-w="full"
     un-max-w="4xl"
     un-mx="auto"
-    un-p="4"
+    un-p="4 b-0"
   >
-    <aside un-w="64" un-flex="~ col" un-gap="4" un-sticky un-top="8">
+    <aside
+      id="works-sidebar"
+      un-w="64"
+      un-m="md:t--8"
+      un-p="2"
+      un-flex="~ col"
+      un-gap="4"
+      un-sticky
+      un-top="8"
+      un-h="md:[calc(100vh_-_8rem)]"
+      un-overflow-y="auto"
+    >
       <RouterLink
         v-for="(work, index) in works"
         :key="work.id"
         :to="`/works#${work.id}`"
+        @click="isSidebarOpen = false"
         un-w="full"
         un-cursor="pointer"
         un-color="inherit"
@@ -107,17 +121,39 @@ onBeforeUnmount(() => {
         </GlassCard>
       </RouterLink>
     </aside>
-    <div>
+    <div class="works-content">
+      <div class="sidebar-backdrop" @click="isSidebarOpen = false" />
       <section
-        v-for="(work, index) in works"
+        v-for="work in works"
         :key="work.id"
         :id="work.id"
         :data-work-id="work.id"
         ref="workSections"
-        un-mb="8"
       >
         <WorkDisplay :work="work" />
       </section>
+    </div>
+    <div un-h="0" un-sticky un-bottom="22">
+      <button
+        type="button"
+        un-absolute
+        un-bottom="0"
+        un-hidden="md:~"
+        :aria-expanded="isSidebarOpen"
+        aria-controls="works-sidebar"
+        @click="isSidebarOpen = !isSidebarOpen"
+      >
+        <GlassCard
+          clickable
+          color="theme"
+          un-p="2"
+          un-flex
+          un-items="center"
+          un-justify="center"
+        >
+          <div un-text="2xl" class="i-fluent:apps-24-regular" />
+        </GlassCard>
+      </button>
     </div>
   </section>
 </template>
@@ -125,9 +161,78 @@ onBeforeUnmount(() => {
 <style scoped>
 .works-section {
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: auto 1fr 0;
   gap: calc(var(--spacing) * 4);
 
   align-items: start;
+}
+
+.works-content {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--spacing) * 4);
+}
+
+.sidebar-toggle {
+  display: none;
+  align-items: center;
+  gap: calc(var(--spacing) * 2);
+  border: none;
+  background: transparent;
+  padding: 0;
+  color: inherit;
+  cursor: pointer;
+}
+
+.sidebar-backdrop {
+  display: none;
+}
+
+@screen lt-md {
+  .works-section {
+    grid-template-columns: 1fr;
+    position: relative;
+  }
+
+  .works-section > aside {
+    position: fixed;
+    top: calc(var(--spacing) * 4);
+    left: calc(var(--spacing) * 4);
+    bottom: calc(var(--spacing) * 4);
+    width: min(80vw, 18rem);
+    padding: calc(var(--spacing) * 3);
+    overflow-y: auto;
+    border-radius: calc(var(--spacing) * 3);
+    transform: translateX(calc(-100% - (var(--spacing) * 2)));
+    transition: transform 0.2s ease;
+    z-index: 30;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+  }
+
+  .works-section.is-open > aside {
+    transform: translateX(0);
+  }
+
+  .sidebar-toggle {
+    display: inline-flex;
+    margin-bottom: calc(var(--spacing) * 4);
+  }
+
+  .sidebar-backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: #fff8;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+    z-index: 20;
+  }
+
+  .works-section.is-open .sidebar-backdrop {
+    opacity: 1;
+    pointer-events: auto;
+  }
 }
 </style>
