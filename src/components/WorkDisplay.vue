@@ -1,4 +1,5 @@
 <script setup lang="ts" generic="T extends string">
+import { RouterLink } from "vue-router";
 import { type Work } from "../works";
 import GlassCard from "./GlassCard.vue";
 import LazyIframe from "./LazyIframe.vue";
@@ -10,7 +11,15 @@ const props = defineProps<{
 </script>
 <template>
   <GlassCard color="themeSecondary">
-    <h2 un-text="2xl" un-mb="2">{{ props.work.title }}</h2>
+    <h2 un-text="2xl" un-mb="2">
+      <RouterLink
+        :to="`#${props.work.id}`"
+        un-text="theme-800 hover:theme-600"
+        un-decoration="none"
+      >
+        {{ props.work.title }}
+      </RouterLink>
+    </h2>
     <div un-flex="~ wrap" un-items="center" un-gap="2" un-mb="2">
       <WorkLink
         v-for="(link, key) in props.work.links"
@@ -60,20 +69,33 @@ const props = defineProps<{
         >
           <img
             :src="props.work.display.url"
+            loading="lazy"
             un-absolute
             un-aspect="16/9"
             un-w="full"
             un-blur="md"
             un-object="cover"
+            un-drop-shadow="md"
           />
           <img
             :src="props.work.display.url"
+            loading="lazy"
             un-absolute
             un-aspect="16/9"
             un-w="full"
             un-object="contain"
           />
         </div>
+        <LazyIframe
+          v-if="props.work.display.source === 'youtube'"
+          :src="`https://www.youtube.com/embed/${props.work.display.id}`"
+          width="100%"
+          height="100%"
+          frameborder="0"
+          allowfullscreen
+          allow="autoplay; encrypted-media; picture-in-picture"
+          un-relative
+        />
         <LazyIframe
           v-if="props.work.display.source === 'niconico'"
           :src="`https://embed.nicovideo.jp/watch/${props.work.display.id}`"

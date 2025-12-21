@@ -19,7 +19,7 @@ const linkTypes: Record<
   },
   linkcore: {
     label: "配信リンク",
-    icon: "i-fluent:link-24-regular",
+    icon: "i-fluent:cd-16-regular",
   },
   source: {
     label: "ソースコード",
@@ -32,6 +32,10 @@ const linkTypes: Record<
   youtube: {
     label: "YouTube",
     icon: "i-simple-icons:youtube",
+  },
+  download: {
+    label: "ダウンロード",
+    icon: "i-fluent:arrow-download-24-regular",
   },
 };
 </script>
@@ -48,7 +52,9 @@ const linkTypes: Record<
       un-gap="2"
     >
       <div :class="linkTypes[props.link.type].icon" un-text="xl" />
-      {{ linkTypes[props.link.type].label }}
+      <span un-hidden un-inline="sm:~">
+        {{ linkTypes[props.link.type].label }}
+      </span>
     </GlassCard>
   </a>
 </template>

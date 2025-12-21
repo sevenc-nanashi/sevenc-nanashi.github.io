@@ -34,7 +34,7 @@ const isSixelMode = ref(true);
       <div
         un-grid-area="icon"
         un-aspect-ratio="square"
-        un-m="l-4 b-4"
+        un-m="md:l-4 md:b-4 lt-md:x-auto"
         un-font="mono"
         un-size="[21em]"
       >
@@ -48,7 +48,7 @@ const isSixelMode = ref(true);
           <AsciiProfileIcon v-else />
         </Transition>
       </div>
-      <div un-grid-area="info" un-font="mono" un-text="lg" un-m="r-4 b-4">
+      <div un-grid-area="info" un-font="mono" un-text="lg" un-m="md:r-4 md:b-4">
         <h1>
           <span un-font="bold" un-text="theme">Nanashi.</span> &lt;<span
             un-text="theme"
@@ -83,5 +83,15 @@ const isSixelMode = ref(true);
   grid-template-areas:
     "header header"
     "icon info";
+}
+
+@screen lt-md {
+  .profile-window {
+    grid-template-areas:
+      "header"
+      "icon"
+      "info";
+    grid-template-columns: 1fr;
+  }
 }
 </style>

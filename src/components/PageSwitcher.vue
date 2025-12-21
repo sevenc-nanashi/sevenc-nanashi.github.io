@@ -5,15 +5,18 @@ const route = useRoute();
 type Section = {
   path: string;
   name: string;
+  icon: string;
 };
 const sections: Section[] = [
   {
     path: "/",
     name: "About Me",
+    icon: "i-fluent:person-24-regular",
   },
   {
     path: "/works",
     name: "Works",
+    icon: "i-fluent:apps-24-regular",
   },
 ];
 </script>
@@ -26,8 +29,18 @@ const sections: Section[] = [
         :class="{
           selected: route.path === section.path,
         }"
+        un-flex
+        un-items="center"
       >
-        {{ section.name }}
+        <div
+          :class="section.icon"
+          un-text="xl"
+          un-inline-block
+          un-hidden="md:~"
+        />
+        <span un-hidden un-inline="md:~">
+          {{ section.name }}
+        </span>
       </RouterLink>
       <span v-if="index < sections.length - 1" un-text="lg slate">|</span>
     </template>
