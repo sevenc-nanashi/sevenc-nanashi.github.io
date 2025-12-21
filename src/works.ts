@@ -161,6 +161,22 @@ export const works: Work[] = [
     ],
   },
   {
+    category: "app",
+    id: "kiitecafeDesktop",
+    title: "Kiite Cafe Desktop",
+    description: "Kiite Cafeのデスクトップ版。",
+    links: [
+      {
+        type: "download",
+        url: "https://github.com/sevenc-nanashi/kiitecafe-desktop/releases/latest",
+      },
+      {
+        type: "source",
+        url: "https://github.com/sevenc-nanashi/kiitecafe-desktop",
+      },
+    ],
+  },
+  {
     category: "music",
     id: "exSample",
     title: "eX:SAMPLE",

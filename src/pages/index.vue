@@ -35,10 +35,10 @@ const isSixelMode = ref(true);
       </div>
       <div
         un-grid-area="icon"
-        un-aspect-ratio="square"
         un-m="md:l-4 md:b-4 lt-md:x-auto"
         un-font="mono"
-        un-size="[max(21em, calc(100vw_-_2rem))]"
+        un-aspect-ratio="square"
+        un-size="[min(21em,_calc(100vw_-_2rem))]"
       >
         <Transition name="pop" mode="out-in">
           <img :src="profileIcon" v-if="isSixelMode" un-size="full" />
