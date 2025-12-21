@@ -14,7 +14,7 @@ import profileIcon from "./assets/icon_static.webp";
         </Transition>
       </template>
     </RouterView>
-    <footer un-mx="auto" un-sticky un-bottom="4" un-w="fit" un-z="10" un-mt="4">
+    <footer un-mx="auto" un-sticky un-bottom="4" un-w="fit lt-md:full" un-z="10" un-mt="4">
       <GlassCard
         color="theme"
         un-p="4"
@@ -26,7 +26,7 @@ import profileIcon from "./assets/icon_static.webp";
         <img :src="profileIcon" un-h="8" un-w="8" un-mr="2" />
         名無し。/ Nanashi.
 
-        <div un-w="8" />
+        <div un-w="8" un-flex-grow="lt-md:~" />
 
         <PageSwitcher />
       </GlassCard>
