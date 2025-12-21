@@ -14,7 +14,6 @@
   "dependencies": {
     "@fontsource/zen-kaku-gothic-new": "^5.2.7",
     "ansi-escapes": "^7.2.0",
-    "hono": "^4.11.1",
     "sixel": "^0.16.0",
     "vue": "^3.5.25",
     "vue-router": "^4.6.4",
