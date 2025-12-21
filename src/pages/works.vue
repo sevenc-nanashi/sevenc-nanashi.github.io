@@ -1,7 +1,7 @@
 <script setup lang="ts" generic="T extends string">
-import { works, type Work, type WorkCategory } from "../works";
+import { works, type WorkCategory } from "../works";
 import GlassCard from "../components/GlassCard.vue";
-import { computed, ref } from "vue";
+import { nextTick, onBeforeUnmount, onMounted, ref } from "vue";
 import { RouterLink, useRoute } from "vue-router";
 import WorkDisplay from "../components/WorkDisplay.vue";
 
@@ -13,17 +13,76 @@ const icons: Record<WorkCategory, string> = {
   art: "i-fluent:paint-brush-24-regular",
   other: "i-fluent:star-24-regular",
 };
+
+const currentWorkId = ref("");
+const workSections = ref<HTMLElement[]>([]);
+const intersectionRatios = new Map<string, number>();
+let observer: IntersectionObserver | null = null;
+
+if (route.hash) {
+  currentWorkId.value = route.hash.slice(1);
+}
+
+onMounted(async () => {
+  await nextTick();
+
+  observer = new IntersectionObserver(
+    (entries) => {
+      let updated = false;
+      for (const entry of entries) {
+        const id = (entry.target as HTMLElement).dataset.workId;
+        if (!id) {
+          continue;
+        }
+        intersectionRatios.set(
+          id,
+          entry.isIntersecting ? entry.intersectionRatio : 0,
+        );
+        updated = true;
+      }
+
+      if (!updated) {
+        return;
+      }
+
+      let topId = "";
+      let topRatio = 0;
+      for (const [id, ratio] of intersectionRatios) {
+        if (ratio > topRatio) {
+          topRatio = ratio;
+          topId = id;
+        }
+      }
+
+      if (topRatio > 0 && topId && topId !== currentWorkId.value) {
+        currentWorkId.value = topId;
+      }
+    },
+    {
+      threshold: [0, 0.25, 0.5, 0.75, 1],
+    },
+  );
+
+  for (const section of workSections.value) {
+    observer.observe(section);
+  }
+});
+
+onBeforeUnmount(() => {
+  observer?.disconnect();
+  observer = null;
+});
 </script>
 <template>
   <section
     class="works-section"
     un-flex-grow
     un-w="full"
-    un-max-w="screen-2xl"
+    un-max-w="4xl"
     un-mx="auto"
     un-p="4"
   >
-    <aside un-w="64" un-flex="~ col" un-gap="4" un-sticky un-top="2">
+    <aside un-w="64" un-flex="~ col" un-gap="4" un-sticky un-top="8">
       <RouterLink
         v-for="(work, index) in works"
         :key="work.id"
@@ -35,7 +94,7 @@ const icons: Record<WorkCategory, string> = {
       >
         <GlassCard
           clickable
-          color="themeSecondary"
+          :color="work.id === currentWorkId ? 'theme' : 'themeSecondary'"
           class="work-card"
           un-p="x-4 y-2"
           un-w="full"
@@ -49,13 +108,16 @@ const icons: Record<WorkCategory, string> = {
       </RouterLink>
     </aside>
     <div>
-      <WorkDisplay
+      <section
         v-for="(work, index) in works"
         :key="work.id"
-        :work="work"
         :id="work.id"
+        :data-work-id="work.id"
+        ref="workSections"
         un-mb="8"
-      />
+      >
+        <WorkDisplay :work="work" />
+      </section>
     </div>
   </section>
 </template>

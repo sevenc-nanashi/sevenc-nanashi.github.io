@@ -1,128 +1,51 @@
 <script setup lang="ts">
 import GlassCard from "../components/GlassCard.vue";
+import AsciiProfileIcon from "../components/AsciiProfileIcon.vue";
+import { ref } from "vue";
+import profileIcon from "../assets/icon.webp";
+import { links } from "../profile";
 
-type LinkData =
-  | {
-      label: string;
-      url: string;
-      text?: string;
-    }
-  | {
-      label: string;
-      text: string;
-    };
-
-const currentAge = (() => {
-  const birthDate = new Date("2006-12-25");
-  const today = new Date();
-  let age = today.getFullYear() - birthDate.getFullYear();
-  const monthDiff = today.getMonth() - birthDate.getMonth();
-  if (
-    monthDiff < 0 ||
-    (monthDiff === 0 && today.getDate() < birthDate.getDate())
-  ) {
-    age--;
-  }
-  return age;
-})();
-
-const links: LinkData[] = [
-  {
-    label: "University",
-    text: "The University of Electro-Communications",
-  },
-  {
-    label: "Birthday",
-    text: "2006-12-25",
-  },
-  {
-    label: "Age",
-    text: `${currentAge} years old`,
-  },
-  {
-    url: "mailto:sevenc7c@sevenc7c.com",
-    label: "Email",
-    text: "sevenc7c@sevenc7c.com",
-  },
-  {
-    url: "https://github.com/sevenc-nanashi",
-    label: "GitHub",
-    text: "@sevenc-nanashi",
-  },
-  {
-    url: "https://huggingface.co/sevenc-nanashi",
-    label: "HuggingFace",
-    text: "@sevenc-nanashi",
-  },
-  {
-    url: "https://voskey.icalo.net/@sevenc_nanashi",
-    label: "Misskey",
-    text: "@sevenc_nanashi@voskey.icalo.net",
-  },
-  {
-    url: "https://twitter.com/sevenc_nanashi",
-    label: "Twitter",
-    text: "@sevenc_nanashi",
-  },
-  {
-    url: "https://www.nicovideo.jp/user/90184991",
-    label: "Niconico",
-    text: "/user/90184991",
-  },
-  {
-    url: "https://youtube.com/@sevenc-nanashi",
-    label: "YouTube",
-    text: "@sevenc-nanashi",
-  },
-  {
-    url: "https://discord.com/users/686547120534454315",
-    label: "Discord",
-    text: "@sevenc_nanashi",
-  },
-  {
-    url: "https://vocadb.net/Profile/sevenc_nanashi",
-    label: "VocaDB",
-    text: "/Profile/sevenc_nanashi",
-  },
-  {
-    url: "https://www.tunecore.co.jp/artists/sevenc-nanashi",
-    label: "TuneCore",
-    text: "/artists/sevenc-nanashi",
-  },
-  {
-    url: "https://atcoder.jp/users/MNoNamer",
-    label: "AtCoder",
-    text: "/users/MNoNamer",
-  },
-  {
-    url: "https://zenn.dev/mnonamer",
-    label: "Zenn",
-    text: "/mnonamer",
-  },
-  {
-    url: "https://qiita.com/sevenc-nanashi",
-    label: "Qiita",
-    text: "/sevenc-nanashi",
-  },
-];
+const isSixelMode = ref(true);
 </script>
 <template>
   <section un-flex-grow un-flex="~" un-justify="center" un-items="center">
-    <GlassCard class="profile-window" color="theme" un-p="2" un-gap="6">
-      <div un-grid-area="header" un-font="mono" un-border="b theme" un-p="x-4 y-2">
-        $ curl "https://sevenc7c.com"
+    <GlassCard
+      class="profile-window"
+      color="themeSecondary"
+      un-p="2"
+      un-gap="6"
+    >
+      <div
+        un-grid-area="header"
+        un-font="mono"
+        un-border="b theme"
+        un-p="x-4 y-2"
+      >
+        <span un-user-select="none">$ </span>curl "https://sevenc7c.com?<button
+          un-text="theme-500"
+          un-cursor="pointer"
+          un-underline="hover:~"
+          @click="isSixelMode = !isSixelMode"
+        >
+          sixel={{ isSixelMode ? "true" : "false" }}</button
+        >"
       </div>
       <div
         un-grid-area="icon"
-        un-size="100"
         un-aspect-ratio="square"
-        un-bg="gray-200"
-        un-flex
-        un-items-center
-        un-justify-center
         un-m="l-4 b-4"
+        un-font="mono"
+        un-size="[21em]"
       >
-        <div>Icon Placeholder</div>
+        <Transition name="pop" mode="out-in">
+          <img
+            :src="profileIcon"
+            v-if="isSixelMode"
+            un-h="[21em]"
+            un-w="[21em]"
+          />
+          <AsciiProfileIcon v-else />
+        </Transition>
       </div>
       <div un-grid-area="info" un-font="mono" un-text="lg" un-m="r-4 b-4">
         <h1>
@@ -132,7 +55,7 @@ const links: LinkData[] = [
             >@sevenc_nanashi</span
           >&gt;
         </h1>
-        <div un-h="[1em]" un-align-content="center"><hr /></div>
+        <div un-h="[1.5em]" un-align-content="center"><hr /></div>
         <template v-for="(link, index) in links" :key="index">
           <div un-gap="2">
             <span

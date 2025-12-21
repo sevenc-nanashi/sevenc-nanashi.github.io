@@ -1,6 +1,7 @@
 <script setup lang="ts" generic="T extends string">
 import { type Work } from "../works";
 import GlassCard from "./GlassCard.vue";
+import LazyIframe from "./LazyIframe.vue";
 import WorkLink from "./WorkLink.vue";
 
 const props = defineProps<{
@@ -18,7 +19,7 @@ const props = defineProps<{
       />
     </div>
     <hr un-mb="2" un-text="theme-100" />
-    <p>{{ props.work.description }}</p>
+    <p un-mb="2">{{ props.work.description }}</p>
     <div class="work-display">
       <div v-if="!props.work.display" un-aspect="16/9" un-relative>
         <div
@@ -50,7 +51,7 @@ const props = defineProps<{
           Loading...
         </div>
 
-        <iframe
+        <LazyIframe
           v-if="props.work.display.source === 'niconico'"
           :src="`https://embed.nicovideo.jp/watch/${props.work.display.id}`"
           width="100%"

@@ -69,5 +69,11 @@ export default defineConfig({
         "grid-area": v,
       }),
     ],
+    [
+      /^user-select-(none|text|all|auto)$/,
+      ([, v]) => ({
+        "user-select": v,
+      }),
+    ],
   ],
 });

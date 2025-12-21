@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { RouterLink, useRoute } from "vue-router";
-import GlassCard from "./GlassCard.vue";
 
 const route = useRoute();
 type Section = {
@@ -20,20 +19,18 @@ const sections: Section[] = [
 </script>
 <template>
   <nav id="page-switcher" un-flex un-items="center" un-gap="4">
-    <RouterLink
-      v-for="(section, key) in sections"
-      :key="key"
-      :to="section.path"
-      un-text="lg"
-      :class="{
-        selected:
-          section.path === '/'
-            ? route.path === section.path
-            : route.path.startsWith(section.path),
-      }"
-    >
-      {{ section.name }}
-    </RouterLink>
+    <template v-for="(section, index) in sections" :key="index">
+      <RouterLink
+        :to="section.path"
+        un-text="lg"
+        :class="{
+          selected: route.path === section.path,
+        }"
+      >
+        {{ section.name }}
+      </RouterLink>
+      <span v-if="index < sections.length - 1" un-text="lg slate">|</span>
+    </template>
   </nav>
 </template>
 
@@ -46,6 +43,7 @@ const sections: Section[] = [
   color: theme("colors.text");
   &.selected {
     color: theme("colors.theme.500");
+    filter: drop-shadow(0 0 4px #fff7);
   }
 }
 </style>

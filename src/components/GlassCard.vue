@@ -15,9 +15,9 @@ const props = withDefaults(
 const colorClass = computed(() => {
   switch (props.color) {
     case "theme":
-      return "bg-theme-500/20 shadow-theme-200/50";
+      return "bg-theme-200/50 shadow-theme-200/50";
     case "themeSecondary":
-      return "bg-theme-100/20 shadow-theme-200/25";
+      return "bg-theme-200/20 shadow-theme-200/25";
     default:
       return "bg-white/20 shadow-theme-200/25";
   }
