@@ -3,8 +3,9 @@ import GlassCard from "../components/GlassCard.vue";
 import AsciiProfileIcon from "../components/AsciiProfileIcon.vue";
 import { ref } from "vue";
 import profileIcon from "../assets/icon.webp";
-import { links } from "../profile";
+import { getLinks } from "../profile";
 
+const links = getLinks();
 const isSixelMode = ref(true);
 </script>
 <template>
