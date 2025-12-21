@@ -1,0 +1,7 @@
+name = "sevenc7c-com-api"
+compatibility_date = "2025-12-21"
+
+main = "server/index.ts"
+routes = [{ pattern = "sevenc7c.com/ansi_test", zone_name = "sevenc7c.com" }]
+
+compatibility_flags = ["nodejs_compat"]

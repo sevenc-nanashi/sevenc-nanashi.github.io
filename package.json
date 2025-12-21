@@ -6,10 +6,16 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc -b && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "server:dev": "wrangler dev",
+    "server:deploy": "wrangler deploy",
+    "server:typegen": "wrangler types"
   },
   "dependencies": {
     "@fontsource/zen-kaku-gothic-new": "^5.2.7",
+    "ansi-escapes": "^7.2.0",
+    "hono": "^4.11.1",
+    "sixel": "^0.16.0",
     "vue": "^3.5.25",
     "vue-router": "^4.6.4",
     "zod": "^4.1.13"
@@ -25,6 +31,7 @@
     "unocss": "^66.5.10",
     "unplugin-vue-router": "^0.19.0",
     "vite": "^7.2.7",
-    "vue-tsc": "^3.1.8"
+    "vue-tsc": "^3.1.8",
+    "wrangler": "^4.56.0"
   }
 }

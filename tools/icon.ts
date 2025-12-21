@@ -36,37 +36,63 @@ const fgPaletteArr = Array.from(fgPalette);
 const bgPaletteArr = Array.from(bgPalette);
 
 const pixels: string[] = [];
+const pixelData: {
+  type: "fg" | "bg";
+  color: [number, number, number];
+}[] = [];
 for (let i = 0; i < data.data.length; i += 4) {
   if (data.data[i + 3] === 0) {
     const color = `218,239,247`;
     const index = fgPaletteArr.indexOf(color);
     pixels.push(`<div class="fg-${index}">:</div>`);
+    pixelData.push({ type: "fg", color: [218, 239, 247] });
   } else {
     const color = `${data.data[i]},${data.data[i + 1]},${data.data[i + 2]}`;
     const index = bgPaletteArr.indexOf(color);
     pixels.push(`<div class="bg-${index}">{{' '}}</div>`);
+    pixelData.push({
+      type: "bg",
+      color: [data.data[i], data.data[i + 1], data.data[i + 2]],
+    });
   }
 }
 
 const lines: string[] = [];
 lines.push("<template>");
-lines.push("<div class=\"profile-icon\">");
+lines.push('<div class="profile-icon">');
 lines.push(pixels.join(""));
 lines.push("</div>");
 lines.push("</template>");
 lines.push("<style scoped>");
-lines.push(`.profile-icon { display: grid; grid-template-columns: repeat(${canvas.width}, 1fr); line-height: 1.1em; }`);
+lines.push(
+  `.profile-icon { display: grid; grid-template-columns: repeat(${canvas.width}, 1fr); line-height: 1.1em; }`,
+);
 
 for (const [index, color] of fgPaletteArr.entries()) {
   lines.push(`.fg-${index} { color: rgb(${color}); }`);
 }
 
 for (const [index, color] of bgPaletteArr.entries()) {
-  lines.push(`.bg-${index} { background-color: rgb(${color}); white-space: pre; }`);
+  lines.push(
+    `.bg-${index} { background-color: rgb(${color}); white-space: pre; }`,
+  );
 }
 
 lines.push("</style>");
 await fs.promises.writeFile(
   `${import.meta.dirname}/../src/components/AsciiProfileIcon.vue`,
   lines.join("\n"),
+);
+await fs.promises.writeFile(
+  `${import.meta.dirname}/../server/pixelData.json`,
+  JSON.stringify(
+    {
+      width: canvas.width,
+      height: canvas.height,
+      pixels: pixelData,
+      colors: [...fgPalette].concat([...bgPalette]),
+    },
+    null,
+    2,
+  ),
 );
