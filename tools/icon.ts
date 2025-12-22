@@ -65,7 +65,7 @@ lines.push("</div>");
 lines.push("</template>");
 lines.push("<style scoped>");
 lines.push(
-  `.profile-icon { display: grid; grid-template-columns: repeat(${canvas.width}, 1fr); line-height: 1.1em; }`,
+  `.profile-icon { display: grid; grid-template-columns: repeat(${canvas.width}, 1fr); line-height: 1.35em; }`,
 );
 
 for (const [index, color] of fgPaletteArr.entries()) {
