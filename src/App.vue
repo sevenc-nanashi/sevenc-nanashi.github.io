@@ -25,7 +25,14 @@ import BackgroundCanvas from "./components/BackgroundCanvas.vue";
         un-items="center"
         un-h="16"
       >
-        <img :src="profileIcon" un-h="8" un-w="8" un-mr="2" />
+        <img
+          :src="profileIcon"
+          alt="Nanashi.'s profile icon"
+          title="Nanashi.'s profile icon"
+          un-h="8"
+          un-w="8"
+          un-mr="2"
+        />
         名無し。/ Nanashi.
 
         <div un-w="8" un-flex-grow="lt-md:~" />

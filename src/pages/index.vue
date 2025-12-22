@@ -41,7 +41,13 @@ const isSixelMode = ref(true);
         un-size="[min(21em,_calc(100vw_-_2rem))]"
       >
         <Transition name="pop" mode="out-in">
-          <img :src="profileIcon" v-if="isSixelMode" un-size="full" />
+          <img
+            :src="profileIcon"
+            v-if="isSixelMode"
+            alt="Nanashi.'s profile icon"
+            title="Nanashi.'s profile icon"
+            un-size="full"
+          />
           <AsciiProfileIcon v-else un-text="lt-md:xs" />
         </Transition>
       </div>

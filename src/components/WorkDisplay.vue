@@ -169,6 +169,8 @@ onUnmounted(() => {
           <img
             :src="props.work.display.url"
             loading="lazy"
+            :alt="`${props.work.title} preview`"
+            :title="props.work.title"
             un-absolute
             un-aspect="16/9"
             un-w="full"
@@ -179,6 +181,8 @@ onUnmounted(() => {
           <img
             :src="props.work.display.url"
             loading="lazy"
+            :alt="`${props.work.title} preview`"
+            :title="props.work.title"
             un-absolute
             un-aspect="16/9"
             un-w="full"

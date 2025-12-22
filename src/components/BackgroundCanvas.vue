@@ -8,8 +8,8 @@ let animationId = 0;
 let cleanup: (() => void) | null = null;
 let offscreenCanvas: OffscreenCanvas | HTMLCanvasElement | null = null;
 let offscreenCtx:
-  | OffscreenCanvasRenderingContext2D
   | CanvasRenderingContext2D
+  | OffscreenCanvasRenderingContext2D
   | null = null;
 let worker: Worker | null = null;
 let useWorker = false;
@@ -104,6 +104,7 @@ onMounted(() => {
     ctx.setTransform(1, 0, 0, 1, 0, 0);
 
     if (!ensureOffscreen()) return;
+    if (!offscreenCtx || !offscreenCanvas) return;
 
     drawFrame(offscreenCtx, size.width, size.height, performance.now(), {
       reducedMotion,

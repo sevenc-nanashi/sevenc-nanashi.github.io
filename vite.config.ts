@@ -9,4 +9,7 @@ export default defineConfig({
   server: {
     allowedHosts: true,
   },
+  build: {
+    target: "es2022",
+  },
 });
