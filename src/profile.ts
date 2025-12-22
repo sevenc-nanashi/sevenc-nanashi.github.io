@@ -33,7 +33,7 @@ export function getLinks({
   return [
     {
       label: "Role",
-      text: "Programmer / Music Composer / Pixel Artist",
+      text: "Programmer, Music Composer, Illustrator",
     },
     {
       label: "Languages",
