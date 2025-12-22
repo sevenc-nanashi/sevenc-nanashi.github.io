@@ -19,11 +19,16 @@
   @return color-mix(in srgb, transparent, $base $alpha);
 }
 
+:root {
+  color-scheme: light;
+  --theme-text: theme("colors.slate.900");
+}
+
 #app {
   height: 100vh;
-  --theme-text: theme("colors.slate.900");
   position: relative;
   z-index: 1;
+  color: var(--theme-text);
 }
 
 body {
@@ -58,10 +63,45 @@ body {
 
 a {
   text-decoration: underline;
-  color: theme("colors.theme");
+  color: light-dark(theme("colors.theme.600"), theme("colors.theme.200"));
 
   &:hover {
-    color: theme("colors.theme.800");
+    color: light-dark(theme("colors.theme.800"), theme("colors.theme.100"));
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --theme-text: theme("colors.slate.100");
+  }
+
+  body {
+    background-color: mix-alpha(theme("colors.theme.950"), 85%);
+    background-image:
+      radial-gradient(
+        1200px 900px at 8% -10%,
+        mix-alpha(theme("colors.theme.800"), 30%),
+        transparent 65%
+      ),
+      radial-gradient(
+        900px 700px at 110% 10%,
+        mix-alpha(theme("colors.theme.700"), 30%),
+        transparent 60%
+      ),
+      radial-gradient(
+        800px 600px at 50% 120%,
+        mix-alpha(theme("colors.theme.900"), 45%),
+        transparent 60%
+      ),
+      linear-gradient(
+        135deg,
+        #0b1118 0%,
+        mix-alpha(theme("colors.theme.950"), 60%) 45%,
+        #0b1118 100%
+      );
+    background-attachment: fixed;
+    background-blend-mode: screen, screen, screen, normal;
   }
 }
 

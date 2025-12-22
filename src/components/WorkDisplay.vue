@@ -113,7 +113,7 @@ onUnmounted(() => {
     <h2 un-text="2xl" un-mb="2">
       <RouterLink
         :to="`#${props.work.id}`"
-        un-text="theme-800 hover:theme-600"
+        un-text="theme-700 hover:theme-500 dark:theme-200 dark:hover:theme-100"
         un-decoration="none"
       >
         {{ props.work.title }}
@@ -134,11 +134,11 @@ onUnmounted(() => {
           un-relative
           un-aspect="16/9"
           un-w="full"
-          un-bg="slate-100"
+          class="work-placeholder"
           un-grid
           un-justify="center"
           un-items="center"
-          un-text="xl slate-400"
+          un-text="xl"
         >
           No Preview
         </div>
@@ -148,12 +148,12 @@ onUnmounted(() => {
           un-absolute
           un-aspect="16/9"
           un-w="full"
-          un-bg="slate-100"
+          class="work-placeholder"
           un-opacity="20%"
           un-grid
           un-justify="center"
           un-items="center"
-          un-text="xl slate-400"
+          un-text="xl"
         >
           Loading...
         </div>
@@ -224,4 +224,14 @@ onUnmounted(() => {
   </GlassCard>
 </template>
 
-<style scoped></style>
+<style scoped lang="scss">
+@use "../style.scss" as *;
+
+.work-placeholder {
+  background: light-dark(
+    #{mix-alpha(theme("colors.slate.100"), 85%)},
+    #{mix-alpha(theme("colors.slate.900"), 75%)}
+  );
+  color: light-dark(theme("colors.slate.500"), theme("colors.slate.300"));
+}
+</style>

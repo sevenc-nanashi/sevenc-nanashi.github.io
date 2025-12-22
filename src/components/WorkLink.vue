@@ -41,16 +41,13 @@ const linkTypes: Record<
 </script>
 
 <template>
-  <a :href="props.link.url" target="_blank" rel="noopener noreferrer">
-    <GlassCard
-      clickable
-      color="theme"
-      class="work-link"
-      un-text="theme-700 sm"
-      un-flex
-      un-items="center"
-      un-gap="2"
-    >
+  <a
+    :href="props.link.url"
+    target="_blank"
+    rel="noopener noreferrer"
+    un-text="sm theme-700 dark:theme-200"
+  >
+    <GlassCard clickable color="theme" un-flex un-items="center" un-gap="2">
       <div :class="linkTypes[props.link.type].icon" un-text="xl" />
       <span un-hidden un-inline="sm:~">
         {{ linkTypes[props.link.type].label }}

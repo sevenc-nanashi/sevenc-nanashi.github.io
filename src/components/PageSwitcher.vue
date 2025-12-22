@@ -56,7 +56,7 @@ const sections: Section[] = [
   color: theme("colors.text");
   &.selected {
     color: theme("colors.theme.500");
-    filter: drop-shadow(0 0 4px #fff7);
+    filter: drop-shadow(0 0 4px light-dark(rgba(255, 255, 255, 0.45), rgba(72, 176, 213, 0.55)));
   }
 }
 </style>

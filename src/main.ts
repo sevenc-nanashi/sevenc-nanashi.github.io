@@ -1,8 +1,8 @@
-import "virtual:uno.css";
 import "@fontsource/zen-kaku-gothic-new/index.css";
 import { handleHotUpdate, routes } from "vue-router/auto-routes";
 import { ViteSSG } from "vite-ssg";
 import "./style.scss";
+import "virtual:uno.css";
 import App from "./App.vue";
 
 let isFirstHashScroll = true;

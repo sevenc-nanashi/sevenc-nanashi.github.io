@@ -210,7 +210,7 @@ onBeforeUnmount(() => {
     transform: translateX(calc(-100% - (var(--spacing) * 2)));
     transition: transform 0.2s ease;
     z-index: 30;
-    background: rgba(255, 255, 255, 0.08);
+    background: light-dark(rgba(255, 255, 255, 0.08), rgba(6, 12, 18, 0.72));
     backdrop-filter: blur(10px);
   }
 
@@ -227,7 +227,7 @@ onBeforeUnmount(() => {
     display: block;
     position: fixed;
     inset: 0;
-    background: #fff8;
+    background: light-dark(#fff8, #0008);
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.2s ease;
