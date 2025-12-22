@@ -216,7 +216,7 @@ export const works: Work[] = [
   {
     category: "lib",
     id: "kanalizer",
-    title: "kanalizer",
+    title: "VOICEVOX/kanalizer",
     description: "英単語から読みを推測するライブラリ。",
     links: [
       {
