@@ -1,8 +1,47 @@
-import { createApp } from "vue";
 import "virtual:uno.css";
 import "@fontsource/zen-kaku-gothic-new/index.css";
+import { handleHotUpdate, routes } from "vue-router/auto-routes";
+import { ViteSSG } from "vite-ssg";
 import "./style.scss";
 import App from "./App.vue";
-import { router } from "./router.ts";
 
-createApp(App).use(router).mount("#app");
+let isFirstHashScroll = true;
+const baseTitle = "Nanashi.";
+const routeTitles: Record<string, string> = {
+  "/": baseTitle,
+  "/works": `Works | ${baseTitle}`,
+};
+
+export const createApp = ViteSSG(
+  App,
+  {
+    routes,
+    scrollBehavior(to, _from, savedPosition) {
+      if (savedPosition) return savedPosition;
+
+      if (to.hash) {
+        const behavior = isFirstHashScroll ? "auto" : "smooth";
+        isFirstHashScroll = false;
+
+        return {
+          el: to.hash,
+          top: 10,
+          behavior,
+        };
+      }
+
+      return { left: 0, top: 0 };
+    },
+  },
+  ({ router }) => {
+    if (!import.meta.env.SSR) {
+      router.afterEach((to) => {
+        document.title = routeTitles[to.path] ?? baseTitle;
+      });
+
+      if (import.meta.hot) {
+        handleHotUpdate(router);
+      }
+    }
+  },
+);

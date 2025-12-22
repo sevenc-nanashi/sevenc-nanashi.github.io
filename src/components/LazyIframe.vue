@@ -4,7 +4,6 @@ import { onBeforeUnmount, ref, onMounted, useAttrs } from "vue";
 defineOptions({ inheritAttrs: false });
 
 const iframeRef = defineModel<HTMLIFrameElement | null>({
-  type: HTMLIFrameElement,
   default: null,
 });
 

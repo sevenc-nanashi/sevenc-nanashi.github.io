@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite-ssg build",
     "preview": "vite preview",
     "server:dev": "wrangler dev",
     "server:deploy": "wrangler deploy",
@@ -30,6 +30,7 @@
     "unocss": "^66.5.10",
     "unplugin-vue-router": "^0.19.0",
     "vite": "^7.2.7",
+    "vite-ssg": "^28.2.2",
     "vue-tsc": "^3.1.8",
     "wrangler": "^4.56.0"
   }
