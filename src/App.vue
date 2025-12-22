@@ -3,9 +3,11 @@ import GlassCard from "./components/GlassCard.vue";
 import { RouterView } from "vue-router";
 import PageSwitcher from "./components/PageSwitcher.vue";
 import profileIcon from "./assets/icon_static.webp";
+import BackgroundCanvas from "./components/BackgroundCanvas.vue";
 </script>
 
 <template>
+  <BackgroundCanvas />
   <div un-p="4" un-min-h="screen" class="main" un-flex="~ col">
     <RouterView>
       <template #default="{ Component: ViewComponent }">
