@@ -32,6 +32,14 @@ export function getLinks({
 
   return [
     {
+      label: "Role",
+      text: "Programmer / Music Composer / Pixel Artist",
+    },
+    {
+      label: "Languages",
+      text: "Japanese (Native), English",
+    },
+    {
       label: "University",
       text: "The University of Electro-Communications",
     },
