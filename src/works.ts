@@ -214,6 +214,18 @@ export const works: Work[] = [
     },
   },
   {
+    category: "lib",
+    id: "kanalizer",
+    title: "kanalizer",
+    description: "英単語から読みを推測するライブラリ。",
+    links: [
+      {
+        type: "source",
+        url: "https://github.com/VOICEVOX/kanalizer/",
+      },
+    ],
+  },
+  {
     category: "art",
     id: "playableArtKumohitode",
     title: `鳴らせる一枚絵\n「クモヒトデのうまる砂の上で」`,
