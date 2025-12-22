@@ -28,6 +28,32 @@
 
 body {
   margin: 0;
+  min-height: 100vh;
+  background-color: mix-alpha(theme("colors.theme.50"), 85%);
+  background-image:
+    radial-gradient(
+      1200px 900px at 8% -10%,
+      mix-alpha(theme("colors.theme.300"), 45%),
+      transparent 65%
+    ),
+    radial-gradient(
+      900px 700px at 110% 10%,
+      mix-alpha(theme("colors.theme.200"), 45%),
+      transparent 60%
+    ),
+    radial-gradient(
+      800px 600px at 50% 120%,
+      mix-alpha(theme("colors.theme.100"), 60%),
+      transparent 60%
+    ),
+    linear-gradient(
+      135deg,
+      #ffffff 0%,
+      mix-alpha(theme("colors.theme.50"), 70%) 45%,
+      #ffffff 100%
+    );
+  background-attachment: fixed;
+  background-blend-mode: screen, screen, screen, normal;
 }
 
 a {
