@@ -4,7 +4,7 @@ import kiiteCafeDesktopPreview from "./assets/works/kiitecafe-desktop.webp";
 import kikounePreview from "./assets/works/kikoune.webp";
 import playableArtKumohitodePreview from "./assets/works/playable-art-kumohitode.webp";
 
-export type WorkCategory = "music" | "app" | "art" | "other";
+export type WorkCategory = "music" | "app" | "lib" | "art" | "other";
 export type Work = {
   id: string;
   category: WorkCategory;
@@ -53,48 +53,6 @@ export const works: Work[] = [
     display: {
       source: "image",
       url: voicevoxPreview,
-    },
-  },
-  {
-    category: "app",
-    id: "kiiteitteWeb",
-    title: "Kiiteitte Web",
-    description:
-      "Kiite Cafeの選曲履歴を表示するWebアプリ。ActivityPub対応により、Misskey等のFediverseクライアントからも閲覧可能。",
-    links: [
-      {
-        type: "visit",
-        url: "https://kw.sevenc7c.com",
-      },
-      {
-        type: "source",
-        url: "https://github.com/sevenc-nanashi/kiiteitte-web",
-      },
-    ],
-    display: {
-      source: "image",
-      url: kiiteitteWebPreview,
-    },
-  },
-  {
-    category: "app",
-    id: "kikoune",
-    title: "Kikoune",
-    description:
-      "Discordのアクティビティで動く、Kiite Cafe風にニコニコ動画を同時再生するアプリ。",
-    links: [
-      {
-        type: "visit",
-        url: "https://sevenc7c.com/kikoune/",
-      },
-      {
-        type: "source",
-        url: "https://github.com/sevenc-nanashi/kikoune",
-      },
-    ],
-    display: {
-      source: "image",
-      url: kikounePreview,
     },
   },
   {
@@ -171,6 +129,48 @@ export const works: Work[] = [
   },
   {
     category: "app",
+    id: "kikoune",
+    title: "Kikoune",
+    description:
+      "Discordのアクティビティで動く、Kiite Cafe風にニコニコ動画を同時再生するアプリ。",
+    links: [
+      {
+        type: "visit",
+        url: "https://sevenc7c.com/kikoune/",
+      },
+      {
+        type: "source",
+        url: "https://github.com/sevenc-nanashi/kikoune",
+      },
+    ],
+    display: {
+      source: "image",
+      url: kikounePreview,
+    },
+  },
+  {
+    category: "app",
+    id: "kiiteitteWeb",
+    title: "Kiiteitte Web",
+    description:
+      "Kiite Cafeの選曲履歴を表示するWebアプリ。ActivityPub対応により、Misskey等のFediverseクライアントからも閲覧可能。",
+    links: [
+      {
+        type: "visit",
+        url: "https://kw.sevenc7c.com",
+      },
+      {
+        type: "source",
+        url: "https://github.com/sevenc-nanashi/kiiteitte-web",
+      },
+    ],
+    display: {
+      source: "image",
+      url: kiiteitteWebPreview,
+    },
+  },
+  {
+    category: "app",
     id: "kiitecafeDesktop",
     title: "Kiite Cafe Desktop",
     description: "Kiite Cafeのデスクトップ版。",
@@ -187,6 +187,30 @@ export const works: Work[] = [
     display: {
       source: "image",
       url: kiiteCafeDesktopPreview,
+    },
+  },
+  {
+    category: "lib",
+    id: "aviutl2Rs",
+    title: "aviutl2-rs",
+    description: "AviUtl2 Plugin SDKのRustバインディング。",
+    links: [
+      {
+        type: "visit",
+        url: "https://docs.rs/aviutl2/latest/aviutl2/",
+      },
+      {
+        type: "niconico",
+        url: "https://www.nicovideo.jp/watch/sm45355531",
+      },
+      {
+        type: "source",
+        url: "https://github.com/sevenc-nanashi/aviutl2-rs",
+      },
+    ],
+    display: {
+      source: "niconico",
+      id: "sm45355531",
     },
   },
   {

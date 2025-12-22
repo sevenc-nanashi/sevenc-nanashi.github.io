@@ -11,6 +11,7 @@ const icons: Record<WorkCategory, string> = {
   music: "i-fluent:music-note-2-24-regular",
   app: "i-fluent:app-generic-24-regular",
   art: "i-fluent:paint-brush-24-regular",
+  lib: "i-fluent:library-24-regular",
   other: "i-fluent:star-24-regular",
 };
 
