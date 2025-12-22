@@ -70,6 +70,7 @@ onMounted(() => {
 
   let size = getCanvasSize();
   let ctx: CanvasRenderingContext2D | null = null;
+  const reducedMotion = prefersReducedMotion();
 
   const setCanvasSize = () => {
     size = getCanvasSize();
@@ -104,7 +105,9 @@ onMounted(() => {
 
     if (!ensureOffscreen()) return;
 
-    drawFrame(offscreenCtx, size.width, size.height, performance.now());
+    drawFrame(offscreenCtx, size.width, size.height, performance.now(), {
+      reducedMotion,
+    });
     blitFrame(ctx, offscreenCanvas);
   };
 
@@ -125,7 +128,7 @@ onMounted(() => {
           type: "init",
           canvas: offscreen,
           ...size,
-          reducedMotion: prefersReducedMotion(),
+          reducedMotion,
         },
         [offscreen],
       );
@@ -145,7 +148,7 @@ onMounted(() => {
   resize();
   window.addEventListener("resize", resize);
 
-  if (!useWorker && !prefersReducedMotion()) {
+  if (!useWorker && !reducedMotion) {
     animationId = window.requestAnimationFrame((time) =>
       tick(
         ctx as CanvasRenderingContext2D,

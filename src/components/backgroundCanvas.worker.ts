@@ -33,6 +33,7 @@ let ctx: OffscreenCanvasRenderingContext2D | null = null;
 let size: CanvasSize = { width: 0, height: 0, dpr: 1 };
 let running = false;
 let frameHandle: number | null = null;
+let reducedMotion = false;
 
 const applyCanvasSize = (nextSize: CanvasSize) => {
   size = nextSize;
@@ -44,7 +45,7 @@ const applyCanvasSize = (nextSize: CanvasSize) => {
 
 const render = (time: number) => {
   if (!ctx) return;
-  drawFrame(ctx, size.width, size.height, time);
+  drawFrame(ctx, size.width, size.height, time, { reducedMotion });
 };
 
 const scheduleNextFrame = () => {
@@ -95,6 +96,7 @@ self.onmessage = (event: MessageEvent<WorkerMessage>) => {
       height: message.height,
       dpr: message.dpr,
     });
+    reducedMotion = message.reducedMotion;
     render(performance.now());
     if (!message.reducedMotion) start();
     return;
