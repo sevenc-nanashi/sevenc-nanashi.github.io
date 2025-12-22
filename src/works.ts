@@ -192,9 +192,9 @@ export const works: Work[] = [
   {
     category: "art",
     id: "playableArtKumohitode",
-    title: `鳴らせる一枚絵\n「クモヒトデの埋まる砂の上で」`,
+    title: `鳴らせる一枚絵\n「クモヒトデのうまる砂の上で」`,
     description:
-      "「クモヒトデの埋まる砂の上で」をテーマにしたインタラクティブな一枚絵。",
+      "「クモヒトデのうまる砂の上で」をテーマにしたインタラクティブな一枚絵。",
     display: {
       source: "image",
       url: playableArtKumohitodePreview,
