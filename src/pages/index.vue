@@ -68,7 +68,7 @@ const isSixelMode = ref(true);
             <a
               v-if="'url' in link"
               :href="link.url"
-              un-text="theme-500 underline"
+              un-text="theme-500 hover:theme-800 hover:dark:theme-100 underline"
               target="_blank"
               >{{ link.text || link.url }}</a
             >

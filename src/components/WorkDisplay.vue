@@ -230,7 +230,7 @@ onUnmounted(() => {
 .work-placeholder {
   background: light-dark(
     #{mix-alpha(theme("colors.slate.100"), 85%)},
-    #{mix-alpha(theme("colors.slate.900"), 75%)}
+    #{mix-alpha(theme("colors.gray.800"), 75%)}
   );
   color: light-dark(theme("colors.slate.500"), theme("colors.slate.300"));
 }

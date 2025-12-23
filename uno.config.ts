@@ -4,7 +4,9 @@ import { presetAttributify, presetIcons, transformerDirectives } from "unocss";
 
 export default defineConfig({
   presets: [
-    presetWind4(),
+    presetWind4({
+      dark: "media",
+    }),
     presetIcons({
       customizations: {
         iconCustomizer(collection, icon, props) {
@@ -31,10 +33,7 @@ export default defineConfig({
     {
       layer: "reset",
       getCSS: async () =>
-        fs.promises.readFile(
-          "./src/assets/external/reset.css",
-          "utf-8",
-        ),
+        fs.promises.readFile("./src/assets/external/reset.css", "utf-8"),
     },
   ],
   layers: {

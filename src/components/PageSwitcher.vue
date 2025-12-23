@@ -53,9 +53,9 @@ const sections: Section[] = [
   cursor: pointer;
   text-decoration: none;
 
-  color: theme("colors.text");
+  color: light-dark(theme("colors.text"), theme("colors.theme.700"));
   &.selected {
-    color: theme("colors.theme.500");
+    color: light-dark(theme("colors.theme.600"), theme("colors.theme.500"));
     filter: drop-shadow(0 0 4px light-dark(rgba(255, 255, 255, 0.45), rgba(72, 176, 213, 0.55)));
   }
 }
