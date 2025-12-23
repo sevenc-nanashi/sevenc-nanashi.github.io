@@ -23,6 +23,9 @@
   :root {
     color-scheme: light;
     --theme-text: theme("colors.slate.900");
+    --scrollbar-thumb: #{mix-alpha(theme("colors.slate.600"), 25%)};
+    --scrollbar-thumb-hover: #{mix-alpha(theme("colors.slate.700"), 35%)};
+    --scrollbar-track: transparent;
   }
 
   #app {
@@ -71,10 +74,38 @@
     }
   }
 
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+  }
+
+  *::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background-color: var(--scrollbar-track);
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: var(--scrollbar-thumb);
+    border-radius: 999px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+  }
+
+  *::-webkit-scrollbar-thumb:hover {
+    background-color: var(--scrollbar-thumb-hover);
+  }
+
   @media (prefers-color-scheme: dark) {
     :root {
       color-scheme: dark;
       --theme-text: theme("colors.slate.100");
+      --scrollbar-thumb: #{mix-alpha(theme("colors.slate.300"), 22%)};
+      --scrollbar-thumb-hover: #{mix-alpha(theme("colors.slate.200"), 32%)};
+      --scrollbar-track: transparent;
     }
 
     body {
