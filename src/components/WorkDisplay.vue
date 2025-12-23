@@ -154,7 +154,6 @@ onUnmounted(() => {
           un-aspect="16/9"
           un-w="full"
           class="work-placeholder"
-          un-opacity="20%"
           un-grid
           un-justify="center"
           un-items="center"
@@ -236,8 +235,8 @@ onUnmounted(() => {
 
 .work-placeholder {
   background: light-dark(
-    #{mix-alpha(theme("colors.slate.100"), 85%)},
-    #{mix-alpha(theme("colors.gray.800"), 75%)}
+    #{mix-alpha(theme("colors.slate.100"), 50%)},
+    #{mix-alpha(theme("colors.gray.800"), 50%)}
   );
   color: light-dark(theme("colors.slate.500"), theme("colors.slate.300"));
 }
