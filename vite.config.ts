@@ -12,5 +12,7 @@ export default defineConfig({
   },
   build: {
     target: "es2022",
+    // lightningcssだと@propertyで警告が出まくるのでesbuildに変更
+    cssMinify: "esbuild",
   },
 });
