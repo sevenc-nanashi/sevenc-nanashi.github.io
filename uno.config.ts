@@ -1,3 +1,4 @@
+import fs from "node:fs";
 import { defineConfig, presetWind4 } from "unocss";
 import { presetAttributify, presetIcons, transformerDirectives } from "unocss";
 
@@ -25,6 +26,22 @@ export default defineConfig({
     }),
   ],
   transformers: [transformerDirectives()],
+  outputToCssLayers: true,
+  preflights: [
+    {
+      layer: "reset",
+      getCSS: async () =>
+        fs.promises.readFile(
+          "./src/assets/external/reset.css",
+          "utf-8",
+        ),
+    },
+  ],
+  layers: {
+    reset: 0,
+    base: 1,
+    default: 2,
+  },
   theme: {
     colors: {
       text: "var(--theme-text)",

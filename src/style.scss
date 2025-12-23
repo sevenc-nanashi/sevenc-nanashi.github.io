@@ -19,100 +19,102 @@
   @return color-mix(in srgb, transparent, $base $alpha);
 }
 
-:root {
-  color-scheme: light;
-  --theme-text: theme("colors.slate.900");
-}
-
-#app {
-  height: 100vh;
-  position: relative;
-  z-index: 1;
-  color: var(--theme-text);
-}
-
-body {
-  margin: 0;
-  min-height: 100vh;
-  background-color: mix-alpha(theme("colors.theme.50"), 85%);
-  background-image:
-    radial-gradient(
-      1200px 900px at 8% -10%,
-      mix-alpha(theme("colors.theme.300"), 45%),
-      transparent 65%
-    ),
-    radial-gradient(
-      900px 700px at 110% 10%,
-      mix-alpha(theme("colors.theme.200"), 45%),
-      transparent 60%
-    ),
-    radial-gradient(
-      800px 600px at 50% 120%,
-      mix-alpha(theme("colors.theme.100"), 60%),
-      transparent 60%
-    ),
-    linear-gradient(
-      135deg,
-      #ffffff 0%,
-      mix-alpha(theme("colors.theme.50"), 70%) 45%,
-      #ffffff 100%
-    );
-  background-attachment: fixed;
-  background-blend-mode: screen, screen, screen, normal;
-}
-
-a {
-  text-decoration: underline;
-  color: light-dark(theme("colors.theme.600"), theme("colors.theme.200"));
-
-  &:hover {
-    color: light-dark(theme("colors.theme.800"), theme("colors.theme.100"));
-  }
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    color-scheme: dark;
-    --theme-text: theme("colors.slate.100");
+    color-scheme: light;
+    --theme-text: theme("colors.slate.900");
+  }
+
+  #app {
+    height: 100vh;
+    position: relative;
+    z-index: 1;
+    color: var(--theme-text);
   }
 
   body {
-    background-color: mix-alpha(theme("colors.theme.950"), 85%);
+    margin: 0;
+    min-height: 100vh;
+    background-color: mix-alpha(theme("colors.theme.50"), 85%);
     background-image:
       radial-gradient(
         1200px 900px at 8% -10%,
-        mix-alpha(theme("colors.theme.800"), 30%),
+        mix-alpha(theme("colors.theme.300"), 45%),
         transparent 65%
       ),
       radial-gradient(
         900px 700px at 110% 10%,
-        mix-alpha(theme("colors.theme.700"), 30%),
+        mix-alpha(theme("colors.theme.200"), 45%),
         transparent 60%
       ),
       radial-gradient(
         800px 600px at 50% 120%,
-        mix-alpha(theme("colors.theme.900"), 45%),
+        mix-alpha(theme("colors.theme.100"), 60%),
         transparent 60%
       ),
       linear-gradient(
         135deg,
-        #0b1118 0%,
-        mix-alpha(theme("colors.theme.950"), 60%) 45%,
-        #0b1118 100%
+        #ffffff 0%,
+        mix-alpha(theme("colors.theme.50"), 70%) 45%,
+        #ffffff 100%
       );
     background-attachment: fixed;
     background-blend-mode: screen, screen, screen, normal;
   }
-}
 
-.pop-enter-active,
-.pop-leave-active {
-  transition:
-    opacity 0.2s,
-    transform 0.2s;
-}
-.pop-enter-from,
-.pop-leave-to {
-  opacity: 0;
-  transform: translateY(10px);
+  a {
+    text-decoration: underline;
+    color: light-dark(theme("colors.theme.600"), theme("colors.theme.200"));
+
+    &:hover {
+      color: light-dark(theme("colors.theme.800"), theme("colors.theme.100"));
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      color-scheme: dark;
+      --theme-text: theme("colors.slate.100");
+    }
+
+    body {
+      background-color: mix-alpha(theme("colors.theme.950"), 85%);
+      background-image:
+        radial-gradient(
+          1200px 900px at 8% -10%,
+          mix-alpha(theme("colors.theme.800"), 30%),
+          transparent 65%
+        ),
+        radial-gradient(
+          900px 700px at 110% 10%,
+          mix-alpha(theme("colors.theme.700"), 30%),
+          transparent 60%
+        ),
+        radial-gradient(
+          800px 600px at 50% 120%,
+          mix-alpha(theme("colors.theme.900"), 45%),
+          transparent 60%
+        ),
+        linear-gradient(
+          135deg,
+          #0b1118 0%,
+          mix-alpha(theme("colors.theme.950"), 60%) 45%,
+          #0b1118 100%
+        );
+      background-attachment: fixed;
+      background-blend-mode: screen, screen, screen, normal;
+    }
+  }
+
+  .pop-enter-active,
+  .pop-leave-active {
+    transition:
+      opacity 0.2s,
+      transform 0.2s;
+  }
+  .pop-enter-from,
+  .pop-leave-to {
+    opacity: 0;
+    transform: translateY(10px);
+  }
 }
