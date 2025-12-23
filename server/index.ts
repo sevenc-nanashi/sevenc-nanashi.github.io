@@ -62,6 +62,15 @@ export default {
       output.push(ansi.cursor.cursorSavePosition);
       output.push(ansi.cursor.cursorUp(2 + links.length));
       if (isSixel) {
+        output.push("\n");
+        output.push("  Your terminal does not\n");
+        output.push("  support sixel graphics.\n");
+        output.push("\n");
+        output.push("  Please try with a\n");
+        output.push("  sixel-compatible terminal or\n");
+        output.push("  try removing `?sixel=true`.\n");
+        output.push("\n");
+        output.push(ansi.cursor.cursorUp(7));
         output.push(sixelImage);
       } else {
         for (let y = 0; y < image.height; y++) {
