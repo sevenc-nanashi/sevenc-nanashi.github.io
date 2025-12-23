@@ -35,6 +35,9 @@ export const createApp = ViteSSG(
   },
   ({ router }) => {
     if (!import.meta.env.SSR) {
+      // exports欄にbudoux-jaのwebcomponentsがないので直接importする
+      void import("../node_modules/budoux/module/webcomponents/budoux-ja.js");
+
       router.afterEach((to) => {
         document.title = routeTitles[to.path] ?? baseTitle;
       });

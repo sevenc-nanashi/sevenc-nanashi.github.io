@@ -128,7 +128,11 @@ onUnmounted(() => {
       />
     </div>
     <hr un-mb="2" un-text="theme-100" />
-    <p un-mb="2">{{ props.work.description }}</p>
+    <p un-mb="2">
+      <budoux-ja>
+        {{ props.work.description }}
+      </budoux-ja>
+    </p>
     <div class="work-display">
       <div v-if="!props.work.display" un-aspect="16/9" un-relative>
         <div

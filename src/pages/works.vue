@@ -118,9 +118,11 @@ onBeforeUnmount(() => {
         >
           <div un-text="xl" un-aspect="square" :class="icons[work.category]" />
           <h3 un-text="lg right" un-ml="2" un-flex-grow>
-            <template v-for="line in work.title.split('\n')" :key="line">
-              {{ line }}<br />
-            </template>
+            <budoux-ja>
+              <template v-for="line in work.title.split('\n')" :key="line">
+                {{ line }}<br />
+              </template>
+            </budoux-ja>
           </h3>
         </GlassCard>
       </RouterLink>

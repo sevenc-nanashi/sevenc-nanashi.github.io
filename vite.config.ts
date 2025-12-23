@@ -7,7 +7,19 @@ import { imagetools } from "vite-imagetools";
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [vue(), vueRouter(), uno(), imagetools(), fontSubsetter()],
+  plugins: [
+    vue({
+      template: {
+        compilerOptions: {
+          isCustomElement: (tag) => ["budoux-ja"].includes(tag),
+        },
+      },
+    }),
+    vueRouter(),
+    uno(),
+    imagetools(),
+    fontSubsetter(),
+  ],
   server: {
     allowedHosts: true,
   },
