@@ -4,7 +4,13 @@ import AsciiProfileIcon from "../components/AsciiProfileIcon.vue";
 import { ref } from "vue";
 import profileIcon from "../assets/icon.webp?h=100;300;400;500;700;1000&format=webp;png&as=picture";
 import { getLinks } from "../profile";
-import ImagetoolsPicture from "../components/ImagetoolsPicture.vue";
+import animatedIcon100 from "../assets/icon/icon_100x100.webp";
+import animatedIcon300 from "../assets/icon/icon_200x200.webp";
+import animatedIcon400 from "../assets/icon/icon_400x400.webp";
+import animatedIcon500 from "../assets/icon/icon_500x500.webp";
+import animatedIcon600 from "../assets/icon/icon_600x600.webp";
+import animatedIcon800 from "../assets/icon/icon_800x800.webp";
+import animatedIcon1000 from "../assets/icon/icon_1000x1000.webp";
 
 const links = getLinks({
   includeZwsp: true,
@@ -42,15 +48,42 @@ const isSixelMode = ref(true);
         un-size="[min(21em,_calc(100vw_-_2rem))]"
       >
         <Transition name="pop" mode="out-in">
-          <ImagetoolsPicture
-            v-if="isSixelMode"
-            :key="'sixel'"
-            alt="Nanashi.'s profile icon"
-            title="Nanashi.'s profile icon"
-            :picture="profileIcon"
-            sizes="(min-width: 768px) 21em, calc(100vw - 2rem)"
-            un-size="full"
-          />
+          <picture v-if="isSixelMode">
+            <source
+              type="image/webp"
+              :srcset="profileIcon.sources.webp"
+              sizes="(min-width: 768px) 21em, calc(100vw - 2rem)"
+              media="(prefers-reduced-motion: reduce)"
+            />
+            <source
+              type="image/webp"
+              :srcset="
+                [
+                  animatedIcon100 + ' 100w',
+                  animatedIcon300 + ' 300w',
+                  animatedIcon400 + ' 400w',
+                  animatedIcon500 + ' 500w',
+                  animatedIcon600 + ' 600w',
+                  animatedIcon800 + ' 800w',
+                  animatedIcon1000 + ' 1000w',
+                ].join(', ')
+              "
+              sizes="(min-width: 768px) 21em, calc(100vw - 2rem)"
+            />
+            <source
+              type="image/png"
+              :srcset="profileIcon.sources.png"
+              sizes="(min-width: 768px) 21em, calc(100vw - 2rem)"
+            />
+            <img
+              :src="profileIcon.img.src"
+              :width="profileIcon.img.w"
+              :height="profileIcon.img.h"
+              sizes="(min-width: 768px) 21em, calc(100vw - 2rem)"
+              alt="Nanashi.'s profile icon"
+              title="Nanashi.'s profile icon"
+            />
+          </picture>
           <AsciiProfileIcon v-else un-text="lt-md:xs" />
         </Transition>
       </div>
