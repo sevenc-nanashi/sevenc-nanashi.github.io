@@ -1,8 +1,9 @@
-import voicevoxPreview from "./assets/works/voicevox.webp";
-import kiiteitteWebPreview from "./assets/works/kiiteitte-web.webp";
-import kiiteCafeDesktopPreview from "./assets/works/kiitecafe-desktop.webp";
-import kikounePreview from "./assets/works/kikoune.webp";
-import playableArtKumohitodePreview from "./assets/works/playable-art-kumohitode.webp";
+import type { Picture } from "dummy?as=picture";
+import voicevoxPreview from "./assets/works/voicevox.webp?w=320;640;960;1280;1600&format=webp;png&as=picture";
+import kiiteitteWebPreview from "./assets/works/kiiteitte-web.webp?w=320;640;960;1280;1600&format=webp;png&as=picture";
+import kiiteCafeDesktopPreview from "./assets/works/kiitecafe-desktop.webp?w=320;640;960;1280;1600&format=webp;png&as=picture";
+import kikounePreview from "./assets/works/kikoune.webp?w=320;640;960;1280;1600&format=webp;png&as=picture";
+import playableArtKumohitodePreview from "./assets/works/playable-art-kumohitode.webp?w=320;640;960;1280;1600&format=webp;png&as=picture";
 
 export type WorkCategory = "music" | "app" | "lib" | "art" | "other";
 export type Work = {
@@ -31,7 +32,7 @@ export type Display =
     }
   | {
       source: "image";
-      url: string;
+      picture: Picture;
     };
 
 export const works: Work[] = [
@@ -52,7 +53,7 @@ export const works: Work[] = [
     ],
     display: {
       source: "image",
-      url: voicevoxPreview,
+      picture: voicevoxPreview,
     },
   },
   {
@@ -145,7 +146,7 @@ export const works: Work[] = [
     ],
     display: {
       source: "image",
-      url: kikounePreview,
+      picture: kikounePreview,
     },
   },
   {
@@ -166,7 +167,7 @@ export const works: Work[] = [
     ],
     display: {
       source: "image",
-      url: kiiteitteWebPreview,
+      picture: kiiteitteWebPreview,
     },
   },
   {
@@ -186,7 +187,7 @@ export const works: Work[] = [
     ],
     display: {
       source: "image",
-      url: kiiteCafeDesktopPreview,
+      picture: kiiteCafeDesktopPreview,
     },
   },
   {
@@ -233,7 +234,7 @@ export const works: Work[] = [
       "「クモヒトデのうまる砂の上で」をテーマにしたインタラクティブな一枚絵。",
     display: {
       source: "image",
-      url: playableArtKumohitodePreview,
+      picture: playableArtKumohitodePreview,
     },
     links: [
       {

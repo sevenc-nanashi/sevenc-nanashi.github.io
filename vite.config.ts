@@ -3,10 +3,11 @@ import vue from "@vitejs/plugin-vue";
 import uno from "unocss/vite";
 import vueRouter from "unplugin-vue-router/vite";
 import { fontSubsetter } from "rollup-plugin-font-subsetter";
+import { imagetools } from "vite-imagetools";
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [vue(), vueRouter(), uno(), fontSubsetter()],
+  plugins: [vue(), vueRouter(), uno(), imagetools(), fontSubsetter()],
   server: {
     allowedHosts: true,
   },

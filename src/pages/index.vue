@@ -2,8 +2,9 @@
 import GlassCard from "../components/GlassCard.vue";
 import AsciiProfileIcon from "../components/AsciiProfileIcon.vue";
 import { ref } from "vue";
-import profileIcon from "../assets/icon.webp";
+import profileIcon from "../assets/icon.webp?h=100;300;400;500;700;1000&format=webp;png&as=picture";
 import { getLinks } from "../profile";
+import ImagetoolsPicture from "../components/ImagetoolsPicture.vue";
 
 const links = getLinks({
   includeZwsp: true,
@@ -41,11 +42,13 @@ const isSixelMode = ref(true);
         un-size="[min(21em,_calc(100vw_-_2rem))]"
       >
         <Transition name="pop" mode="out-in">
-          <img
-            :src="profileIcon"
+          <ImagetoolsPicture
             v-if="isSixelMode"
+            :key="'sixel'"
             alt="Nanashi.'s profile icon"
             title="Nanashi.'s profile icon"
+            :picture="profileIcon"
+            sizes="(min-width: 768px) 21em, calc(100vw - 2rem)"
             un-size="full"
           />
           <AsciiProfileIcon v-else un-text="lt-md:xs" />

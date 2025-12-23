@@ -2,8 +2,9 @@
 import GlassCard from "./components/GlassCard.vue";
 import { RouterView } from "vue-router";
 import PageSwitcher from "./components/PageSwitcher.vue";
-import profileIcon from "./assets/icon_static.webp";
+import profileIcon from "./assets/icon_static.webp?h=32;64;96&format=webp;png&as=picture";
 import BackgroundCanvas from "./components/BackgroundCanvas.vue";
+import ImagetoolsPicture from "./components/ImagetoolsPicture.vue";
 </script>
 
 <template>
@@ -25,13 +26,14 @@ import BackgroundCanvas from "./components/BackgroundCanvas.vue";
         un-items="center"
         un-h="16"
       >
-        <img
-          :src="profileIcon"
+        <ImagetoolsPicture
+          :picture="profileIcon"
           alt="Nanashi.'s profile icon"
           title="Nanashi.'s profile icon"
           un-h="8"
           un-w="8"
           un-mr="2"
+          sizes="2rem"
         />
         名無し。/ Nanashi.
 

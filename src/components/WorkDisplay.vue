@@ -5,6 +5,7 @@ import GlassCard from "./GlassCard.vue";
 import LazyIframe from "./LazyIframe.vue";
 import WorkLink from "./WorkLink.vue";
 import { onMounted, onUnmounted, ref, useId } from "vue";
+import ImagetoolsPicture from "./ImagetoolsPicture.vue";
 
 const props = defineProps<{
   work: Work;
@@ -166,11 +167,12 @@ onUnmounted(() => {
           un-object="cover"
           un-overflow="hidden"
         >
-          <img
-            :src="props.work.display.url"
+          <ImagetoolsPicture
+            :picture="props.work.display.picture"
             loading="lazy"
             :alt="`${props.work.title} preview`"
             :title="props.work.title"
+            sizes="(min-width: 1024px) 54rem, 100vw"
             un-absolute
             un-aspect="16/9"
             un-w="full"
@@ -178,11 +180,12 @@ onUnmounted(() => {
             un-object="cover"
             un-drop-shadow="md"
           />
-          <img
-            :src="props.work.display.url"
+          <ImagetoolsPicture
+            :picture="props.work.display.picture"
             loading="lazy"
             :alt="`${props.work.title} preview`"
             :title="props.work.title"
+            sizes="(min-width: 1024px) 54rem, 100vw"
             un-absolute
             un-aspect="16/9"
             un-w="full"
