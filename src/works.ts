@@ -40,7 +40,8 @@ export const works: Work[] = [
     category: "app",
     id: "voicevox",
     title: "Voicevox",
-    description: "無料・中品質の合成音声ソフト。エディタのメンテナーを担当。",
+    description:
+      "無料で使える中品質なテキスト読み上げ・歌声合成ソフトウェア。エディタのメンテナーを担当。",
     links: [
       {
         type: "visit",
@@ -218,7 +219,8 @@ export const works: Work[] = [
     category: "lib",
     id: "kanalizer",
     title: "VOICEVOX/kanalizer",
-    description: "英単語から読みを推測するライブラリ。",
+    description:
+      "英単語から読みを推測するライブラリ。Voicevoxでの英単語の読み上げに利用。",
     links: [
       {
         type: "source",
