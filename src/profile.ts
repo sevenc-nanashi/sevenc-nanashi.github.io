@@ -11,6 +11,23 @@ type LinkData =
 
 const zwsp = "\u200b";
 
+const jstTimeZone = "Asia/Tokyo";
+
+const getJstDateParts = (date: Date) => {
+  const parts = new Intl.DateTimeFormat("en-CA", {
+    timeZone: jstTimeZone,
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).formatToParts(date);
+  const values = Object.fromEntries(parts.map((part) => [part.type, part.value]));
+  return {
+    year: Number(values.year),
+    month: Number(values.month),
+    day: Number(values.day),
+  };
+};
+
 // NOTE: Cloudflare Workersだとnew Dateがおかしくなるので遅延評価にする
 export function getLinks({
   includeZwsp,
@@ -18,11 +35,11 @@ export function getLinks({
   includeZwsp?: boolean;
 } = {}): LinkData[] {
   const maybeZwsp = includeZwsp ? zwsp : "";
-  const birthDate = new Date("2006-12-25");
-  const today = new Date();
-  let age = today.getFullYear() - birthDate.getFullYear();
-  const monthDiff = today.getMonth() - birthDate.getMonth();
-  if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+  const birthDate = { year: 2006, month: 12, day: 25 };
+  const today = getJstDateParts(new Date());
+  let age = today.year - birthDate.year;
+  const monthDiff = today.month - birthDate.month;
+  if (monthDiff < 0 || (monthDiff === 0 && today.day < birthDate.day)) {
     age--;
   }
   const currentAge = age;
