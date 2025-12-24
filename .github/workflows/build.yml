@@ -32,7 +32,7 @@ jobs:
           bun i
       - name: Build
         run: |
-          bun build
+          bun run build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
         with:
