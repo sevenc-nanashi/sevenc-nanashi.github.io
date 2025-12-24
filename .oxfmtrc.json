@@ -1,8 +1,9 @@
 {
   "$schema": "./node_modules/oxfmt/configuration_schema.json",
   "ignorePatterns": [
-    "./worker-configuration.d.ts",
-    "./src/components/AsciiProfileIcon.vue",
-    "./server/pixelData.json"
+    "worker-configuration.d.ts",
+    "src/components/AsciiProfileIcon.vue",
+    "server/pixelData.json",
+    "typed-router.d.ts"
   ]
 }
