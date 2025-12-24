@@ -14,7 +14,7 @@ const themeColor = [0x48, 0xb0, 0xd5] as const;
 export default {
   fetch: async (request: Request) => {
     const url = new URL(request.url);
-    if (url.pathname !== "/ansi_test") {
+    if (url.pathname !== "/") {
       return fetch(request);
     }
 
