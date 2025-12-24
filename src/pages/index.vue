@@ -22,9 +22,11 @@ const isSixelMode = ref(true);
     <GlassCard class="profile-window" color="themeSecondary" un-p="2" un-gap="6">
       <div un-grid-area="header" un-font="mono" un-border="b theme" un-p="x-4 y-2">
         <span un-user-select="none">$ </span>curl "https://sevenc7c.com?<button
+          type="button"
           un-text="theme-500"
           un-cursor="pointer"
           un-underline="hover:~"
+          :aria-pressed="isSixelMode"
           @click="isSixelMode = !isSixelMode"
         >
           sixel={{ isSixelMode ? "true" : "false" }}</button

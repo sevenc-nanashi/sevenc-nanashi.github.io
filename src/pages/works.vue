@@ -116,7 +116,12 @@ onBeforeUnmount(() => {
           un-flex
           un-items="center"
         >
-          <div un-text="xl" un-aspect="square" :class="icons[work.category]" />
+          <div
+            un-text="xl"
+            un-aspect="square"
+            :class="icons[work.category]"
+            aria-hidden="true"
+          />
           <h3 un-text="lg right" un-ml="2" un-flex-grow>
             <budoux-ja>
               <template v-for="line in work.title.split('\n')" :key="line">
@@ -147,10 +152,11 @@ onBeforeUnmount(() => {
         un-hidden="lg:~"
         :aria-expanded="isSidebarOpen"
         aria-controls="works-sidebar"
+        :aria-label="isSidebarOpen ? 'Close works sidebar' : 'Open works sidebar'"
         @click="isSidebarOpen = !isSidebarOpen"
       >
         <GlassCard clickable color="theme" un-p="2" un-flex un-items="center" un-justify="center">
-          <div un-text="2xl" class="i-fluent:apps-24-regular" />
+          <div un-text="2xl" class="i-fluent:apps-24-regular" aria-hidden="true" />
         </GlassCard>
       </button>
     </div>
