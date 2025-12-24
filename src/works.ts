@@ -133,8 +133,7 @@ export const works: Work[] = [
     category: "app",
     id: "kikoune",
     title: "Kikoune",
-    description:
-      "Discordのアクティビティで動く、Kiite Cafe風にニコニコ動画を同時再生するアプリ。",
+    description: "Discordのアクティビティで動く、Kiite Cafe風にニコニコ動画を同時再生するアプリ。",
     links: [
       {
         type: "visit",
@@ -219,8 +218,7 @@ export const works: Work[] = [
     category: "lib",
     id: "kanalizer",
     title: "VOICEVOX/kanalizer",
-    description:
-      "英単語から読みを推測するライブラリ。Voicevoxでの英単語の読み上げに利用。",
+    description: "英単語から読みを推測するライブラリ。Voicevoxでの英単語の読み上げに利用。",
     links: [
       {
         type: "source",
@@ -232,8 +230,7 @@ export const works: Work[] = [
     category: "art",
     id: "playableArtKumohitode",
     title: `鳴らせる一枚絵\n「クモヒトデのうまる砂の上で」`,
-    description:
-      "「クモヒトデのうまる砂の上で」をテーマにしたインタラクティブな一枚絵。",
+    description: "「クモヒトデのうまる砂の上で」をテーマにしたインタラクティブな一枚絵。",
     display: {
       source: "image",
       picture: playableArtKumohitodePreview,
@@ -336,8 +333,7 @@ export const works: Work[] = [
     category: "music",
     id: "favorit3sRespect",
     title: "favorit3s.respect",
-    description:
-      "界隈・模倣曲を中心としたメドレー。ボカコレ2025冬Remix部門参加作品。",
+    description: "界隈・模倣曲を中心としたメドレー。ボカコレ2025冬Remix部門参加作品。",
     display: {
       source: "niconico",
       id: "sm44635263",

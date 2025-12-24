@@ -32,12 +32,7 @@ const sections: Section[] = [
         un-flex
         un-items="center"
       >
-        <div
-          :class="section.icon"
-          un-text="xl"
-          un-inline-block
-          un-hidden="md:~"
-        />
+        <div :class="section.icon" un-text="xl" un-inline-block un-hidden="md:~" />
         <span un-hidden un-inline="md:~">
           {{ section.name }}
         </span>

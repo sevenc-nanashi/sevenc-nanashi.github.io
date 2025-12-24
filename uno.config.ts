@@ -32,8 +32,7 @@ export default defineConfig({
   preflights: [
     {
       layer: "reset",
-      getCSS: async () =>
-        fs.promises.readFile("./src/assets/external/reset.css", "utf-8"),
+      getCSS: async () => fs.promises.readFile("./src/assets/external/reset.css", "utf-8"),
     },
   ],
   layers: {

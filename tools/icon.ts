@@ -73,9 +73,7 @@ for (const [index, color] of fgPaletteArr.entries()) {
 }
 
 for (const [index, color] of bgPaletteArr.entries()) {
-  lines.push(
-    `.bg-${index} { background-color: rgb(${color}); white-space: pre; }`,
-  );
+  lines.push(`.bg-${index} { background-color: rgb(${color}); white-space: pre; }`);
 }
 
 lines.push("</style>");

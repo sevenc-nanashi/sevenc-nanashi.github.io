@@ -18,14 +18,7 @@ import ImagetoolsPicture from "./components/ImagetoolsPicture.vue";
       </template>
     </RouterView>
     <footer un-mx="auto" un-sticky un-bottom="4" un-w="fit lt-md:full" un-z="10" un-mt="4">
-      <GlassCard
-        color="theme"
-        un-p="4"
-        un-text="xl"
-        un-flex
-        un-items="center"
-        un-h="16"
-      >
+      <GlassCard color="theme" un-p="4" un-text="xl" un-flex un-items="center" un-h="16">
         <ImagetoolsPicture
           :picture="profileIcon"
           alt="Nanashi.'s profile icon"

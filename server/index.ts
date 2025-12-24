@@ -42,18 +42,12 @@ export default {
       for (const [i, link] of links.entries()) {
         output.push(ansi.cursor.cursorRestorePosition);
         output.push(ansi.cursor.cursorDown(2 + i));
-        output.push(
-          `${ansi.rgbForeground(...themeColor) + ansi.bold}${
-            link.label
-          }${ansi.reset}: `,
-        );
+        output.push(`${ansi.rgbForeground(...themeColor) + ansi.bold}${link.label}${ansi.reset}: `);
         if ("url" in link) {
           output.push(
             `${ansi.rgbForeground(
               ...themeColor,
-            )}${ansi.cursor.link(link.text as string, link.url)}${
-              ansi.reset
-            }\n`,
+            )}${ansi.cursor.link(link.text as string, link.url)}${ansi.reset}\n`,
           );
         } else {
           output.push(`${link.text}\n`);

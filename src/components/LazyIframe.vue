@@ -63,13 +63,7 @@ onBeforeUnmount(() => {
 
 <template>
   <div ref="target" class="lazy-iframe">
-    <iframe
-      v-if="isVisible"
-      ref="iframeRef"
-      :src="props.src"
-      :title="props.title"
-      v-bind="attrs"
-    />
+    <iframe v-if="isVisible" ref="iframeRef" :src="props.src" :title="props.title" v-bind="attrs" />
   </div>
 </template>
 

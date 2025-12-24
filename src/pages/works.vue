@@ -149,14 +149,7 @@ onBeforeUnmount(() => {
         aria-controls="works-sidebar"
         @click="isSidebarOpen = !isSidebarOpen"
       >
-        <GlassCard
-          clickable
-          color="theme"
-          un-p="2"
-          un-flex
-          un-items="center"
-          un-justify="center"
-        >
+        <GlassCard clickable color="theme" un-p="2" un-flex un-items="center" un-justify="center">
           <div un-text="2xl" class="i-fluent:apps-24-regular" />
         </GlassCard>
       </button>

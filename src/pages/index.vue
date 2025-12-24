@@ -19,18 +19,8 @@ const isSixelMode = ref(true);
 </script>
 <template>
   <section un-flex-grow un-flex="~" un-justify="center" un-items="center">
-    <GlassCard
-      class="profile-window"
-      color="themeSecondary"
-      un-p="2"
-      un-gap="6"
-    >
-      <div
-        un-grid-area="header"
-        un-font="mono"
-        un-border="b theme"
-        un-p="x-4 y-2"
-      >
+    <GlassCard class="profile-window" color="themeSecondary" un-p="2" un-gap="6">
+      <div un-grid-area="header" un-font="mono" un-border="b theme" un-p="x-4 y-2">
         <span un-user-select="none">$ </span>curl "https://sevenc7c.com?<button
           un-text="theme-500"
           un-cursor="pointer"

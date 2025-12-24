@@ -1,6 +1,4 @@
-export type DrawContext =
-  | CanvasRenderingContext2D
-  | OffscreenCanvasRenderingContext2D;
+export type DrawContext = CanvasRenderingContext2D | OffscreenCanvasRenderingContext2D;
 
 type DrawFrameOptions = {
   reducedMotion?: boolean;
@@ -62,21 +60,13 @@ export const drawFrame = (
   drawOuterCircle(ctx, width, height, time % duration);
 };
 
-function drawInnerSnare(
-  ctx: DrawContext,
-  width: number,
-  height: number,
-  time: number,
-) {
+function drawInnerSnare(ctx: DrawContext, width: number, height: number, time: number) {
   withDrawState(ctx, () => {
     const progress = ((time + duration / 4) % (duration / 2)) / (duration / 2);
 
-    const rectSize =
-      Math.min(width, height) * (2 / 5) * (1 - 0.3 * easeOutQuint(progress));
+    const rectSize = Math.min(width, height) * (2 / 5) * (1 - 0.3 * easeOutQuint(progress));
 
-    ctx.strokeStyle = `#48b0d5${Math.floor(
-      128 * (1 - Math.min(progress * 3, 1)),
-    )
+    ctx.strokeStyle = `#48b0d5${Math.floor(128 * (1 - Math.min(progress * 3, 1)))
       .toString(16)
       .padStart(2, "0")}`;
     ctx.lineWidth = 3;
@@ -102,10 +92,8 @@ function drawOuterEffectSquare(
 ) {
   const phaseStep = duration / 4;
   for (let index = 0; index < count; index += 1) {
-    const progress =
-      ((time + phaseStep * index) % outerEffectDuration) / outerEffectDuration;
-    const rectSize =
-      Math.min(width, height) * (2 / 5) * (1 + 0.4 * easeOutQuint(progress));
+    const progress = ((time + phaseStep * index) % outerEffectDuration) / outerEffectDuration;
+    const rectSize = Math.min(width, height) * (2 / 5) * (1 + 0.4 * easeOutQuint(progress));
     const alpha = Math.floor(128 * (1 - Math.min(progress * 2, 1)));
 
     withDrawState(ctx, () => {
@@ -125,12 +113,7 @@ function drawOuterEffectSquare(
   }
 }
 
-function drawInnerSquare(
-  ctx: DrawContext,
-  width: number,
-  height: number,
-  time: number,
-) {
+function drawInnerSquare(ctx: DrawContext, width: number, height: number, time: number) {
   withDrawState(ctx, () => {
     const rectSize =
       Math.min(width, height) *
@@ -152,12 +135,7 @@ function drawInnerSquare(
   });
 }
 
-function drawOuterSquare(
-  ctx: DrawContext,
-  width: number,
-  height: number,
-  _time: number,
-) {
+function drawOuterSquare(ctx: DrawContext, width: number, height: number, _time: number) {
   withDrawState(ctx, () => {
     const rectSize = Math.min(width, height) * (2 / 5) * 2.1;
     ctx.strokeStyle = "#48b0d540";
@@ -175,12 +153,7 @@ function drawOuterSquare(
   });
 }
 
-function drawCornerBurstSquares(
-  ctx: DrawContext,
-  width: number,
-  height: number,
-  time: number,
-) {
+function drawCornerBurstSquares(ctx: DrawContext, width: number, height: number, time: number) {
   const progress = (time % particleDuration) / particleDuration;
   const cornerIndex = Math.floor(progress / 0.25) % 4;
 
@@ -193,12 +166,7 @@ function drawCornerBurstSquares(
   updateAndDrawParticles(ctx, time);
 }
 
-function drawOuterCircle(
-  ctx: DrawContext,
-  width: number,
-  height: number,
-  time: number,
-) {
+function drawOuterCircle(ctx: DrawContext, width: number, height: number, time: number) {
   withDrawState(ctx, () => {
     ctx.strokeStyle = "transparent";
     ctx.fillStyle = "#48b0d5";
@@ -288,11 +256,7 @@ const updateAndDrawParticles = (ctx: DrawContext, time: number) => {
   particles.length = writeIndex;
 };
 
-const getOuterCirclePoint = (
-  width: number,
-  height: number,
-  progress: number,
-) => {
+const getOuterCirclePoint = (width: number, height: number, progress: number) => {
   const rectSize = Math.min(width, height) * (2 / 5) * 2.1;
   let x: number;
   let y: number;

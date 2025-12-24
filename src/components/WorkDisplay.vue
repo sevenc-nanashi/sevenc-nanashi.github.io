@@ -121,11 +121,7 @@ onUnmounted(() => {
       </RouterLink>
     </h2>
     <div un-flex="~ wrap" un-items="center" un-gap="2" un-mb="2">
-      <WorkLink
-        v-for="(link, key) in props.work.links"
-        :key="key"
-        :link="link"
-      />
+      <WorkLink v-for="(link, key) in props.work.links" :key="key" :link="link" />
     </div>
     <hr un-mb="2" un-text="theme-100" />
     <p un-mb="2">

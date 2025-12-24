@@ -1,12 +1,13 @@
 {
   "name": "sevenc-nanashi.github.io",
-  "private": true,
   "version": "0.0.0",
+  "private": true,
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite-ssg build",
     "preview": "vite preview",
+    "format": "oxfmt -c ./.oxfmtrc.json .",
     "server:dev": "wrangler dev",
     "server:deploy": "wrangler deploy",
     "server:typegen": "wrangler types"
@@ -26,6 +27,7 @@
     "@napi-rs/canvas": "^0.1.85",
     "@vitejs/plugin-vue": "^6.0.3",
     "@vue/tsconfig": "^0.8.1",
+    "oxfmt": "^0.20.0",
     "rolldown": "^1.0.0-beta.56",
     "rollup-plugin-font-subsetter": "^0.2.0",
     "sass": "^1.96.0",
