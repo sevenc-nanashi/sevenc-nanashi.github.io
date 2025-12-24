@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { onBeforeUnmount, onMounted, ref } from "vue";
 import { drawFrame } from "./backgroundCanvasDraw";
+import BgWorker from "./backgroundCanvas.worker.ts?worker";
 
 const canvasRef = ref<HTMLCanvasElement | null>(null);
 

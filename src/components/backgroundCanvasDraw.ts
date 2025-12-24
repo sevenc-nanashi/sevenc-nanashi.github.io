@@ -27,13 +27,13 @@ const particles: Particle[] = [];
 const particlePool: Particle[] = [];
 let lastCornerIndex: number | null = null;
 
-function drawState(ctx: DrawContext) {
+function withDrawState(ctx: DrawContext, draw: () => void) {
   ctx.save();
-  return {
-    [Symbol.dispose]() {
-      ctx.restore();
-    },
-  };
+  try {
+    draw();
+  } finally {
+    ctx.restore();
+  }
 }
 
 export const drawFrame = (
@@ -68,26 +68,29 @@ function drawInnerSnare(
   height: number,
   time: number,
 ) {
-  using _state = drawState(ctx);
-  const progress = ((time + duration / 4) % (duration / 2)) / (duration / 2);
+  withDrawState(ctx, () => {
+    const progress = ((time + duration / 4) % (duration / 2)) / (duration / 2);
 
-  const rectSize =
-    Math.min(width, height) * (2 / 5) * (1 - 0.3 * easeOutQuint(progress));
+    const rectSize =
+      Math.min(width, height) * (2 / 5) * (1 - 0.3 * easeOutQuint(progress));
 
-  ctx.strokeStyle = `#48b0d5${Math.floor(128 * (1 - Math.min(progress * 3, 1)))
-    .toString(16)
-    .padStart(2, "0")}`;
-  ctx.lineWidth = 3;
-  ctx.fillStyle = "transparent";
-  ctx.translate(width / 2, height / 2);
+    ctx.strokeStyle = `#48b0d5${Math.floor(
+      128 * (1 - Math.min(progress * 3, 1)),
+    )
+      .toString(16)
+      .padStart(2, "0")}`;
+    ctx.lineWidth = 3;
+    ctx.fillStyle = "transparent";
+    ctx.translate(width / 2, height / 2);
 
-  ctx.beginPath();
-  ctx.moveTo(-rectSize / 2, -rectSize / 2);
-  ctx.lineTo(rectSize / 2, -rectSize / 2);
-  ctx.lineTo(rectSize / 2, rectSize / 2);
-  ctx.lineTo(-rectSize / 2, rectSize / 2);
-  ctx.closePath();
-  ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(-rectSize / 2, -rectSize / 2);
+    ctx.lineTo(rectSize / 2, -rectSize / 2);
+    ctx.lineTo(rectSize / 2, rectSize / 2);
+    ctx.lineTo(-rectSize / 2, rectSize / 2);
+    ctx.closePath();
+    ctx.stroke();
+  });
 }
 
 function drawOuterEffectSquare(
@@ -105,9 +108,36 @@ function drawOuterEffectSquare(
       Math.min(width, height) * (2 / 5) * (1 + 0.4 * easeOutQuint(progress));
     const alpha = Math.floor(128 * (1 - Math.min(progress * 2, 1)));
 
-    using _state = drawState(ctx);
+    withDrawState(ctx, () => {
+      ctx.strokeStyle = `#48b0d5${alpha.toString(16).padStart(2, "0")}`;
+      ctx.lineWidth = 3;
+      ctx.fillStyle = "transparent";
+      ctx.translate(width / 2, height / 2);
 
-    ctx.strokeStyle = `#48b0d5${alpha.toString(16).padStart(2, "0")}`;
+      ctx.beginPath();
+      ctx.moveTo(-rectSize / 2, -rectSize / 2);
+      ctx.lineTo(rectSize / 2, -rectSize / 2);
+      ctx.lineTo(rectSize / 2, rectSize / 2);
+      ctx.lineTo(-rectSize / 2, rectSize / 2);
+      ctx.closePath();
+      ctx.stroke();
+    });
+  }
+}
+
+function drawInnerSquare(
+  ctx: DrawContext,
+  width: number,
+  height: number,
+  time: number,
+) {
+  withDrawState(ctx, () => {
+    const rectSize =
+      Math.min(width, height) *
+      (2 / 5) *
+      (1 + 0.1 * (1 - easeOutQuint((time % (duration / 4)) / (duration / 4))));
+
+    ctx.strokeStyle = "#48b0d5";
     ctx.lineWidth = 3;
     ctx.fillStyle = "transparent";
     ctx.translate(width / 2, height / 2);
@@ -119,33 +149,7 @@ function drawOuterEffectSquare(
     ctx.lineTo(-rectSize / 2, rectSize / 2);
     ctx.closePath();
     ctx.stroke();
-  }
-}
-
-function drawInnerSquare(
-  ctx: DrawContext,
-  width: number,
-  height: number,
-  time: number,
-) {
-  using _state = drawState(ctx);
-  const rectSize =
-    Math.min(width, height) *
-    (2 / 5) *
-    (1 + 0.1 * (1 - easeOutQuint((time % (duration / 4)) / (duration / 4))));
-
-  ctx.strokeStyle = "#48b0d5";
-  ctx.lineWidth = 3;
-  ctx.fillStyle = "transparent";
-  ctx.translate(width / 2, height / 2);
-
-  ctx.beginPath();
-  ctx.moveTo(-rectSize / 2, -rectSize / 2);
-  ctx.lineTo(rectSize / 2, -rectSize / 2);
-  ctx.lineTo(rectSize / 2, rectSize / 2);
-  ctx.lineTo(-rectSize / 2, rectSize / 2);
-  ctx.closePath();
-  ctx.stroke();
+  });
 }
 
 function drawOuterSquare(
@@ -154,20 +158,21 @@ function drawOuterSquare(
   height: number,
   _time: number,
 ) {
-  using _state = drawState(ctx);
-  const rectSize = Math.min(width, height) * (2 / 5) * 2.1;
-  ctx.strokeStyle = "#48b0d540";
-  ctx.lineWidth = 2;
-  ctx.fillStyle = "transparent";
-  ctx.translate(width / 2, height / 2);
+  withDrawState(ctx, () => {
+    const rectSize = Math.min(width, height) * (2 / 5) * 2.1;
+    ctx.strokeStyle = "#48b0d540";
+    ctx.lineWidth = 2;
+    ctx.fillStyle = "transparent";
+    ctx.translate(width / 2, height / 2);
 
-  ctx.beginPath();
-  ctx.moveTo(0, -rectSize / 2);
-  ctx.lineTo(rectSize / 2, 0);
-  ctx.lineTo(0, rectSize / 2);
-  ctx.lineTo(-rectSize / 2, 0);
-  ctx.closePath();
-  ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(0, -rectSize / 2);
+    ctx.lineTo(rectSize / 2, 0);
+    ctx.lineTo(0, rectSize / 2);
+    ctx.lineTo(-rectSize / 2, 0);
+    ctx.closePath();
+    ctx.stroke();
+  });
 }
 
 function drawCornerBurstSquares(
@@ -194,15 +199,16 @@ function drawOuterCircle(
   height: number,
   time: number,
 ) {
-  using _state = drawState(ctx);
-  ctx.strokeStyle = "transparent";
-  ctx.fillStyle = "#48b0d5";
-  const progress = (time % duration) / duration;
-  const { x, y } = getOuterCirclePoint(width, height, progress);
-  const circleRadius = 6;
-  ctx.beginPath();
-  ctx.ellipse(x, y, circleRadius, circleRadius, 0, 0, Math.PI * 2);
-  ctx.fill();
+  withDrawState(ctx, () => {
+    ctx.strokeStyle = "transparent";
+    ctx.fillStyle = "#48b0d5";
+    const progress = (time % duration) / duration;
+    const { x, y } = getOuterCirclePoint(width, height, progress);
+    const circleRadius = 6;
+    ctx.beginPath();
+    ctx.ellipse(x, y, circleRadius, circleRadius, 0, 0, Math.PI * 2);
+    ctx.fill();
+  });
 }
 
 const easeOutQuint = (t: number) => 1 - Math.pow(1 - t, 5);
@@ -268,11 +274,12 @@ const updateAndDrawParticles = (ctx: DrawContext, time: number) => {
     }
     const size = particle.size * (1 - 0.3 * progress);
 
-    using _state = drawState(ctx);
-    ctx.translate(x, y);
-    ctx.rotate(progress * particle.spin);
-    ctx.fillStyle = `#48b0d5${alpha.toString(16).padStart(2, "0")}`;
-    ctx.fillRect(-size / 2, -size / 2, size, size);
+    withDrawState(ctx, () => {
+      ctx.translate(x, y);
+      ctx.rotate(progress * particle.spin);
+      ctx.fillStyle = `#48b0d5${alpha.toString(16).padStart(2, "0")}`;
+      ctx.fillRect(-size / 2, -size / 2, size, size);
+    });
 
     particles[writeIndex] = particle;
     writeIndex += 1;
