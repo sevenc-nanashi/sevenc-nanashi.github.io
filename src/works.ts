@@ -271,7 +271,7 @@ export const works: Work[] = [
     category: "music",
     id: "6oClockKoto",
     title: "六時、言の葉の木の下で。",
-    description: "6作目の自作ボカロ曲。ボカコレ2026冬エキシビション部門参加作品。",
+    description: "6作目の自作ボカロ曲。ボカコレ2026冬ルーキー部門参加作品。",
     display: {
       source: "niconico",
       id: "sm45977796",
