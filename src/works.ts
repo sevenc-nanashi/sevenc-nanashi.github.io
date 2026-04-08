@@ -7,8 +7,10 @@ import playableArtKumohitodePreview from "./assets/works/playable-art-kumohitode
 import arcaeaPacksInventoryPreview from "./assets/works/arcaea-packs-inventory.webp?w=320;640;960;1280;1600&format=webp;png&as=picture";
 
 export type WorkCategory = "music" | "app" | "lib" | "art" | "other";
+export type Tag = string;
 export type Work = {
   id: string;
+  tags: Tag[];
   category: WorkCategory;
   title: string;
   description: string;
@@ -41,6 +43,7 @@ export const works: Work[] = [
     category: "app",
     id: "voicevox",
     title: "Voicevox",
+    tags: ["Voicevox", "Vue", "TypeScript"],
     description:
       "無料で使える中品質なテキスト読み上げ・歌声合成ソフトウェア。エディタのメンテナーを担当。",
     links: [
@@ -62,6 +65,7 @@ export const works: Work[] = [
     category: "app",
     id: "cantari",
     title: "Cantari",
+    tags: ["Voicevox", "UTAU", "Rust"],
     description: "UTAU音源をVoicevox上で話させるVoicevoxエンジン。",
     display: {
       source: "niconico",
@@ -86,6 +90,7 @@ export const works: Work[] = [
     category: "app",
     id: "aivoicevox",
     title: "AIVoiceVox",
+    tags: ["Voicevox", "A.I.Voice", "Rust"],
     description: "A.I.Voice 1をVoicevox上で話させるVoicevoxエンジン。",
     display: {
       source: "niconico",
@@ -110,6 +115,7 @@ export const works: Work[] = [
     category: "app",
     id: "coeiroinkV2Bridge",
     title: "Coeiroink v2 Bridge",
+    tags: ["Voicevox", "Coeiroink", "Deno", "TypeScript"],
     description: "Coeiroink v2をVoicevox上で話させるVoicevoxエンジン。",
     display: {
       source: "niconico",
@@ -135,6 +141,7 @@ export const works: Work[] = [
     id: "kikoune",
     title: "Kikoune",
     description: "Discordのアクティビティで動く、Kiite Cafe風にニコニコ動画を同時再生するアプリ。",
+    tags: ["Discord", "TypeScript", "Vue"],
     links: [
       {
         type: "visit",
@@ -154,6 +161,7 @@ export const works: Work[] = [
     category: "app",
     id: "kiiteitteWeb",
     title: "Kiiteitte Web",
+    tags: ["KiiteCafe", "Vue", "TypeScript"],
     description:
       "Kiite Cafeの選曲履歴を表示するWebアプリ。ActivityPub対応により、Misskey等のFediverseクライアントからも閲覧可能。",
     links: [
@@ -176,6 +184,7 @@ export const works: Work[] = [
     id: "kiitecafeDesktop",
     title: "Kiite Cafe Desktop",
     description: "Kiite Cafeのデスクトップ版。",
+    tags: ["KiiteCafe", "Electron", "Vue", "TypeScript"],
     links: [
       {
         type: "download",
@@ -196,6 +205,7 @@ export const works: Work[] = [
     id: "arcaeaPacksInventory",
     title: "Arcaea Packs Inventory",
     description: "Arcaeaの所持パック一覧画像ジェネレーター。",
+    tags: ["Arcaea", "Rust", "TypeScript", "CloudflareWorkers"],
     links: [
       {
         type: "visit",
@@ -216,6 +226,7 @@ export const works: Work[] = [
     id: "aviutl2Rs",
     title: "aviutl2-rs",
     description: "AviUtl2 Plugin SDKのRustバインディング。",
+    tags: ["AviUtl2", "Rust"],
     links: [
       {
         type: "visit",
@@ -240,6 +251,7 @@ export const works: Work[] = [
     id: "kanalizer",
     title: "VOICEVOX/kanalizer",
     description: "英単語から読みを推測するライブラリ。Voicevoxでの英単語の読み上げに利用。",
+    tags: ["Rust"],
     links: [
       {
         type: "source",
@@ -252,6 +264,7 @@ export const works: Work[] = [
     id: "playableArtKumohitode",
     title: `鳴らせる一枚絵\n「クモヒトデのうまる砂の上で」`,
     description: "「クモヒトデのうまる砂の上で」をテーマにしたインタラクティブな一枚絵。",
+    tags: ["TypeScript", "p5js"],
     display: {
       source: "image",
       picture: playableArtKumohitodePreview,
@@ -272,6 +285,7 @@ export const works: Work[] = [
     id: "6oClockKoto",
     title: "六時、言の葉の木の下で。",
     description: "6作目の自作ボカロ曲。ボカコレ2026冬エキシビション部門参加作品。",
+    tags: ["AviUtl2", "p5js", "Neutrino"],
     display: {
       source: "niconico",
       id: "sm45977796",
@@ -290,6 +304,10 @@ export const works: Work[] = [
         type: "linkcore",
         url: "https://linkco.re/2YsCCen6",
       },
+      {
+        type: "source",
+        url: "https://github.com/sevenc-nanashi/6koto_trilogy",
+      },
     ],
   },
   {
@@ -297,6 +315,7 @@ export const works: Work[] = [
     id: "6oClockAo",
     title: "蒼の少女は午前六時を目指して",
     description: "6作目の自作ボカロ曲。ボカコレ2026冬エキシビション部門参加作品。",
+    tags: ["AviUtl2", "p5js", "Neutrino"],
     display: {
       source: "niconico",
       id: "sm45974329",
@@ -315,6 +334,10 @@ export const works: Work[] = [
         type: "linkcore",
         url: "https://linkco.re/2YsCCen6",
       },
+      {
+        type: "source",
+        url: "https://github.com/sevenc-nanashi/6koto_trilogy",
+      },
     ],
   },
   {
@@ -322,6 +345,7 @@ export const works: Work[] = [
     id: "6oClockAka",
     title: "絳の少女は午後六時を夢見て",
     description: "6作目の自作ボカロ曲。ボカコレ2026冬エキシビション部門参加作品。",
+    tags: ["AviUtl2", "p5js", "Neutrino"],
     display: {
       source: "niconico",
       id: "sm45968865",
@@ -340,6 +364,10 @@ export const works: Work[] = [
         type: "linkcore",
         url: "https://linkco.re/2YsCCen6",
       },
+      {
+        type: "source",
+        url: "https://github.com/sevenc-nanashi/6koto_trilogy",
+      },
     ],
   },
   {
@@ -347,6 +375,7 @@ export const works: Work[] = [
     id: "exSample",
     title: "eX:SAMPLE",
     description: "AviUtl2のみで作ったテクノミュージック。Re:ENCODE参加作品。",
+    tags: ["AviUtl2"],
     display: {
       source: "niconico",
       id: "sm45681995",
@@ -371,6 +400,7 @@ export const works: Work[] = [
     id: "unidentifiedSignpo5ts",
     title: "(unidentified)signpo5ts",
     description: "5作目の自作ボカロ曲。ボカコレ2025夏ルーキー部門参加作品。",
+    tags: ["p5js", "UTAU"],
     display: {
       source: "niconico",
       id: "sm45306946",
@@ -401,6 +431,7 @@ export const works: Work[] = [
     title: "library->w4nderers",
     description:
       "オリジナルのボカロ曲。ボカコレ2025冬ルーキー部門参加作品。楽曲収益化サービスのイチオシ賞受賞作品。",
+    tags: ["p5js", "UTAU"],
     display: {
       source: "niconico",
       id: "sm44670499",
@@ -430,6 +461,7 @@ export const works: Work[] = [
     id: "favorit3sRespect",
     title: "favorit3s.respect",
     description: "界隈・模倣曲を中心としたメドレー。ボカコレ2025冬Remix部門参加作品。",
+    tags: ["p5js", "Voicevox"],
     display: {
       source: "niconico",
       id: "sm44635263",
@@ -455,6 +487,7 @@ export const works: Work[] = [
     id: "untitledCyanvas2",
     title: "Untitled Cyanvas (2)",
     description: "Chart Cyanvas 2周年書き下ろし曲。",
+    tags: ["p5js"],
     display: {
       source: "youtube",
       id: "UqxoCw3caLs",
@@ -480,6 +513,7 @@ export const works: Work[] = [
     id: "2LyricsTxt",
     title: "2>lyrics.txt",
     description: "オリジナルのボカロ曲。ぼかえり2024夏参加作品。",
+    tags: ["p5js", "Voicevox"],
     display: {
       source: "niconico",
       id: "sm43945652",
@@ -504,6 +538,7 @@ export const works: Work[] = [
     id: "expla1nSelf",
     title: "expla1n(self)",
     description: "オリジナルのボカロ曲。VOICEVOXソング機能リリース記念作品。",
+    tags: ["p5js", "Voicevox"],
     display: {
       source: "niconico",
       id: "sm43690833",

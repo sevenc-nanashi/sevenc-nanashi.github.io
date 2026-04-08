@@ -45,10 +45,10 @@ const linkTypes: Record<
     :href="props.link.url"
     target="_blank"
     rel="noopener noreferrer"
-    un-text="sm theme-700 dark:theme-200"
+    un-text="xs theme-700 dark:theme-200"
   >
-    <GlassCard clickable color="theme" un-flex un-items="center" un-gap="2">
-      <div :class="linkTypes[props.link.type].icon" un-text="xl" />
+    <GlassCard clickable color="theme" un-flex un-items="center" un-gap="1">
+      <div :class="linkTypes[props.link.type].icon" un-text="sm" />
       <span un-hidden un-inline="sm:~">
         {{ linkTypes[props.link.type].label }}
       </span>
