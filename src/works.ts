@@ -290,6 +290,10 @@ export const works: Work[] = [
         type: "linkcore",
         url: "https://linkco.re/2YsCCen6",
       },
+      {
+        type: "source",
+        url: "https://github.com/sevenc-nanashi/6koto_trilogy",
+      },
     ],
   },
   {
@@ -315,6 +319,10 @@ export const works: Work[] = [
         type: "linkcore",
         url: "https://linkco.re/2YsCCen6",
       },
+      {
+        type: "source",
+        url: "https://github.com/sevenc-nanashi/6koto_trilogy",
+      },
     ],
   },
   {
@@ -339,6 +347,10 @@ export const works: Work[] = [
       {
         type: "linkcore",
         url: "https://linkco.re/2YsCCen6",
+      },
+      {
+        type: "source",
+        url: "https://github.com/sevenc-nanashi/6koto_trilogy",
       },
     ],
   },
