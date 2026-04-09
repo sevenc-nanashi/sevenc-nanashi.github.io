@@ -7,7 +7,7 @@ import playableArtKumohitodePreview from "./assets/works/playable-art-kumohitode
 import arcaeaPacksInventoryPreview from "./assets/works/arcaea-packs-inventory.webp?w=320;640;960;1280;1600&format=webp;png&as=picture";
 import umichordPreview from "./assets/works/umichord.webp?w=320;640;960;1280;1600&format=webp;png&as=picture";
 
-export type WorkCategory = "music" | "app" | "lib" | "art" | "other";
+export type WorkCategory = "music" | "app" | "lib" | "art" | "extension" | "other";
 export type Work = {
   id: string;
   category: WorkCategory;
@@ -61,75 +61,23 @@ export const works: Work[] = [
   },
   {
     category: "app",
-    id: "cantari",
-    title: "Cantari",
-    description: "UTAU音源をVoicevox上で話させるVoicevoxエンジン。",
-    display: {
-      source: "niconico",
-      id: "sm43856969",
-    },
+    id: "umichord",
+    title: "UmiChord",
+    description: "海茶式コード表記法ジェネレーター。",
     links: [
       {
-        type: "download",
-        url: "https://github.com/sevenc-nanashi/cantari/releases/latest",
-      },
-      {
-        type: "niconico",
-        url: "https://www.nicovideo.jp/watch/sm43856969",
+        type: "visit",
+        url: "https://sevenc7c.com/umichord/",
       },
       {
         type: "source",
-        url: "https://github.com/sevenc-nanashi/cantari",
+        url: "https://github.com/sevenc-nanashi/umichord",
       },
     ],
-  },
-  {
-    category: "app",
-    id: "aivoicevox",
-    title: "AIVoiceVox",
-    description: "A.I.Voice 1をVoicevox上で話させるVoicevoxエンジン。",
     display: {
-      source: "niconico",
-      id: "sm43073706",
+      source: "image",
+      picture: umichordPreview,
     },
-    links: [
-      {
-        type: "download",
-        url: "https://github.com/sevenc-nanashi/aivoice-vox/releases/latest",
-      },
-      {
-        type: "niconico",
-        url: "https://www.nicovideo.jp/watch/sm43073706",
-      },
-      {
-        type: "source",
-        url: "https://github.com/sevenc-nanashi/aivoice-vox",
-      },
-    ],
-  },
-  {
-    category: "app",
-    id: "coeiroinkV2Bridge",
-    title: "Coeiroink v2 Bridge",
-    description: "Coeiroink v2をVoicevox上で話させるVoicevoxエンジン。",
-    display: {
-      source: "niconico",
-      id: "sm43073706",
-    },
-    links: [
-      {
-        type: "download",
-        url: "https://github.com/sevenc-nanashi/coeiroink-v2-bridge/releases/latest",
-      },
-      {
-        type: "niconico",
-        url: "https://www.nicovideo.jp/watch/sm43073706",
-      },
-      {
-        type: "source",
-        url: "https://github.com/sevenc-nanashi/coeiroink-v2-bridge",
-      },
-    ],
   },
   {
     category: "app",
@@ -213,24 +161,76 @@ export const works: Work[] = [
     },
   },
   {
-    category: "app",
-    id: "umichord",
-    title: "UmiChord",
-    description: "海茶式コード表記法ジェネレーター。",
+    category: "extension",
+    id: "cantari",
+    title: "Cantari",
+    description: "UTAU音源をVoicevox上で話させるVoicevoxエンジン。",
+    display: {
+      source: "niconico",
+      id: "sm43856969",
+    },
     links: [
       {
-        type: "visit",
-        url: "https://sevenc7c.com/umichord/",
+        type: "download",
+        url: "https://github.com/sevenc-nanashi/cantari/releases/latest",
+      },
+      {
+        type: "niconico",
+        url: "https://www.nicovideo.jp/watch/sm43856969",
       },
       {
         type: "source",
-        url: "https://github.com/sevenc-nanashi/umichord",
+        url: "https://github.com/sevenc-nanashi/cantari",
       },
     ],
+  },
+  {
+    category: "extension",
+    id: "aivoicevox",
+    title: "AIVoiceVox",
+    description: "A.I.Voice 1をVoicevox上で話させるVoicevoxエンジン。",
     display: {
-      source: "image",
-      picture: umichordPreview,
+      source: "niconico",
+      id: "sm43073706",
     },
+    links: [
+      {
+        type: "download",
+        url: "https://github.com/sevenc-nanashi/aivoice-vox/releases/latest",
+      },
+      {
+        type: "niconico",
+        url: "https://www.nicovideo.jp/watch/sm43073706",
+      },
+      {
+        type: "source",
+        url: "https://github.com/sevenc-nanashi/aivoice-vox",
+      },
+    ],
+  },
+  {
+    category: "extension",
+    id: "coeiroinkV2Bridge",
+    title: "Coeiroink v2 Bridge",
+    description: "Coeiroink v2をVoicevox上で話させるVoicevoxエンジン。",
+    display: {
+      source: "niconico",
+      id: "sm43073706",
+    },
+    links: [
+      {
+        type: "download",
+        url: "https://github.com/sevenc-nanashi/coeiroink-v2-bridge/releases/latest",
+      },
+      {
+        type: "niconico",
+        url: "https://www.nicovideo.jp/watch/sm43073706",
+      },
+      {
+        type: "source",
+        url: "https://github.com/sevenc-nanashi/coeiroink-v2-bridge",
+      },
+    ],
   },
   {
     category: "lib",
