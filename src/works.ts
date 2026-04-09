@@ -66,7 +66,7 @@ export const works: Work[] = [
     category: "app",
     id: "umichord",
     title: "UmiChord",
-    tags: [],
+    tags: ["TypeScript", "Vue"],
     description: "海茶式コード表記法ジェネレーター。",
     links: [
       {
@@ -82,81 +82,6 @@ export const works: Work[] = [
       source: "image",
       picture: umichordPreview,
     },
-  },
-  {
-    category: "extension",
-    id: "cantari",
-    title: "Cantari",
-    tags: ["Voicevox", "UTAU", "Rust"],
-    description: "UTAU音源をVoicevox上で話させるVoicevoxエンジン。",
-    display: {
-      source: "niconico",
-      id: "sm43856969",
-    },
-    links: [
-      {
-        type: "download",
-        url: "https://github.com/sevenc-nanashi/cantari/releases/latest",
-      },
-      {
-        type: "niconico",
-        url: "https://www.nicovideo.jp/watch/sm43856969",
-      },
-      {
-        type: "source",
-        url: "https://github.com/sevenc-nanashi/cantari",
-      },
-    ],
-  },
-  {
-    category: "extension",
-    id: "aivoicevox",
-    title: "AIVoiceVox",
-    tags: ["Voicevox", "A.I.Voice", "Rust"],
-    description: "A.I.Voice 1をVoicevox上で話させるVoicevoxエンジン。",
-    display: {
-      source: "niconico",
-      id: "sm43073706",
-    },
-    links: [
-      {
-        type: "download",
-        url: "https://github.com/sevenc-nanashi/aivoice-vox/releases/latest",
-      },
-      {
-        type: "niconico",
-        url: "https://www.nicovideo.jp/watch/sm43073706",
-      },
-      {
-        type: "source",
-        url: "https://github.com/sevenc-nanashi/aivoice-vox",
-      },
-    ],
-  },
-  {
-    category: "extension",
-    id: "coeiroinkV2Bridge",
-    title: "Coeiroink v2 Bridge",
-    tags: ["Voicevox", "Coeiroink", "Deno", "TypeScript"],
-    description: "Coeiroink v2をVoicevox上で話させるVoicevoxエンジン。",
-    display: {
-      source: "niconico",
-      id: "sm43073706",
-    },
-    links: [
-      {
-        type: "download",
-        url: "https://github.com/sevenc-nanashi/coeiroink-v2-bridge/releases/latest",
-      },
-      {
-        type: "niconico",
-        url: "https://www.nicovideo.jp/watch/sm43073706",
-      },
-      {
-        type: "source",
-        url: "https://github.com/sevenc-nanashi/coeiroink-v2-bridge",
-      },
-    ],
   },
   {
     category: "app",
@@ -247,6 +172,7 @@ export const works: Work[] = [
     category: "extension",
     id: "cantari",
     title: "Cantari",
+    tags: ["Voicevox", "UTAU", "Rust"],
     description: "UTAU音源をVoicevox上で話させるVoicevoxエンジン。",
     display: {
       source: "niconico",
@@ -271,6 +197,7 @@ export const works: Work[] = [
     category: "extension",
     id: "aivoicevox",
     title: "AIVoiceVox",
+    tags: ["Voicevox", "A.I.Voice", "Rust"],
     description: "A.I.Voice 1をVoicevox上で話させるVoicevoxエンジン。",
     display: {
       source: "niconico",
@@ -295,6 +222,7 @@ export const works: Work[] = [
     category: "extension",
     id: "coeiroinkV2Bridge",
     title: "Coeiroink v2 Bridge",
+    tags: ["Voicevox", "Coeiroink", "Deno", "TypeScript"],
     description: "Coeiroink v2をVoicevox上で話させるVoicevoxエンジン。",
     display: {
       source: "niconico",
