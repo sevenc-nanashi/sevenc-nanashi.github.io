@@ -5,6 +5,7 @@ import kiiteCafeDesktopPreview from "./assets/works/kiitecafe-desktop.webp?w=320
 import kikounePreview from "./assets/works/kikoune.webp?w=320;640;960;1280;1600&format=webp;png&as=picture";
 import playableArtKumohitodePreview from "./assets/works/playable-art-kumohitode.webp?w=320;640;960;1280;1600&format=webp;png&as=picture";
 import arcaeaPacksInventoryPreview from "./assets/works/arcaea-packs-inventory.webp?w=320;640;960;1280;1600&format=webp;png&as=picture";
+import umichordPreview from "./assets/works/umichord.webp?w=320;640;960;1280;1600&format=webp;png&as=picture";
 
 export type WorkCategory = "music" | "app" | "lib" | "art" | "other";
 export type Work = {
@@ -209,6 +210,26 @@ export const works: Work[] = [
     display: {
       source: "image",
       picture: arcaeaPacksInventoryPreview,
+    },
+  },
+  {
+    category: "app",
+    id: "umichord",
+    title: "UmiChord",
+    description: "海茶式コード表記法ジェネレーター。",
+    links: [
+      {
+        type: "visit",
+        url: "https://sevenc7c.com/umichord/",
+      },
+      {
+        type: "source",
+        url: "https://github.com/sevenc-nanashi/umichord",
+      },
+    ],
+    display: {
+      source: "image",
+      picture: umichordPreview,
     },
   },
   {
