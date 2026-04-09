@@ -127,11 +127,10 @@ const tagColors: Record<string, string> = {
       </RouterLink>
     </h2>
     <div>
-      <span v-for="(tag, index) in props.work.tags" :key="index" un-text="sm theme-700 dark:theme-200" un-mr="1"
+      <span v-for="(tag, index) in props.work.tags" :key="index" un-text="sm theme-700 dark:theme-200" un-mr="2"
         un-decoration="underline" :class="[
           tagColors[tag] || 'decoration-theme-500',
-        ]">
-        #{{ tag }}
+        ]">#{{ tag }}
       </span>
     </div>
     <div un-flex="~ wrap" un-items="center" un-gap="2" un-mb="2" un-mt="1">
