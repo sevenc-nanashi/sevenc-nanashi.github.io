@@ -5,9 +5,10 @@ import kiiteCafeDesktopPreview from "./assets/works/kiitecafe-desktop.webp?w=320
 import kikounePreview from "./assets/works/kikoune.webp?w=320;640;960;1280;1600&format=webp;png&as=picture";
 import playableArtKumohitodePreview from "./assets/works/playable-art-kumohitode.webp?w=320;640;960;1280;1600&format=webp;png&as=picture";
 import arcaeaPacksInventoryPreview from "./assets/works/arcaea-packs-inventory.webp?w=320;640;960;1280;1600&format=webp;png&as=picture";
+import umichordPreview from "./assets/works/umichord.webp?w=320;640;960;1280;1600&format=webp;png&as=picture";
 
-export type WorkCategory = "music" | "app" | "lib" | "art" | "other";
 export type Tag = string;
+export type WorkCategory = "music" | "app" | "lib" | "art" | "extension" | "other";
 export type Work = {
   id: string;
   tags: Tag[];
@@ -63,6 +64,27 @@ export const works: Work[] = [
   },
   {
     category: "app",
+    id: "umichord",
+    title: "UmiChord",
+    tags: [],
+    description: "海茶式コード表記法ジェネレーター。",
+    links: [
+      {
+        type: "visit",
+        url: "https://sevenc7c.com/umichord/",
+      },
+      {
+        type: "source",
+        url: "https://github.com/sevenc-nanashi/umichord",
+      },
+    ],
+    display: {
+      source: "image",
+      picture: umichordPreview,
+    },
+  },
+  {
+    category: "extension",
     id: "cantari",
     title: "Cantari",
     tags: ["Voicevox", "UTAU", "Rust"],
@@ -87,7 +109,7 @@ export const works: Work[] = [
     ],
   },
   {
-    category: "app",
+    category: "extension",
     id: "aivoicevox",
     title: "AIVoiceVox",
     tags: ["Voicevox", "A.I.Voice", "Rust"],
@@ -112,7 +134,7 @@ export const works: Work[] = [
     ],
   },
   {
-    category: "app",
+    category: "extension",
     id: "coeiroinkV2Bridge",
     title: "Coeiroink v2 Bridge",
     tags: ["Voicevox", "Coeiroink", "Deno", "TypeScript"],
@@ -222,6 +244,78 @@ export const works: Work[] = [
     },
   },
   {
+    category: "extension",
+    id: "cantari",
+    title: "Cantari",
+    description: "UTAU音源をVoicevox上で話させるVoicevoxエンジン。",
+    display: {
+      source: "niconico",
+      id: "sm43856969",
+    },
+    links: [
+      {
+        type: "download",
+        url: "https://github.com/sevenc-nanashi/cantari/releases/latest",
+      },
+      {
+        type: "niconico",
+        url: "https://www.nicovideo.jp/watch/sm43856969",
+      },
+      {
+        type: "source",
+        url: "https://github.com/sevenc-nanashi/cantari",
+      },
+    ],
+  },
+  {
+    category: "extension",
+    id: "aivoicevox",
+    title: "AIVoiceVox",
+    description: "A.I.Voice 1をVoicevox上で話させるVoicevoxエンジン。",
+    display: {
+      source: "niconico",
+      id: "sm43073706",
+    },
+    links: [
+      {
+        type: "download",
+        url: "https://github.com/sevenc-nanashi/aivoice-vox/releases/latest",
+      },
+      {
+        type: "niconico",
+        url: "https://www.nicovideo.jp/watch/sm43073706",
+      },
+      {
+        type: "source",
+        url: "https://github.com/sevenc-nanashi/aivoice-vox",
+      },
+    ],
+  },
+  {
+    category: "extension",
+    id: "coeiroinkV2Bridge",
+    title: "Coeiroink v2 Bridge",
+    description: "Coeiroink v2をVoicevox上で話させるVoicevoxエンジン。",
+    display: {
+      source: "niconico",
+      id: "sm43073706",
+    },
+    links: [
+      {
+        type: "download",
+        url: "https://github.com/sevenc-nanashi/coeiroink-v2-bridge/releases/latest",
+      },
+      {
+        type: "niconico",
+        url: "https://www.nicovideo.jp/watch/sm43073706",
+      },
+      {
+        type: "source",
+        url: "https://github.com/sevenc-nanashi/coeiroink-v2-bridge",
+      },
+    ],
+  },
+  {
     category: "lib",
     id: "aviutl2Rs",
     title: "aviutl2-rs",
@@ -284,7 +378,7 @@ export const works: Work[] = [
     category: "music",
     id: "6oClockKoto",
     title: "六時、言の葉の木の下で。",
-    description: "6作目の自作ボカロ曲。ボカコレ2026冬エキシビション部門参加作品。",
+    description: "6作目の自作ボカロ曲。ボカコレ2026冬ルーキー部門参加作品。",
     tags: ["AviUtl2", "p5js", "Neutrino"],
     display: {
       source: "niconico",
