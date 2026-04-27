@@ -1,11 +1,11 @@
-<script setup lang="ts" generic="T extends string">
-import {RouterLink} from "vue-router";
-import {type Work} from "../works";
+<script setup lang="ts">
+import { onMounted, onUnmounted, ref, useId } from "vue";
+import { RouterLink } from "vue-router";
+import { type Work, type WorkCategory } from "../works";
 import GlassCard from "./GlassCard.vue";
+import ImagetoolsPicture from "./ImagetoolsPicture.vue";
 import LazyIframe from "./LazyIframe.vue";
 import WorkLink from "./WorkLink.vue";
-import {onMounted, onUnmounted, ref, useId} from "vue";
-import ImagetoolsPicture from "./ImagetoolsPicture.vue";
 
 const props = defineProps<{
   work: Work;
@@ -116,21 +116,49 @@ const tagColors: Record<string, string> = {
   "Vue": "decoration-green-500",
   "Rust": "decoration-orange-500",
   "CloudflareWorkers": "decoration-orange-400",
-}
+};
+
+const categoryLabels: Record<WorkCategory, string> = {
+  music: "Music",
+  app: "App",
+  extension: "Extension",
+  art: "Art",
+  lib: "Library",
+  other: "Other",
+};
 </script>
 <template>
   <GlassCard color="themeSecondary">
     <h2 un-text="2xl">
-      <RouterLink :to="`#${props.work.id}`" un-text="theme-700 hover:theme-500 dark:theme-200 dark:hover:theme-100"
-        un-decoration="none">
+      <RouterLink
+        :to="`#${props.work.id}`"
+        un-text="theme-700 hover:theme-500 dark:theme-200 dark:hover:theme-100"
+        un-decoration="none"
+      >
         {{ props.work.title }}
       </RouterLink>
     </h2>
-    <div>
-      <span v-for="(tag, index) in props.work.tags" :key="index" un-text="sm theme-700 dark:theme-200" un-mr="2"
-        un-decoration="underline" :class="[
-          tagColors[tag] || 'decoration-theme-500',
-        ]">#{{ tag }}
+    <div un-flex="~ wrap" un-items="center" un-gap="3" un-mb="1">
+      <span
+        un-inline-flex
+        un-items="center"
+        un-rounded="full"
+        un-outline="1 theme-500"
+        un-pb="1"
+        un-px="2.5"
+        un-py="0.5"
+        un-text="xs theme-800 dark:theme-100"
+      >
+        {{ categoryLabels[props.work.category] }}
+      </span>
+      <span
+        v-for="(tag, index) in props.work.tags"
+        :key="index"
+        un-text="sm theme-700 dark:theme-200"
+        un-decoration="underline"
+        :class="[tagColors[tag] || 'decoration-theme-500']"
+      >
+        #{{ tag }}
       </span>
     </div>
     <div un-flex="~ wrap" un-items="center" un-gap="2" un-mb="2" un-mt="1">
@@ -144,36 +172,96 @@ const tagColors: Record<string, string> = {
     </p>
     <div class="work-display">
       <div v-if="!props.work.display" un-aspect="16/9" un-relative>
-        <div un-relative un-aspect="16/9" un-w="full" class="work-placeholder" un-grid un-justify="center"
-          un-items="center" un-text="xl">
+        <div
+          un-relative
+          un-aspect="16/9"
+          un-w="full"
+          class="work-placeholder"
+          un-grid
+          un-justify="center"
+          un-items="center"
+          un-text="xl"
+        >
           No Preview
         </div>
       </div>
       <div v-else un-aspect="16/9" un-relative>
-        <div un-absolute un-aspect="16/9" un-w="full" class="work-placeholder" un-grid un-justify="center"
-          un-items="center" un-text="xl">
+        <div
+          un-absolute
+          un-aspect="16/9"
+          un-w="full"
+          class="work-placeholder"
+          un-grid
+          un-justify="center"
+          un-items="center"
+          un-text="xl"
+        >
           Loading...
         </div>
 
-        <div v-if="props.work.display.source === 'image'" un-absolute un-aspect="16/9" un-w="full" un-object="cover"
-          un-overflow="hidden">
-          <ImagetoolsPicture :picture="props.work.display.picture" loading="lazy" :alt="`${props.work.title} preview`"
-            :title="props.work.title" sizes="(min-width: 1024px) 54rem, 100vw" un-absolute un-aspect="16/9" un-w="full"
-            un-blur="md" un-object="cover" un-drop-shadow="md" />
-          <ImagetoolsPicture :picture="props.work.display.picture" loading="lazy" :alt="`${props.work.title} preview`"
-            :title="props.work.title" sizes="(min-width: 1024px) 54rem, 100vw" un-absolute un-aspect="16/9" un-w="full"
-            un-object="contain" />
+        <div
+          v-if="props.work.display.source === 'image'"
+          un-absolute
+          un-aspect="16/9"
+          un-w="full"
+          un-object="cover"
+          un-overflow="hidden"
+        >
+          <ImagetoolsPicture
+            :picture="props.work.display.picture"
+            loading="lazy"
+            :alt="`${props.work.title} preview`"
+            :title="props.work.title"
+            sizes="(min-width: 1024px) 54rem, 100vw"
+            un-absolute
+            un-aspect="16/9"
+            un-w="full"
+            un-blur="md"
+            un-object="cover"
+            un-drop-shadow="md"
+          />
+          <ImagetoolsPicture
+            :picture="props.work.display.picture"
+            loading="lazy"
+            :alt="`${props.work.title} preview`"
+            :title="props.work.title"
+            sizes="(min-width: 1024px) 54rem, 100vw"
+            un-absolute
+            un-aspect="16/9"
+            un-w="full"
+            un-object="contain"
+          />
         </div>
-        <LazyIframe v-if="props.work.display.source === 'youtube'" :src="'start' in props.work.display
-          ? `https://www.youtube.com/embed/${props.work.display.id}?start=${props.work.display.start}`
-          : `https://www.youtube.com/embed/${props.work.display.id}`
-          " width="100%" height="100%" frameborder="0" allowfullscreen
-          allow="autoplay; encrypted-media; picture-in-picture" un-relative />
-        <LazyIframe v-if="props.work.display.source === 'niconico'" v-model="iframe" name="test" :src="'start' in props.work.display
-          ? `https://embed.nicovideo.jp/watch/${props.work.display.id}?jsapi=1&playerId=${id}`
-          : `https://embed.nicovideo.jp/watch/${props.work.display.id}`
-          " width="100%" height="100%" frameborder="0" allowfullscreen
-          allow="autoplay; encrypted-media; picture-in-picture" un-relative />
+        <LazyIframe
+          v-if="props.work.display.source === 'youtube'"
+          :src="
+            'start' in props.work.display
+              ? `https://www.youtube.com/embed/${props.work.display.id}?start=${props.work.display.start}`
+              : `https://www.youtube.com/embed/${props.work.display.id}`
+          "
+          width="100%"
+          height="100%"
+          frameborder="0"
+          allowfullscreen
+          allow="autoplay; encrypted-media; picture-in-picture"
+          un-relative
+        />
+        <LazyIframe
+          v-if="props.work.display.source === 'niconico'"
+          v-model="iframe"
+          name="test"
+          :src="
+            'start' in props.work.display
+              ? `https://embed.nicovideo.jp/watch/${props.work.display.id}?jsapi=1&playerId=${id}`
+              : `https://embed.nicovideo.jp/watch/${props.work.display.id}`
+          "
+          width="100%"
+          height="100%"
+          frameborder="0"
+          allowfullscreen
+          allow="autoplay; encrypted-media; picture-in-picture"
+          un-relative
+        />
       </div>
     </div>
   </GlassCard>
