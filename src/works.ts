@@ -405,7 +405,7 @@ export const works: Work[] = [
     display: {
       source: "niconico",
       id: "sm45681995",
-      fallbackYoutubeId: "0Adv7O2Qa4Y",
+      fallbackYoutubeId: "FiokbpbXqeE",
     },
     links: [
       {
@@ -414,7 +414,7 @@ export const works: Work[] = [
       },
       {
         type: "youtube",
-        url: "https://youtu.be/0Adv7O2Qa4Y",
+        url: "https://youtu.be/FiokbpbXqeE",
       },
       {
         type: "linkcore",
