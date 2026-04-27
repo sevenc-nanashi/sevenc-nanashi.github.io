@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted, ref, useId } from "vue";
+import { computed, onMounted, onUnmounted, ref, useId } from "vue";
 import { RouterLink } from "vue-router";
 import { type Work, type WorkCategory } from "../works";
 import GlassCard from "./GlassCard.vue";
@@ -14,6 +14,30 @@ const props = defineProps<{
 const iframe = ref<HTMLIFrameElement | null>(null);
 const messageAbort = new AbortController();
 const id = useId();
+const shouldUseYoutubeFallback = ref(false);
+
+const isJapanesePrimaryLanguage = () => {
+  const [primaryLanguage] = navigator.languages;
+  if (primaryLanguage === undefined) {
+    throw new Error("Navigator languages is empty");
+  }
+  return primaryLanguage.toLowerCase().startsWith("ja");
+};
+
+const display = computed(() => {
+  if (
+    props.work.display?.source === "niconico" &&
+    props.work.display.fallbackYoutubeId !== undefined &&
+    shouldUseYoutubeFallback.value
+  ) {
+    return {
+      source: "youtube" as const,
+      id: props.work.display.fallbackYoutubeId,
+      start: props.work.display.start,
+    };
+  }
+  return props.work.display;
+});
 
 type NiconicoEvents = {
   loadComplete: {
@@ -58,15 +82,17 @@ type NiconicoMessage = {
 
 let firstLoad = true;
 onMounted(() => {
+  shouldUseYoutubeFallback.value = !isJapanesePrimaryLanguage();
   if (
     props.work.display?.source === "niconico" &&
+    !shouldUseYoutubeFallback.value &&
     "start" in props.work.display
   ) {
     // 開始地点指定のpolyfill
     window.addEventListener(
       "message",
       (event) => {
-        if (!iframe.value || props.work.display?.source !== "niconico") {
+        if (!iframe.value || display.value?.source !== "niconico") {
           return;
         }
         if (!firstLoad) {
@@ -85,9 +111,10 @@ onMounted(() => {
           if (!contentWindow) {
             throw new Error("Iframe has no contentWindow");
           }
-          const start = (
-            "start" in props.work.display ? props.work.display.start : 0
-          ) as number;
+          const start = display.value.start;
+          if (start === undefined) {
+            throw new Error("Niconico display start is undefined");
+          }
           contentWindow.postMessage(
             {
               sourceConnectorType: 1,
@@ -171,7 +198,7 @@ const categoryLabels: Record<WorkCategory, string> = {
       </budoux-ja>
     </p>
     <div class="work-display">
-      <div v-if="!props.work.display" un-aspect="16/9" un-relative>
+      <div v-if="!display" un-aspect="16/9" un-relative>
         <div
           un-relative
           un-aspect="16/9"
@@ -200,7 +227,7 @@ const categoryLabels: Record<WorkCategory, string> = {
         </div>
 
         <div
-          v-if="props.work.display.source === 'image'"
+          v-if="display.source === 'image'"
           un-absolute
           un-aspect="16/9"
           un-w="full"
@@ -208,7 +235,7 @@ const categoryLabels: Record<WorkCategory, string> = {
           un-overflow="hidden"
         >
           <ImagetoolsPicture
-            :picture="props.work.display.picture"
+            :picture="display.picture"
             loading="lazy"
             :alt="`${props.work.title} preview`"
             :title="props.work.title"
@@ -221,7 +248,7 @@ const categoryLabels: Record<WorkCategory, string> = {
             un-drop-shadow="md"
           />
           <ImagetoolsPicture
-            :picture="props.work.display.picture"
+            :picture="display.picture"
             loading="lazy"
             :alt="`${props.work.title} preview`"
             :title="props.work.title"
@@ -233,11 +260,11 @@ const categoryLabels: Record<WorkCategory, string> = {
           />
         </div>
         <LazyIframe
-          v-if="props.work.display.source === 'youtube'"
+          v-if="display.source === 'youtube'"
           :src="
-            'start' in props.work.display
-              ? `https://www.youtube.com/embed/${props.work.display.id}?start=${props.work.display.start}`
-              : `https://www.youtube.com/embed/${props.work.display.id}`
+            display.start !== undefined
+              ? `https://www.youtube.com/embed/${display.id}?start=${display.start}`
+              : `https://www.youtube.com/embed/${display.id}`
           "
           width="100%"
           height="100%"
@@ -247,13 +274,13 @@ const categoryLabels: Record<WorkCategory, string> = {
           un-relative
         />
         <LazyIframe
-          v-if="props.work.display.source === 'niconico'"
+          v-if="display.source === 'niconico'"
           v-model="iframe"
           name="test"
           :src="
-            'start' in props.work.display
-              ? `https://embed.nicovideo.jp/watch/${props.work.display.id}?jsapi=1&playerId=${id}`
-              : `https://embed.nicovideo.jp/watch/${props.work.display.id}`
+            display.start !== undefined
+              ? `https://embed.nicovideo.jp/watch/${display.id}?jsapi=1&playerId=${id}`
+              : `https://embed.nicovideo.jp/watch/${display.id}`
           "
           width="100%"
           height="100%"

@@ -27,6 +27,7 @@ export type Display =
   | {
       source: "niconico";
       id: string;
+      fallbackYoutubeId?: string;
       start?: number;
     }
   | {
@@ -311,6 +312,7 @@ export const works: Work[] = [
     display: {
       source: "niconico",
       id: "sm45977796",
+      fallbackYoutubeId: "TMGSbZamZHw",
       start: 53,
     },
     links: [
@@ -341,6 +343,7 @@ export const works: Work[] = [
     display: {
       source: "niconico",
       id: "sm45974329",
+      fallbackYoutubeId: "-kLwCVB7Qu0",
       start: 33,
     },
     links: [
@@ -371,6 +374,7 @@ export const works: Work[] = [
     display: {
       source: "niconico",
       id: "sm45968865",
+      fallbackYoutubeId: "z82MeBrvISM",
       start: 33,
     },
     links: [
@@ -401,6 +405,7 @@ export const works: Work[] = [
     display: {
       source: "niconico",
       id: "sm45681995",
+      fallbackYoutubeId: "0Adv7O2Qa4Y",
     },
     links: [
       {
@@ -426,6 +431,7 @@ export const works: Work[] = [
     display: {
       source: "niconico",
       id: "sm45306946",
+      fallbackYoutubeId: "0Adv7O2Qa4Y",
       start: 33,
     },
     links: [
@@ -457,6 +463,7 @@ export const works: Work[] = [
     display: {
       source: "niconico",
       id: "sm44670499",
+      fallbackYoutubeId: "Z8ris_-1rVU",
       start: 82,
     },
     links: [
@@ -487,6 +494,7 @@ export const works: Work[] = [
     display: {
       source: "niconico",
       id: "sm44635263",
+      fallbackYoutubeId: "zuQapTlfrdk",
       start: 50,
     },
     links: [
@@ -539,6 +547,7 @@ export const works: Work[] = [
     display: {
       source: "niconico",
       id: "sm43945652",
+      fallbackYoutubeId: "UqxoCw3caLs",
     },
     links: [
       {
@@ -564,6 +573,7 @@ export const works: Work[] = [
     display: {
       source: "niconico",
       id: "sm43690833",
+      fallbackYoutubeId: "W-k-ii_XtaM",
     },
     links: [
       {
