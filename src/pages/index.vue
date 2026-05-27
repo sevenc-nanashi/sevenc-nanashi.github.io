@@ -69,8 +69,7 @@ function toggleSixelMode() {
           @keydown.enter.prevent="toggleSixelMode"
           @keydown.space.prevent="toggleSixelMode"
           >sixel={{ isSixelMode ? "true" : "false" }}</span
-        >"
-      </div>
+        >"</div>
       <div
         un-grid-area="icon"
         un-m="md:l-4 md:b-4 lt-md:x-auto"
