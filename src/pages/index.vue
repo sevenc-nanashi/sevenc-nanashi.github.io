@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import GlassCard from "../components/GlassCard.vue";
 import AsciiProfileIcon from "../components/AsciiProfileIcon.vue";
-import { ref } from "vue";
+import { computed } from "vue";
+import { useRoute, useRouter } from "vue-router";
+import { z } from "zod";
 import profileIcon from "../assets/icon.webp?h=100;300;400;500;700;1000&format=webp;png&as=picture";
 import { getLinks } from "../profile";
 import animatedIcon100 from "../assets/icon/icon_100x100.webp";
@@ -15,21 +17,58 @@ import animatedIcon1000 from "../assets/icon/icon_1000x1000.webp";
 const links = getLinks({
   includeZwsp: true,
 });
-const isSixelMode = ref(true);
+const route = useRoute();
+const router = useRouter();
+const sixelQuerySchema = z.union([
+  z.literal("true"),
+  z.literal("false"),
+  z.literal("1"),
+  z.literal("yes"),
+  z.literal("on"),
+  z.literal(""),
+  z.null(),
+  z.undefined(),
+]);
+const sixelTrueishValues = ["true", "1", "yes", "on"];
+const isSixelMode = computed({
+  get() {
+    const sixelQuery = sixelQuerySchema.parse(route.query.sixel);
+    if (sixelQuery === undefined) {
+      return true;
+    }
+    if (sixelQuery === null) {
+      return false;
+    }
+    return sixelTrueishValues.includes(sixelQuery.toLowerCase());
+  },
+  set(value) {
+    void router.replace({
+      query: {
+        ...route.query,
+        sixel: value ? "true" : "false",
+      },
+    });
+  },
+});
+function toggleSixelMode() {
+  isSixelMode.value = !isSixelMode.value;
+}
 </script>
 <template>
   <section un-flex-grow un-flex="~" un-justify="center" un-items="center">
     <GlassCard class="profile-window" color="themeSecondary" un-p="2" un-gap="6">
       <div un-grid-area="header" un-font="mono" un-border="b theme" un-p="x-4 y-2">
-        <span un-user-select="none">$ </span>curl "https://sevenc7c.com?<button
-          type="button"
+        <span un-user-select="none">$ </span>curl "https://sevenc7c.com?<span
+          role="button"
+          tabindex="0"
           un-text="theme-500"
           un-cursor="pointer"
           un-underline="hover:~"
           :aria-pressed="isSixelMode"
-          @click="isSixelMode = !isSixelMode"
-        >
-          sixel={{ isSixelMode ? "true" : "false" }}</button
+          @click="toggleSixelMode"
+          @keydown.enter.prevent="toggleSixelMode"
+          @keydown.space.prevent="toggleSixelMode"
+          >sixel={{ isSixelMode ? "true" : "false" }}</span
         >"
       </div>
       <div
