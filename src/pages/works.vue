@@ -110,11 +110,7 @@ const getSelectedTags = (): Tag[] => {
 const selectedCategory = computed(() => getSelectedCategory());
 const selectedTags = computed(() => getSelectedTags());
 
-const matchesFilters = (
-  work: Work,
-  category: WorkCategory | undefined,
-  tags: Tag[],
-): boolean => {
+const matchesFilters = (work: Work, category: WorkCategory | undefined, tags: Tag[]): boolean => {
   if (category !== undefined && work.category !== category) {
     return false;
   }
@@ -125,19 +121,14 @@ const matchesFilters = (
 };
 
 const filteredWorks = computed(() =>
-  works.filter((work) =>
-    matchesFilters(work, selectedCategory.value, selectedTags.value),
-  ),
+  works.filter((work) => matchesFilters(work, selectedCategory.value, selectedTags.value)),
 );
 
 const hasActiveFilters = computed(
   () => selectedCategory.value !== undefined || selectedTags.value.length > 0,
 );
 
-const updateFilters = async (
-  category: WorkCategory | undefined,
-  tags: Tag[],
-) => {
+const updateFilters = async (category: WorkCategory | undefined, tags: Tag[]) => {
   const query: Record<string, string | string[]> = {};
   if (category !== undefined) {
     query.category = category;
@@ -148,9 +139,7 @@ const updateFilters = async (
 
   const hashWorkId = route.hash.startsWith("#") ? route.hash.slice(1) : "";
   const filteredByNextQuery = works.filter((work) => matchesFilters(work, category, tags));
-  const nextHash = filteredByNextQuery.some((work) => work.id === hashWorkId)
-    ? route.hash
-    : "";
+  const nextHash = filteredByNextQuery.some((work) => work.id === hashWorkId) ? route.hash : "";
 
   await router.replace({
     path: route.path,
@@ -171,7 +160,10 @@ const toggleTag = async (tag: Tag) => {
   } else {
     currentTags.add(tag);
   }
-  await updateFilters(selectedCategory.value, [...currentTags].sort((a, b) => a.localeCompare(b, "en")));
+  await updateFilters(
+    selectedCategory.value,
+    [...currentTags].sort((a, b) => a.localeCompare(b, "en")),
+  );
 };
 
 const clearFilters = async () => {
@@ -226,10 +218,7 @@ onMounted(async () => {
         if (!id) {
           continue;
         }
-        intersectionRatios.set(
-          id,
-          entry.isIntersecting ? entry.intersectionRatio : 0,
-        );
+        intersectionRatios.set(id, entry.isIntersecting ? entry.intersectionRatio : 0);
         updated = true;
       }
 

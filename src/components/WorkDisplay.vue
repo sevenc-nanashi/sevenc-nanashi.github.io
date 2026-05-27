@@ -102,10 +102,7 @@ onMounted(() => {
         if (message.playerId !== id) {
           return;
         }
-        if (
-          message.eventName === "playerMetadataChange" &&
-          message.data.maximumBuffered > 0
-        ) {
+        if (message.eventName === "playerMetadataChange" && message.data.maximumBuffered > 0) {
           firstLoad = false;
           const contentWindow = iframe.value.contentWindow;
           if (!contentWindow) {
@@ -128,7 +125,7 @@ onMounted(() => {
           );
         }
       },
-      {signal: messageAbort.signal},
+      { signal: messageAbort.signal },
     );
   }
 });
@@ -137,12 +134,12 @@ onUnmounted(() => {
 });
 
 const tagColors: Record<string, string> = {
-  "Voicevox": "decoration-lime-500",
-  "p5js": "decoration-pink-500",
-  "TypeScript": "decoration-blue-500",
-  "Vue": "decoration-green-500",
-  "Rust": "decoration-orange-500",
-  "CloudflareWorkers": "decoration-orange-400",
+  Voicevox: "decoration-lime-500",
+  p5js: "decoration-pink-500",
+  TypeScript: "decoration-blue-500",
+  Vue: "decoration-green-500",
+  Rust: "decoration-orange-500",
+  CloudflareWorkers: "decoration-orange-400",
 };
 
 const categoryLabels: Record<WorkCategory, string> = {
@@ -298,8 +295,10 @@ const categoryLabels: Record<WorkCategory, string> = {
 @use "../style.scss" as *;
 
 .work-placeholder {
-  background: light-dark(#{mix-alpha(theme("colors.slate.100"), 50%)},
-    #{mix-alpha(theme("colors.gray.800"), 50%)});
+  background: light-dark(
+    #{mix-alpha(theme("colors.slate.100"), 50%)},
+    #{mix-alpha(theme("colors.gray.800"), 50%)}
+  );
   color: light-dark(theme("colors.slate.500"), theme("colors.slate.300"));
 }
 </style>

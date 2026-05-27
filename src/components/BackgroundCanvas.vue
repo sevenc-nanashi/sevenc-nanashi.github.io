@@ -8,10 +8,7 @@ const canvasRef = ref<HTMLCanvasElement | null>(null);
 let animationId = 0;
 let cleanup: (() => void) | null = null;
 let offscreenCanvas: OffscreenCanvas | HTMLCanvasElement | null = null;
-let offscreenCtx:
-  | CanvasRenderingContext2D
-  | OffscreenCanvasRenderingContext2D
-  | null = null;
+let offscreenCtx: CanvasRenderingContext2D | OffscreenCanvasRenderingContext2D | null = null;
 let worker: Worker | null = null;
 let useWorker = false;
 
@@ -21,8 +18,7 @@ type CanvasSize = {
   dpr: number;
 };
 
-const prefersReducedMotion = () =>
-  window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const prefersReducedMotion = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 const getCanvasSize = (): CanvasSize => ({
   width: window.innerWidth,
@@ -40,10 +36,7 @@ const syncCanvasResolution = (canvas: HTMLCanvasElement, size: CanvasSize) => {
   canvas.height = Math.floor(size.height * size.dpr);
 };
 
-const blitFrame = (
-  ctx: CanvasRenderingContext2D,
-  source: OffscreenCanvas | HTMLCanvasElement,
-) => {
+const blitFrame = (ctx: CanvasRenderingContext2D, source: OffscreenCanvas | HTMLCanvasElement) => {
   ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
   ctx.drawImage(source, 0, 0);
 };
@@ -114,16 +107,14 @@ onMounted(() => {
   };
 
   const supportsWorker =
-    typeof OffscreenCanvas !== "undefined" &&
-    "transferControlToOffscreen" in canvas;
+    typeof OffscreenCanvas !== "undefined" && "transferControlToOffscreen" in canvas;
 
   if (supportsWorker) {
     try {
       const offscreen = canvas.transferControlToOffscreen();
-      worker = new Worker(
-        new URL("./backgroundCanvas.worker.ts", import.meta.url),
-        { type: "module" },
-      );
+      worker = new Worker(new URL("./backgroundCanvas.worker.ts", import.meta.url), {
+        type: "module",
+      });
       setCanvasSize();
       worker.postMessage(
         {
