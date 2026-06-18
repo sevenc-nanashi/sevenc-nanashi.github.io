@@ -19,7 +19,8 @@ export default {
     }
 
     const userAgent = request.headers.get("User-Agent") || "";
-    if (userAgent.includes("Mozilla")) {
+    const accept = request.headers.get("Accept") || "";
+    if (userAgent.includes("Mozilla") || accept.includes("text/html")) {
       return fetch(request);
     } else {
       const query = new URLSearchParams(url.searchParams);
