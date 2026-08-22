@@ -8,7 +8,8 @@ import arcaeaPacksInventoryPreview from "./assets/works/arcaea-packs-inventory.w
 import umichordPreview from "./assets/works/umichord.webp?w=320;640;960;1280;1600&format=webp;png&as=picture";
 
 export type Tag = string;
-export type WorkCategory = "music" | "app" | "lib" | "art" | "extension" | "other";
+export type WorkCategory =
+  "music" | "app" | "lib" | "art" | "extension" | "other";
 export type Work = {
   id: string;
   tags: Tag[];
@@ -88,7 +89,8 @@ export const works: Work[] = [
     category: "app",
     id: "kikoune",
     title: "Kikoune",
-    description: "Discordのアクティビティで動く、Kiite Cafe風にニコニコ動画を同時再生するアプリ。",
+    description:
+      "Discordのアクティビティで動く、Kiite Cafe風にニコニコ動画を同時再生するアプリ。",
     tags: ["Discord", "TypeScript", "Vue"],
     links: [
       {
@@ -273,7 +275,8 @@ export const works: Work[] = [
     category: "lib",
     id: "kanalizer",
     title: "VOICEVOX/kanalizer",
-    description: "英単語から読みを推測するライブラリ。Voicevoxでの英単語の読み上げに利用。",
+    description:
+      "英単語から読みを推測するライブラリ。Voicevoxでの英単語の読み上げに利用。",
     tags: ["Rust"],
     links: [
       {
@@ -286,7 +289,8 @@ export const works: Work[] = [
     category: "art",
     id: "playableArtKumohitode",
     title: `鳴らせる一枚絵\n「クモヒトデのうまる砂の上で」`,
-    description: "「クモヒトデのうまる砂の上で」をテーマにしたインタラクティブな一枚絵。",
+    description:
+      "「クモヒトデのうまる砂の上で」をテーマにしたインタラクティブな一枚絵。",
     tags: ["TypeScript", "p5js"],
     display: {
       source: "image",
@@ -300,6 +304,25 @@ export const works: Work[] = [
       {
         type: "source",
         url: "https://github.com/sevenc-nanashi/playable-art-kumohitode",
+      },
+    ],
+  },
+  {
+    category: "music",
+    id: "himawariReceiver",
+    title: "ひまわりれしーば",
+    description:
+      "番外編。「そにあずれこーど」の二次創作。ボカコレ2026夏Remix部門参加作品。",
+    tags: ["AviUtl2", "p5js", "Voicevox"],
+    display: {
+      source: "niconico",
+      id: "sm46703982",
+      start: 30,
+    },
+    links: [
+      {
+        type: "niconico",
+        url: "https://www.nicovideo.jp/watch/sm46703982",
       },
     ],
   },
@@ -338,7 +361,8 @@ export const works: Work[] = [
     category: "music",
     id: "6oClockAo",
     title: "蒼の少女は午前六時を目指して",
-    description: "6作目の自作ボカロ曲。ボカコレ2026冬エキシビション部門参加作品。",
+    description:
+      "6作目の自作ボカロ曲。ボカコレ2026冬エキシビション部門参加作品。",
     tags: ["AviUtl2", "p5js", "Neutrino"],
     display: {
       source: "niconico",
@@ -369,7 +393,8 @@ export const works: Work[] = [
     category: "music",
     id: "6oClockAka",
     title: "絳の少女は午後六時を夢見て",
-    description: "6作目の自作ボカロ曲。ボカコレ2026冬エキシビション部門参加作品。",
+    description:
+      "6作目の自作ボカロ曲。ボカコレ2026冬エキシビション部門参加作品。",
     tags: ["AviUtl2", "p5js", "Neutrino"],
     display: {
       source: "niconico",
@@ -489,7 +514,8 @@ export const works: Work[] = [
     category: "music",
     id: "favorit3sRespect",
     title: "favorit3s.respect",
-    description: "界隈・模倣曲を中心としたメドレー。ボカコレ2025冬Remix部門参加作品。",
+    description:
+      "界隈・模倣曲を中心としたメドレー。ボカコレ2025冬Remix部門参加作品。",
     tags: ["p5js", "Voicevox"],
     display: {
       source: "niconico",
