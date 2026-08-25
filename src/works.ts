@@ -317,12 +317,21 @@ export const works: Work[] = [
     display: {
       source: "niconico",
       id: "sm46703982",
+      fallbackYoutubeId: "VfqFhIcks9k",
       start: 30,
     },
     links: [
       {
         type: "niconico",
         url: "https://www.nicovideo.jp/watch/sm46703982",
+      },
+      {
+        type: "youtube",
+        url: "https://youtube.com/watch?v=VfqFhIcks9k",
+      },
+      {
+        type: "linkcore",
+        url: "https://linkco.re/xQFeeC45",
       },
     ],
   },
