@@ -6,6 +6,7 @@ import kikounePreview from "./assets/works/kikoune.webp?w=320;640;960;1280;1600&
 import playableArtKumohitodePreview from "./assets/works/playable-art-kumohitode.webp?w=320;640;960;1280;1600&format=webp;png&as=picture";
 import arcaeaPacksInventoryPreview from "./assets/works/arcaea-packs-inventory.webp?w=320;640;960;1280;1600&format=webp;png&as=picture";
 import umichordPreview from "./assets/works/umichord.webp?w=320;640;960;1280;1600&format=webp;png&as=picture";
+import cpgPreview from "./assets/works/cpg.webp?w=320;640;960;1280;1600&format=webp;png&as=picture";
 
 export type Tag = string;
 export type WorkCategory =
@@ -148,6 +149,27 @@ export const works: Work[] = [
     display: {
       source: "image",
       picture: kiiteCafeDesktopPreview,
+    },
+  },
+  {
+    category: "app",
+    id: "competitiveProgrammingCli",
+    title: "Competitive Programming CLI",
+    tags: ["Rust", "CLI"],
+    description: "競技プログラミング用のコマンドラインツール。",
+    links: [
+      {
+        type: "visit",
+        url: "https://sevenc7c.com/competitive-programming-cli/",
+      },
+      {
+        type: "source",
+        url: "https://github.com/sevenc-nanashi/competitive-programming-cli",
+      },
+    ],
+    display: {
+      source: "image",
+      picture: cpgPreview,
     },
   },
   {
